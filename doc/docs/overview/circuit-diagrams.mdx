@@ -38,12 +38,20 @@ Circuit diagrams for the zudo-bus board.
 │                    │  LDO +5V ─────────┘   │      ▼                  │
 │                    └───────────────────────┘   +5V Rail              │
 │                                                                      │
-│   ┌─────────────┐    ┌─────────────────┐                            │
-│   │  INDICATORS │    │   PROTECTION    │                            │
-│   │  LED1 +12V  │    │  D1: +12V rev   │                            │
-│   │  LED2 -12V  │    │  D2: -12V rev   │                            │
-│   │  LED3 +5V   │    │                 │                            │
-│   └─────────────┘    └─────────────────┘                            │
+│  PROTECTION (Order: PTC → TVS → Diode → Caps)    INDICATORS         │
+│  ┌────────────────────────────────────────┐     ┌─────────────┐     │
+│  │ PTC Fuses: F1(+12V), F2(-12V), F3(+5V) │     │  LED1 -12V  │     │
+│  │ TVS Clamp: TVS1(+12V), TVS2(-12V),     │     │  LED2 +12V  │     │
+│  │            TVS3(+5V)                   │     │  LED3 +5V   │     │
+│  │ Reverse: D1(+12V), D2(-12V),           │     └─────────────┘     │
+│  │          D3(+5V PSU), D4(+5V LDO)      │                         │
+│  └────────────────────────────────────────┘     DECOUPLING          │
+│                                                 ┌─────────────┐     │
+│  TEST POINTS                                    │ C5,C6: bulk │     │
+│  ┌─────────────────────────────────┐            │ C7-C14:+12V │     │
+│  │ TP1:+12V  TP2:-12V  TP3:+5V     │            │ C15-C22:-12V│     │
+│  │ TP4:GND   TP5:LDO in TP6:LDO out│            │ per header  │     │
+│  └─────────────────────────────────┘            └─────────────┘     │
 │                                                                      │
 └──────────────────────────────────────────────────────────────────────┘
 ```
@@ -101,9 +109,79 @@ Circuit diagrams for the zudo-bus board.
     ▼                                      ▼
 To IDC Headers                      To IDC Headers
 
-D1, D2: 1N4007 (1A, 1000V)
+D1, D2, D3, D4: SM4007PL (1N4007 equivalent, SOD-123FL)
 - Clamps reverse voltage to ~0.7V
 - Protects modules from reversed power cable
+- D3: PSU +5V input path protection
+- D4: LDO +5V output path protection
+```
+
+## Protection Circuit Order
+
+```
+Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
+
++12V Rail Example:
+                                                              To IDC
+Input ──► F1 (2A PTC) ──► TVS1 (15V) ──► D1 (reverse) ──► C5 (22µF) ──► Headers
+          overcurrent     transient      polarity         bulk
+          protection      clamp          protection       filtering
+```
+
+## TVS Transient Protection
+
+```
++12V Rail              -12V Rail              +5V Rail
+    │                      │                      │
+    │                      │                      │
+   TVS1                   TVS2                   TVS3
+  SMF15CA               SMF15CA                SMF5.0CA
+  (15V bi)              (15V bi)              (5V bi)
+    │                      │                      │
+   GND                    GND                    GND
+
+Specifications:
+- SMF15CA: 15V standoff, clamps to 24.4V max
+- SMF5.0CA: 5V standoff, clamps to 9.2V max
+- Bidirectional - protects against positive and negative spikes
+```
+
+## PTC Overcurrent Protection
+
+```
++12V Input ──► F1 ──► +12V Rail
+              BSMD1812-200 (2A hold, 4A trip)
+
+-12V Input ──► F2 ──► -12V Rail
+              BSMD1812-200 (2A hold, 4A trip)
+
++5V Rail ──► F3 ──► +5V Distribution
+             BSMD1812-150 (1.5A hold, 3A trip)
+
+Notes:
+- Self-resetting: auto-recovers after fault clears
+- Protects against short circuits and overcurrent
+```
+
+## Per-Header Decoupling
+
+```
+IDC Header J1                    IDC Header J2
+┌─────────────────────┐          ┌─────────────────────┐
+│   +12V ──┬── -12V   │          │   +12V ──┬── -12V   │
+│          │          │          │          │          │
+│   C7    C15         │          │   C8    C16         │
+│  0.1µF  0.1µF       │          │  0.1µF  0.1µF       │
+│    │      │         │          │    │      │         │
+│   GND    GND        │          │   GND    GND        │
+└─────────────────────┘          └─────────────────────┘
+
+... (same pattern for J3-J8 with C9-C14 and C17-C22)
+
+Purpose:
+- High-frequency noise filtering at each output
+- Prevents noise coupling between modules
+- Local energy storage for transient loads
 ```
 
 ## 16-Pin IDC Pinout (Eurorack Standard)
@@ -147,6 +225,28 @@ Pin Functions:
 - Pins 9-12:   +12V power (x4)
 - Pins 13-14:  +5V power (x2)
 - Pins 15-16:  CV/Gate (typically NC on bus boards)
+```
+
+## Test Points
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│                       Test Point Locations                      │
+├────────────────────────────────────────────────────────────────┤
+│                                                                │
+│  TP1 (+12V) ────── After PTC F1, main +12V rail               │
+│  TP2 (-12V) ────── After PTC F2, main -12V rail               │
+│  TP3 (+5V)  ────── After jumper JP1, +5V to modules           │
+│  TP4 (GND)  ────── Ground reference for measurements          │
+│  TP5 (LDO in) ─── +12V input to LDO U1                        │
+│  TP6 (LDO out) ── +5V output from LDO U1 (before JP1)         │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+Usage:
+- Use TP4 (GND) as reference for all voltage measurements
+- TP5/TP6 useful for diagnosing LDO issues
+- TP1-TP3 verify protection circuits are passing power correctly
 ```
 
 ## See Also

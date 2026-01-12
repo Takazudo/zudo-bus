@@ -87,10 +87,13 @@ Project status and circuit design plan for the bus board.
 │  │C5,C6    │                                                   │
 │  │22µF bulk│      DECOUPLING                                   │
 │  │at input │      ┌──────────────────┐                         │
-│  └─────────┘      │ C7-C14: +12V 0.1µF│                        │
-│                   │ C15-C22: -12V 0.1µF│                        │
-│  TEST POINTS      │ per header x8     │                        │
-│  ┌─────────┐      └──────────────────┘                         │
+│  │         │      │ C7-C14: +12V 0.1µF│                        │
+│  │C23 22µF │      │ C15-C22: -12V 0.1µF│                        │
+│  │+5V rail │      │ per header x8     │                        │
+│  └─────────┘      └──────────────────┘                         │
+│                                                                │
+│  TEST POINTS                                                   │
+│  ┌─────────┐                                                   │
 │  │TP1: +12V│                                                   │
 │  │TP2: -12V│                                                   │
 │  │TP3: +5V │                                                   │
@@ -223,8 +226,10 @@ TVS3 (SMF5.0CA): Bidirectional, across +5V rail to GND
 ```
 F1 (BSMD1812-200): In series with +12V rail, 2A hold current
 F2 (BSMD1812-200): In series with -12V rail, 2A hold current
-F3 (BSMD1812-150): In series with +5V rail, 1.5A hold current
+F3 (BSMD1812-150): In series with +5V rail (after JP1 Pin 2), 1.5A hold current
 ```
+
+**Note on F3 Position:** F3 is placed after JP1 Pin 2, meaning it protects the +5V distribution rail regardless of whether the LDO or PSU direct mode is selected. This ensures overcurrent protection is always active for the +5V rail going to modules.
 
 #### Input Bulk Capacitors
 
@@ -232,6 +237,14 @@ F3 (BSMD1812-150): In series with +5V rail, 1.5A hold current
 C5 (22µF): Across +12V input to GND (transient filtering, after protection)
 C6 (22µF): Across -12V input to GND (transient filtering, after protection)
 ```
+
+#### +5V Rail Bulk Capacitor
+
+```
+C23 (22µF): Across +5V rail to GND (after JP1 Pin 2, regardless of source selection)
+```
+
+**Note:** This capacitor provides bulk filtering for the +5V rail after the jumper selection, ensuring stable power delivery to digital modules in both LDO and PSU direct modes.
 
 #### Per-Header Decoupling
 
@@ -255,24 +268,24 @@ TP6: LDO output (+5V from U1, before JP1)
 
 ## Selected Components
 
-| Component        | Part Number      | LCSC      | Stock | Notes                    |
-| ---------------- | ---------------- | --------- | ----- | ------------------------ |
-| FASTON Terminal  | 1217754-1        | C305825   | -     | x4, 7A rated             |
-| Screw Terminal   | WJ500V-5.08-2P   | C8465     | 123K  | x4                       |
-| 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                       |
-| +5V LDO          | AMS1117-5.0      | C6187     | 116K  | SOT-223, 1A              |
-| Reverse Diode    | SM4007PL         | C64898    | -     | x4, SOD-123FL (D1-D4)    |
-| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional        |
-| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional        |
-| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812                 |
-| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812                 |
-| Bulk Cap 22µF    | CL21A226MAQNNNE  | C45783    | 5.43M | x3, 0805 25V (C2,C5,C6)  |
-| LDO Input 10µF   | CL21A106KAYNNNE  | C15850    | 1.38M | x1, 0805 25V (C3)        |
-| Decoupling 0.1µF | CC0603           | C14663    | -     | x18, 0603 (C1,C4,C7-C22) |
-| LED Red          | KT-0603R         | C2286     | -     | 0603, -12V indicator     |
-| LED Green        | YLED0603YG       | C19171392 | -     | 0603, +12V indicator     |
-| LED Blue         | NCD1608A1        | C5382145  | -     | 0603, +5V indicator      |
-| LED Resistor     | 1kΩ 0805         | C25623    | -     | x3, 125mW (R1,R2,R3)     |
+| Component        | Part Number      | LCSC      | Stock | Notes                       |
+| ---------------- | ---------------- | --------- | ----- | --------------------------- |
+| FASTON Terminal  | 1217754-1        | C305825   | -     | x4, 7A rated                |
+| Screw Terminal   | WJ500V-5.08-2P   | C8465     | 123K  | x4                          |
+| 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                          |
+| +5V LDO          | AMS1117-5.0      | C6187     | 116K  | SOT-223, 1A                 |
+| Reverse Diode    | SM4007PL         | C64898    | -     | x4, SOD-123FL (D1-D4)       |
+| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional           |
+| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional           |
+| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812                    |
+| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812                    |
+| Bulk Cap 22µF    | CL21A226MAQNNNE  | C45783    | 5.43M | x4, 0805 25V (C2,C5,C6,C23) |
+| LDO Input 10µF   | CL21A106KAYNNNE  | C15850    | 1.38M | x1, 0805 25V (C3)           |
+| Decoupling 0.1µF | CC0603           | C14663    | -     | x18, 0603 (C1,C4,C7-C22)    |
+| LED Red          | KT-0603R         | C2286     | -     | 0603, -12V indicator        |
+| LED Green        | YLED0603YG       | C19171392 | -     | 0603, +12V indicator        |
+| LED Blue         | NCD1608A1        | C5382145  | -     | 0603, +5V indicator         |
+| LED Resistor     | 1kΩ 0805         | C25623    | -     | x3, 125mW (R1,R2,R3)        |
 
 ---
 

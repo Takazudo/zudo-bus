@@ -8,11 +8,11 @@ Complete list of components for the zudo-bus board.
 | ------------------ | ----- | ------------------------------ |
 | Connectors         | 13    | Input + Output + Jumper        |
 | Active Components  | 1     | +5V LDO regulator              |
-| Passive Components | 24    | Capacitors (21), resistors (3) |
+| Passive Components | 25    | Capacitors (22), resistors (3) |
 | Protection         | 10    | Diodes (4), TVS (3), PTC (3)   |
 | Indicators         | 3     | Power rail LEDs                |
 | Test Points        | 6     | TP1-TP6 for debugging          |
-| **Total**          | ~57   | Full protection configuration  |
+| **Total**          | ~58   | Full protection configuration  |
 
 ## PCB Design
 
@@ -136,6 +136,7 @@ Complete list of components for the zudo-bus board.
 | C4         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | U1 output HF decoupling       |
 | C5         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +12V input bulk cap           |
 | C6         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | -12V input bulk cap           |
+| C23        | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +5V rail bulk cap (after JP1) |
 | C7-C14     | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
 | C15-C22    | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
 
@@ -143,6 +144,7 @@ Complete list of components for the zudo-bus board.
 
 - C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAQNNNE, 25V X5R, Basic Part, Stock: 5.43M)
 - C5, C6: 22µF bulk capacitors (Samsung CL21A226MAQNNNE, 25V X5R) for better transient response during module power-on
+- C23: 22µF bulk capacitor for +5V rail, placed after JP1 Pin 2 (provides filtering regardless of LDO or PSU direct mode)
 - C7-C14: +12V per-header decoupling capacitors near each IDC output
 - C15-C22: -12V per-header decoupling capacitors near each IDC output
 

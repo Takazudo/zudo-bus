@@ -81,23 +81,24 @@ Complete list of components for the zudo-bus board.
 
 ### LDO Regulator
 
-| Designator | Value | Package  | LCSC                                                 | Function      |
-| ---------- | ----- | -------- | ---------------------------------------------------- | ------------- |
-| U1         | 78L05 | SOT-89-3 | [C20628877](https://jlcpcb.com/partdetail/C20628877) | +5V 100mA LDO |
+| Designator | Value       | Package | LCSC                                         | Function   |
+| ---------- | ----------- | ------- | -------------------------------------------- | ---------- |
+| U1         | AMS1117-5.0 | SOT-223 | [C6187](https://jlcpcb.com/partdetail/C6187) | +5V 1A LDO |
 
-**Notes:** Generates +5V from +12V input. 100mA output current.
+**Notes:** Generates +5V from +12V input. 1A output current (practical limit ~300mA due to thermal dissipation).
 
 **Specifications:**
 
-- Input: +12V (7V-35V range)
-- Output: +5V @ 100mA max
-- Dropout: ~2V
-- Package: SOT-89-3 (SMD)
+- Input: +12V (6.5V-15V range, abs max 18V)
+- Output: +5V @ 1A max
+- Dropout: ~1.2V (lower than 78xx series)
+- Package: SOT-223 (SMD)
+- Requires 22µF low-ESR output capacitor for stability
 
 **KiCad:**
 
-- Symbol: `78L05_C20628877`
-- Footprint: `SOT-89-3_L4.5-W2.5-P1.50-LS4.1-BR-1.kicad_mod`
+- Symbol: `AMS1117-5.0_C6187`
+- Footprint: `SOT-223-3_L6.5-W3.4-P2.30-LS7.0-BR.kicad_mod`
 
 ### +5V Selection Header
 

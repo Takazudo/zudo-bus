@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import Ldo78l05Diagram from '../_fragments/ldo-78l05-diagram.mdx';
+
 # Circuit Diagrams
 
 Circuit diagrams for the zudo-bus board.
@@ -48,55 +50,7 @@ Circuit diagrams for the zudo-bus board.
 
 ## +5V LDO Circuit
 
-The +5V rail can be generated on-board from the +12V rail, or passed through directly from the PSU.
-
-```
-                         +12V Rail
-                             │
-                    C1       │
-                  0.33µF     │
-                    │        │
-                    ├────────┤
-                    │        │
-                   GND       ▼
-                        ┌─────────┐
-                        │  VIN    │
-                        │         │
-                        │ L78L05  │
-                        │ 100mA   │
-                        │         │
-                        │  VOUT   │
-                        └────┬────┘
-                             │
-                    ┌────────┤
-                    │        │
-                   C2       LDO +5V
-                 0.1µF       │
-                    │        │
-                   GND       ▼
-                        ┌─────────────────────────────────┐
-                        │       3-Pin Selection Header    │
-                        │                                 │
-                        │  Pin 1      Pin 2      Pin 3    │
-                        │ (LDO)     (+5V Rail)  (PSU)     │
-                        │    │          │          │      │
-                        │    ▼          ▼          ▼      │
-                        │  ┌───┐      ┌───┐      ┌───┐    │
-                        │  │ 1 │──────│ 2 │──────│ 3 │    │
-                        │  └───┘      └───┘      └───┘    │
-                        │       ▲            ▲            │
-                        │    Jumper       Jumper          │
-                        │     1-2          2-3            │
-                        └─────────────────────────────────┘
-                                    │
-                                    ▼
-                              +5V to IDC Headers
-
-Jumper Positions:
-- 1-2: Generate +5V from +12V using on-board LDO
-- 2-3: Use +5V directly from PSU (bypass LDO)
-- None: +5V rail disabled
-```
+<Ldo78l05Diagram />
 
 ## LED Indicator Circuit
 

@@ -22,7 +22,7 @@ const sidebars = {
     'overview/bom',
     'overview/mechanical-design',
   ],
-  componentsSidebar: ['components/index'],
+  componentsSidebar: ['components/index', 'components/ams1117'],
   learningSidebar: ['learning/index'],
   howToSidebar: [
     'how-to/index',

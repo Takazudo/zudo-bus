@@ -1,0 +1,69 @@
+{/* Fragment: AMS1117-5.0 +5V LDO Circuit Diagram */}
+
+**Circuit Function:**
+
+The +5V rail can be generated on-board from the +12V rail using the AMS1117-5.0 LDO (1A output), or passed through directly from the PSU via jumper selection.
+
+```
+Regulator IC:
+                  ┌──────────────────┐
++12V IN ──────────┤3 INPUT     OUTPUT├──────────── LDO +5V OUT
+                  │            (TAB)2│
+               ┌──┤1 GND             │
+               │  └──────────────────┘
+              GND     AMS1117-5.0
+                       (SOT-223)
+
+Input Capacitors (C1 closest to IC):
++12V ──┬────────┬─── To IC Pin 3
+       │        │
+      C3       C1
+     10µF    0.1µF
+   ceramic  ceramic
+       │        │
+      GND      GND
+   (farther) (CLOSE!)
+
+Output Capacitors (C2 closest to IC):
+From IC Pin 2 ──┬────────┬─── LDO +5V OUT
+                │        │
+               C2       C4
+             22µF     0.1µF
+            ceramic  ceramic
+                │        │
+               GND      GND
+            (CLOSE!) (CLOSE!)
+
++5V Source Selection (JP1 3-Pin Header):
+LDO +5V ─── Pin 1 ─┐
+                   ├─ Jumper ─┐
+PSU +5V ─── Pin 3 ─┘          │
+                              │
+                           Pin 2 ──→ To +5V Rail
+
+Position 1-2: Use on-board LDO output
+Position 2-3: Use PSU +5V directly
+No jumper: +5V rail disabled
+```
+
+**Capacitor Placement (Critical for stability):**
+
+- **C1 (0.1µF ceramic)**: Place RIGHT NEXT to IC pin 3 (high-frequency input decoupling)
+- **C3 (10µF ceramic)**: Bulk input filtering, can be placed farther
+- **C2 (22µF ceramic)**: Place RIGHT NEXT to IC pin 2 (output stability - CRITICAL for AMS1117)
+- **C4 (0.1µF ceramic)**: High-frequency output decoupling
+
+**Key Points:**
+
+- **Output current**: 1A maximum (10x more than 78L05, adequate for multiple digital modules)
+- **Dropout voltage**: ~1.2V typical (lower than 78L05's 2V)
+- **Thermal consideration**: At 1A load from 12V, dissipates 7W - limit practical use to 300-500mA
+- **Output capacitor**: AMS1117 requires low-ESR capacitor (22µF+ ceramic or tantalum) for stability
+
+**Protection Circuit (+5V Rail):**
+
+- **D3 (SM4007PL)**: Reverse polarity protection on PSU input path
+- **F3 (PTC 1.5A)**: Self-resetting overcurrent protection
+- **TVS3 (SMF5.0CA)**: Bidirectional TVS clamps transients to 9.2V max
+
+See [AMS1117-5.0 Component Documentation](/docs/components/ams1117) for detailed specifications.

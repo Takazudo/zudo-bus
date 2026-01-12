@@ -1,0 +1,377 @@
+---
+sidebar_position: 2
+---
+
+import FootprintSvg from '@site/src/components/FootprintSvg';
+import SOT223 from '@site/static/footprints-svg/SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.svg';
+import Ldo78l05Diagram from '../_fragments/ldo-78l05-diagram.mdx';
+
+# AMS1117-5.0 - +5V LDO Regulator
+
+Low-dropout positive voltage regulator providing stable +5V output at up to 1A from +12V input in SOT-223 surface-mount package.
+
+- [View on JLCPCB: C6187](https://jlcpcb.com/partdetail/C6187)
+
+<FootprintSvg src={SOT223} alt="AMS1117-5.0 SOT-223 Package" minWidth="250px" minHeight="150px" />
+
+## Overview
+
+The AMS1117-5.0 is a low-dropout three-terminal positive voltage regulator in SOT-223 package, designed to provide a fixed +5V output at up to 1A from a higher input voltage. In the zudo-bus design, this component generates +5V from the +12V rail for digital modules that require +5V power. The on-board generation is optional - users can alternatively use PSU +5V directly via the jumper selection.
+
+The AMS1117 was chosen over the 78L05 for its higher current capacity (1A vs 100mA), making it suitable for setups with multiple digital modules requiring +5V.
+
+## Key Specifications
+
+| Parameter                    | Value           | Notes                |
+| ---------------------------- | --------------- | -------------------- |
+| **JLCPCB Part Number**       | C6187           |                      |
+| **Manufacturer Part Number** | AMS1117-5.0     |                      |
+| **Package**                  | SOT-223         | Surface-mount        |
+| **Output Voltage**           | 5V ±2%          | 4.9V - 5.1V typical  |
+| **Output Current**           | 1A max          | Design limit         |
+| **Input Voltage Range**      | 6.5V - 15V      | Absolute max 18V     |
+| **Dropout Voltage**          | 1.2V typical    | At 1A load           |
+| **Line Regulation**          | 0.2% max        | VIN = 7V to 15V      |
+| **Load Regulation**          | 0.4% max        | IO = 10mA to 1A      |
+| **Quiescent Current**        | 5mA typical     | No-load consumption  |
+| **Operating Temp Range**     | -40°C to +125°C | Junction temperature |
+
+## Pin Configuration
+
+```
+         SOT-223 Package
+              Top View
+
+         ┌──────────────┐
+         │              │
+         │  AMS1117-5.0 │
+         │              │
+         │              │
+         └──┬───┬───┬───┘
+            │   │   │
+          PIN1 PIN2 PIN3
+          GND  OUT  INPUT
+               (+5V) (+12V)
+
+              TAB
+           (OUTPUT)
+            (+5V)
+
+
+         Bottom View (Pads)
+
+    ┌─────────────────────────┐
+    │                         │
+    │    Large Tab Pad        │  ← OUTPUT (+5V)
+    │    (Heat dissipation)   │
+    │                         │
+    └─────────────────────────┘
+         ■      ■      ■
+        PIN1   PIN2   PIN3
+         GND   OUTPUT INPUT
+```
+
+### Pin Descriptions
+
+| Pin | Name   | Function                    | Connection in Design    |
+| --- | ------ | --------------------------- | ----------------------- |
+| 1   | GND    | Ground reference (common)   | System ground           |
+| 2   | OUTPUT | Regulated +5V output        | JP1 Pin 1 (LDO output)  |
+| 3   | INPUT  | Unregulated input voltage   | +12V rail               |
+| TAB | OUTPUT | Output (connected to pin 2) | Thermal dissipation pad |
+
+**Note**: The metal tab is internally connected to the OUTPUT pin (pin 2), providing both electrical connection and thermal dissipation path. This is different from the 78L05 pinout.
+
+## Application Circuit
+
+<Ldo78l05Diagram />
+
+## Component Values
+
+### Input/Output Capacitors
+
+| Reference | Value | Type        | Package | LCSC   | Purpose                          |
+| --------- | ----- | ----------- | ------- | ------ | -------------------------------- |
+| C1        | 0.1µF | Ceramic X7R | 0603    | C14663 | High-frequency input decoupling  |
+| C2        | 22µF  | Ceramic X5R | 0805    | TBD    | Output stability (CRITICAL)      |
+| C3        | 10µF  | Ceramic X5R | 0805    | TBD    | Bulk input filtering             |
+| C4        | 0.1µF | Ceramic X7R | 0603    | C14663 | High-frequency output decoupling |
+
+**Important**: The AMS1117 requires a low-ESR output capacitor (22µF or larger) for stability. Ceramic capacitors are preferred over electrolytic for their low ESR characteristics.
+
+## Design Considerations
+
+### Input Voltage Requirements
+
+The AMS1117-5.0 requires a minimum input voltage of approximately 6.2V for proper regulation (5V output + 1.2V dropout). In this design:
+
+- **Input voltage**: +12V from PSU
+- **Dropout margin**: 12V - 5V = 7V
+- **Status**: Excellent - well above minimum dropout voltage
+
+The 7V margin provides:
+
+1. Stable regulation across load variations
+2. Tolerance for input voltage ripple from PSU
+3. Higher power dissipation (must be managed thermally at high loads)
+
+### Thermal Management
+
+Power dissipation calculation at various loads:
+
+```
+At 1A (maximum):
+P = (VIN - VOUT) × IOUT
+P = (12V - 5V) × 1A
+P = 7W (EXCESSIVE - do not operate at this level)
+
+At 500mA (practical limit):
+P = 7V × 0.5A
+P = 3.5W (requires good thermal design)
+
+At 200mA (typical use):
+P = 7V × 0.2A
+P = 1.4W (manageable with copper pour)
+```
+
+**SOT-223 Thermal Performance**:
+
+- Junction-to-ambient thermal resistance: ~90°C/W (typical, with copper pour)
+- At 1.4W: Temperature rise = 126°C (too high without heatsinking)
+- At 1.4W with good PCB thermal design: ~60-80°C rise
+
+**Recommendations**:
+
+- Large copper pour under and around the tab pad for heat spreading
+- Thermal vias to inner/bottom copper layers
+- Practical continuous load limit: 200-300mA for reliable operation
+- Use PSU +5V directly (jumper 2-3) for loads exceeding 300mA
+
+### Capacitor Requirements (Critical)
+
+The AMS1117 is sensitive to output capacitor ESR. Unlike the 78xx family, it requires:
+
+1. **Output capacitor (C2)**: 22µF minimum, low ESR
+   - Ceramic X5R/X7R preferred
+   - ESR should be below 0.5Ω
+   - Place immediately adjacent to pin 2
+
+2. **Input capacitor (C3)**: 10µF recommended
+   - Helps with input ripple rejection
+   - Ceramic or tantalum acceptable
+
+3. **High-frequency decoupling (C1, C4)**: 0.1µF ceramic
+   - Place as close to IC pins as possible
+
+### Current Capacity
+
+The AMS1117 provides up to 1A output, a significant improvement over the 78L05 (100mA):
+
+- Typical +5V module consumption: 20-50mA per module
+- With 8 headers at 50mA each: 400mA total
+- **AMS1117 capacity**: Adequate for most configurations
+- **Thermal limit**: Practical limit is 200-300mA continuous from 12V input
+
+## Protection Features
+
+### Built-in Protections
+
+1. **Thermal Shutdown**: Automatically shuts down if junction temperature exceeds 165°C
+2. **Current Limiting**: Internal current limit at approximately 1.1-1.5A
+3. **SOA Protection**: Safe operating area protection
+
+### External Protection (This Design)
+
+The +5V rail has comprehensive external protection:
+
+```
+Reverse Polarity Protection (PSU input path only):
+PSU +5V ─── D3 (SM4007PL) ───→ To JP1 Pin 3
+            Anode → Cathode
+            (blocks reversed PSU)
+
+Overcurrent Protection:
++5V Rail ─── F3 (PTC 1.5A) ───→ To IDC Headers
+             (self-resetting)
+             (2A hold / 4A trip)
+
+Transient Protection:
++5V Rail ──┬───→ To Load
+           │
+          ┌┴┐ TVS3 (SMF5.0CA)
+          │ │ Bidirectional
+          └┬┘ Clamps to 9.2V max
+           │
+          GND
+
+Status LED:
++5V Rail ─── R3 ─── LED3 (Blue) ─── GND
+```
+
+Protection stages:
+
+1. **Reverse polarity (D3)**: Blocks reversed +5V PSU connection
+2. **Overcurrent (F3 PTC 1.5A)**: Self-resetting fuse for overload
+3. **Transient (TVS3 SMF5.0CA)**: Clamps voltage spikes to 9.2V max
+
+## Bill of Materials
+
+| Designator | Part        | Value        | Package | JLCPCB Part # | Qty | Purpose              |
+| ---------- | ----------- | ------------ | ------- | ------------- | --- | -------------------- |
+| U1         | AMS1117-5.0 | +5V 1A       | SOT-223 | C6187         | 1   | LDO regulator        |
+| C1         | Ceramic Cap | 0.1µF        | 0603    | C14663        | 1   | Input HF decoupling  |
+| C2         | Ceramic Cap | 22µF         | 0805    | TBD           | 1   | Output capacitor     |
+| C3         | Ceramic Cap | 10µF         | 0805    | TBD           | 1   | Input bulk cap       |
+| C4         | Ceramic Cap | 0.1µF        | 0603    | C14663        | 1   | Output HF decoupling |
+| JP1        | Pin Header  | 3-pin 2.54mm | TH      | C49257        | 1   | +5V source select    |
+
+## Alternative Parts
+
+### Direct Replacements (SOT-223 Package)
+
+| Part Number   | Manufacturer | JLCPCB Part # | Output Current | Notes              |
+| ------------- | ------------ | ------------- | -------------- | ------------------ |
+| AMS1117-5.0   | AMS          | C6187         | 1A             | **Used in design** |
+| LD1117S50TR   | ST           | C155954       | 800mA          | Alternative        |
+| LM1117IMP-5.0 | TI           | C126027       | 800mA          | Higher quality     |
+
+### Lower Current Alternatives
+
+If space is critical and lower current is acceptable:
+
+| Package  | Part Number | JLCPCB Part # | Current | Notes                    |
+| -------- | ----------- | ------------- | ------- | ------------------------ |
+| SOT-89-3 | 78L05       | C20628877     | 100mA   | Smaller, lower current   |
+| SOT-89-3 | AMS1117-5.0 | C7473143      | 1A      | Same IC, smaller package |
+
+## PCB Layout Guidelines
+
+### Footprint (SOT-223)
+
+```
+    Top View (PCB Pad Layout)
+
+    ┌─────────────────────────┐
+    │                         │
+    │    Large Tab Pad        │  ← Pin 2 (OUTPUT)
+    │    (for heat spread)    │     Also thermal pad
+    │                         │
+    └─────────────────────────┘
+
+         ■      ■      ■
+        Pin 1  Pin 2  Pin 3
+         GND   OUTPUT INPUT
+
+    Dimensions:
+    - Tab pad: 6.5mm × 3.4mm
+    - Pin spacing: 2.30mm
+    - Pin pad: ~1.0mm × 2.0mm
+```
+
+### Layout Recommendations
+
+1. **Component placement**:
+   - Keep C2 (22µF output) as close to pin 2 as possible - CRITICAL
+   - Keep C1 close to pin 3
+   - Ensure wide, direct ground connection from C1, C2 to pin 1
+
+2. **Thermal management**:
+   - Large copper pour connected to tab pad (OUTPUT)
+   - Add thermal vias under tab (6-8 vias, 0.3mm diameter)
+   - Connect thermal vias to ground plane or dedicated thermal plane
+   - Consider both top and bottom copper for heat spreading
+
+3. **Trace widths**:
+   - Input trace (+12V): 0.5mm minimum (for 1A capability)
+   - Output trace (+5V): 0.5mm minimum
+   - Ground: Maximum copper pour area
+
+## Testing and Validation
+
+### Output Voltage Test
+
+1. Apply +12V to input with no load
+2. Set jumper to position 1-2 (LDO mode)
+3. Verify output voltage: 4.9V - 5.1V (5V ±2%)
+
+### Load Regulation Test
+
+1. Connect variable load (0-500mA)
+2. Measure output voltage at different load currents:
+   - 0mA: Should be within 5V ±1%
+   - 200mA: Should be within 5V ±2%
+   - 500mA: Should be within 5V ±2%
+
+### Thermal Test
+
+1. Apply 300mA load for 10 minutes
+2. Measure case temperature (touch test or IR thermometer)
+3. Verify component is warm but not hot (`<85°C`)
+4. If too hot, improve thermal design or reduce load
+
+## Troubleshooting
+
+| Symptom            | Possible Cause           | Solution                             |
+| ------------------ | ------------------------ | ------------------------------------ |
+| No output voltage  | Jumper not installed     | Install jumper at position 1-2       |
+|                    | Input voltage too low    | Verify +12V input present            |
+|                    | Thermal shutdown         | Reduce load, improve thermal design  |
+| Low output voltage | Excessive load current   | Reduce load or use PSU +5V           |
+|                    | Poor input voltage       | Check +12V rail stability            |
+| Oscillation        | Wrong output capacitor   | Use 22µF+ low-ESR ceramic            |
+|                    | Poor capacitor placement | Move C2 closer to output pin         |
+|                    | High ESR capacitor       | Replace with ceramic capacitor       |
+| Overheating        | Excessive load           | Use PSU +5V for high-current modules |
+|                    | Poor thermal design      | Add copper pour, thermal vias        |
+
+## Application Notes
+
+### When to Use LDO vs PSU +5V
+
+**Use LDO (Jumper 1-2):**
+
+- Moderate +5V requirements
+- Total +5V current `<300mA`
+- PSU doesn't provide +5V output
+- Clean, regulated +5V needed
+
+**Use PSU +5V Direct (Jumper 2-3):**
+
+- Multiple digital modules requiring +5V
+- Total +5V current `>300mA`
+- PSU has dedicated +5V output
+- Better thermal performance needed
+
+### +5V Rail Usage in Eurorack
+
+Most Eurorack modules only require ±12V. The +5V rail is used by:
+
+- Digital modules with 5V logic
+- Some older module designs
+- Specific manufacturer requirements (e.g., some Intellijel modules)
+
+Many modern digital modules generate +5V internally from +12V, reducing demand on the bus +5V rail.
+
+### Comparison: AMS1117 vs 78L05
+
+| Feature          | AMS1117-5.0   | 78L05    |
+| ---------------- | ------------- | -------- |
+| Max Current      | 1A            | 100mA    |
+| Dropout Voltage  | 1.2V          | 2V       |
+| Package          | SOT-223       | SOT-89-3 |
+| Output Cap       | 22µF+ low-ESR | 0.1µF    |
+| Thermal Shutdown | Yes           | Yes      |
+| Current Limit    | Yes           | Yes      |
+
+## Related Components
+
+- **Input power**: +12V rail from PSU via FASTON/screw terminals
+- **Selection**: JP1 3-pin jumper header for +5V source selection
+- **Protection**: F3 (PTC fuse), TVS3 (TVS diode), D3 (reverse polarity)
+- **Indicator**: LED3 (Blue) shows +5V rail status
+
+## References
+
+- [JLCPCB Part C6187](https://jlcpcb.com/partdetail/C6187)
+- [AMS1117 Datasheet](http://www.advanced-monolithic.com/pdf/ds1117.pdf) - Advanced Monolithic Systems
+- Related documentation: [Bill of Materials](/docs/overview/bom)

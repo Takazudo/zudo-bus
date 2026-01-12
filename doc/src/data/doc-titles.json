@@ -1,4 +1,5 @@
 {
+  "components/ams1117": "AMS1117-5.0 - +5V LDO Regulator",
   "components/index": "Components",
   "how-to/create-circuit-svg": "Create Circuit SVG Files for Documentation",
   "how-to/create-footprint-svg": "Create Footprint SVG Files for Documentation",

@@ -32,7 +32,7 @@ Project status and circuit design plan for the bus board.
 
 ### +5V Generation
 
-- **L78L05 LDO** (100mA) from +12V
+- **AMS1117-5.0 LDO** (1A, practical ~300mA) from +12V
 - **3-pin jumper** for source selection:
   - Position 1-2: Use on-board LDO
   - Position 2-3: Use PSU +5V directly
@@ -64,7 +64,7 @@ Project status and circuit design plan for the bus board.
 │  │ -12V      │     ┌──────────────────────┐                     │
 │  │ +5V       │     │  +5V LDO SECTION     │                     │
 │  │ GND       │     │                      │                     │
-│  └───────────┘     │  +12V ──► L78L05 ──┐ │                     │
+│  └───────────┘     │  +12V ──► AMS1117 ─┐ │                     │
 │                    │                    │ │                     │
 │                    │    PSU +5V ────────┼─┼─► 3-pin jumper      │
 │                    │                    │ │      │              │
@@ -95,19 +95,19 @@ Project status and circuit design plan for the bus board.
                     +12V Rail
                         │
                         ▼
-                   ┌─────────┐
-                   │         │
-                   │ L78L05  │
-                   │ 100mA   │
-                   │         │
-              C1   └────┬────┘   C2
-           0.33µF       │      0.1µF
-              │         │         │
-    GND ──────┴─────────┼─────────┴────── GND
-                        │
-                        │ LDO +5V Output
-                        │
-                        ▼
+                   ┌───────────┐
+                   │           │
+                   │ AMS1117   │
+                   │ 5.0 (1A)  │
+                   │           │
+              C1   └─────┬─────┘   C2
+            0.1µF        │       22µF
+              │          │         │
+    GND ──────┴──────────┼─────────┴────── GND
+                         │
+                         │ LDO +5V Output
+                         │
+                         ▼
         ┌───────────────────────────────┐
         │         3-Pin Header          │
         │                               │
@@ -140,13 +140,16 @@ GND:   FASTON J_F4 ──┬── Screw J_S4 ──► GND Rail
 #### +5V LDO Section
 
 ```
-U1 (L78L05):
-  - Pin 1 (VIN)  ← +12V Rail
-  - Pin 2 (GND)  ← GND
-  - Pin 3 (VOUT) → JP1 Pin 1 (LDO output)
+U1 (AMS1117-5.0):
+  - Pin 1 (GND)    ← GND
+  - Pin 2 (OUTPUT) → JP1 Pin 1 (LDO output)
+  - Pin 3 (INPUT)  ← +12V Rail
+  - TAB (OUTPUT)   → Connected to Pin 2, thermal pad
 
-C1 (0.33µF): VIN to GND (input stabilization)
-C2 (0.1µF):  VOUT to GND (output stabilization)
+C1 (0.1µF):  INPUT to GND (high-frequency decoupling)
+C2 (22µF):   OUTPUT to GND (output stability - CRITICAL for AMS1117)
+C3 (10µF):   INPUT to GND (bulk input filtering)
+C4 (0.1µF):  OUTPUT to GND (high-frequency output decoupling)
 ```
 
 #### 3-Pin Jumper (JP1)
@@ -209,19 +212,19 @@ C7-C14 (0.1µF x8): Near each IDC header output for HF filtering
 
 ## Selected Components
 
-| Component        | Part Number      | LCSC      | Stock | Notes             |
-| ---------------- | ---------------- | --------- | ----- | ----------------- |
-| FASTON Terminal  | 1217754-1        | C305825   | -     | x4, 7A rated      |
-| Screw Terminal   | WJ500V-5.08-2P   | C8465     | 123K  | x4                |
-| 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                |
-| +5V LDO          | 78L05            | C20628877 | 57K   | SOT-89            |
-| Reverse Diode    | SM4007PL         | C64898    | -     | x3, SOD-123FL     |
-| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional |
-| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional |
-| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812          |
-| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812          |
-| Bulk Cap 10µF    | TCC0805X5R106K   | C5448891  | 188K  | x2, 0805 25V      |
-| Decoupling 0.1µF | CC0603           | C14663    | -     | x10, 0603         |
+| Component        | Part Number      | LCSC     | Stock | Notes             |
+| ---------------- | ---------------- | -------- | ----- | ----------------- |
+| FASTON Terminal  | 1217754-1        | C305825  | -     | x4, 7A rated      |
+| Screw Terminal   | WJ500V-5.08-2P   | C8465    | 123K  | x4                |
+| 16-pin Header    | 2541WR-2x08P     | C5383092 | 6.8K  | x8                |
+| +5V LDO          | AMS1117-5.0      | C6187    | 116K  | SOT-223, 1A       |
+| Reverse Diode    | SM4007PL         | C64898   | -     | x3, SOD-123FL     |
+| TVS Diode 15V    | SMF15CA          | C908211  | 54K   | x2, bidirectional |
+| TVS Diode 5V     | SMF5.0CA         | C908214  | 66K   | x1, bidirectional |
+| PTC Fuse 2A      | BSMD1812-200-30V | C960026  | 120K  | x2, 1812          |
+| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154  | 69K   | x1, 1812          |
+| Bulk Cap 10µF    | TCC0805X5R106K   | C5448891 | 188K  | x2, 0805 25V      |
+| Decoupling 0.1µF | CC0603           | C14663   | -     | x10, 0603         |
 
 ---
 

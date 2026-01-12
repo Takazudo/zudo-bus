@@ -35,7 +35,13 @@
     "subcategories": []
   },
   "components": {
-    "pages": [],
+    "pages": [
+      {
+        "docId": "components/ams1117",
+        "title": "AMS1117-5.0 - +5V LDO Regulator",
+        "position": 2
+      }
+    ],
     "subcategories": []
   },
   "learning": {

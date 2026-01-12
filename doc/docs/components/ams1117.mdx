@@ -185,15 +185,19 @@ The AMS1117 provides up to 1A output, a significant improvement over the 78L05 (
 The +5V rail has comprehensive external protection:
 
 ```
-Reverse Polarity Protection (PSU input path only):
-PSU +5V ─── D3 (SM4007PL) ───→ To JP1 Pin 3
+Reverse Polarity Protection (both paths):
+PSU +5V ─── D3 (SM4007PL) ───→ To JP1 Pin 3 (PSU path)
             Anode → Cathode
             (blocks reversed PSU)
+
+LDO +5V ─── D4 (SM4007PL) ───→ To JP1 Pin 1 (LDO path)
+            Anode → Cathode
+            (protects LDO from backfeed)
 
 Overcurrent Protection:
 +5V Rail ─── F3 (PTC 1.5A) ───→ To IDC Headers
              (self-resetting)
-             (2A hold / 4A trip)
+             (1.5A hold / 3A trip)
 
 Transient Protection:
 +5V Rail ──┬───→ To Load
@@ -205,14 +209,20 @@ Transient Protection:
           GND
 
 Status LED:
-+5V Rail ─── R3 ─── LED3 (Blue) ─── GND
++5V Rail ─── R3 (1kΩ) ─── LED3 (Blue) ─── GND
+```
+
+**Protection Order (Input to Output):**
+
+```
+Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
 ```
 
 Protection stages:
 
-1. **Reverse polarity (D3)**: Blocks reversed +5V PSU connection
-2. **Overcurrent (F3 PTC 1.5A)**: Self-resetting fuse for overload
-3. **Transient (TVS3 SMF5.0CA)**: Clamps voltage spikes to 9.2V max
+1. **Overcurrent (F3 PTC 1.5A)**: Self-resetting fuse for overload (first line of defense)
+2. **Transient (TVS3 SMF5.0CA)**: Clamps voltage spikes to 9.2V max
+3. **Reverse polarity (D3, D4)**: Blocks reversed connections on both PSU and LDO paths
 
 ## Bill of Materials
 
@@ -367,7 +377,7 @@ Many modern digital modules generate +5V internally from +12V, reducing demand o
 
 - **Input power**: +12V rail from PSU via FASTON/screw terminals
 - **Selection**: JP1 3-pin jumper header for +5V source selection
-- **Protection**: F3 (PTC fuse), TVS3 (TVS diode), D3 (reverse polarity)
+- **Protection**: F3 (PTC fuse), TVS3 (TVS diode), D3 (PSU path), D4 (LDO path)
 - **Indicator**: LED3 (Blue) shows +5V rail status
 
 ## References

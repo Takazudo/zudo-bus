@@ -62,8 +62,11 @@ No jumper: +5V rail disabled
 
 **Protection Circuit (+5V Rail):**
 
-- **D3 (SM4007PL)**: Reverse polarity protection on PSU input path
+- **D3 (SM4007PL)**: Reverse polarity protection on PSU input path (JP1 Pin 3)
+- **D4 (SM4007PL)**: Reverse polarity protection on LDO output path (JP1 Pin 1)
 - **F3 (PTC 1.5A)**: Self-resetting overcurrent protection
 - **TVS3 (SMF5.0CA)**: Bidirectional TVS clamps transients to 9.2V max
+
+**Protection Order:** `Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution`
 
 See [AMS1117-5.0 Component Documentation](/docs/components/ams1117) for detailed specifications.

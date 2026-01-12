@@ -8,10 +8,15 @@ Complete list of components for the zudo-bus board.
 | ------------------ | ----- | ------------------------------ |
 | Connectors         | 13    | Input + Output + Jumper        |
 | Active Components  | 1     | +5V LDO regulator              |
-| Passive Components | 17    | Capacitors (14), resistors (3) |
-| Protection         | 9     | Diodes (3), TVS (3), PTC (3)   |
+| Passive Components | 24    | Capacitors (21), resistors (3) |
+| Protection         | 10    | Diodes (4), TVS (3), PTC (3)   |
 | Indicators         | 3     | Power rail LEDs                |
-| **Total**          | ~43   | Full protection configuration  |
+| Test Points        | 6     | TP1-TP6 for debugging          |
+| **Total**          | ~57   | Full protection configuration  |
+
+## PCB Design
+
+- **2-layer PCB** - Cost-effective design with copper pours for thermal management
 
 ---
 
@@ -123,34 +128,44 @@ Complete list of components for the zudo-bus board.
 
 ### Capacitors
 
-| Designator | Value | Package | LCSC                                               | Function                 |
-| ---------- | ----- | ------- | -------------------------------------------------- | ------------------------ |
-| C1         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663)     | U1 input capacitor       |
-| C2         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663)     | U1 output capacitor      |
-| C3, C4     | 1µF   | 0603    | [C6119849](https://jlcpcb.com/partdetail/C6119849) | Bulk filtering           |
-| C5, C6     | 10µF  | 0805    | [C5448891](https://jlcpcb.com/partdetail/C5448891) | +12V/-12V input bulk cap |
-| C7-C14     | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663)     | Per-header decoupling x8 |
+| Designator | Value | Package | LCSC                                           | Function                      |
+| ---------- | ----- | ------- | ---------------------------------------------- | ----------------------------- |
+| C1         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | U1 input HF decoupling        |
+| C2         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | U1 output capacitor           |
+| C3         | 10µF  | 0805    | [C15850](https://jlcpcb.com/partdetail/C15850) | U1 input bulk                 |
+| C4         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | U1 output HF decoupling       |
+| C5         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +12V input bulk cap           |
+| C6         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | -12V input bulk cap           |
+| C7-C14     | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
+| C15-C22    | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
 
 **Notes:**
 
-- C5, C6: Input bulk capacitors (TCC0805X5R106K250FT, 25V 10µF X5R ±10%, Stock: 188K) absorb inrush current and reduce voltage transients at power input.
-- C7-C14: Per-header decoupling capacitors near each IDC output for high-frequency transient filtering.
+- C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAQNNNE, 25V X5R, Basic Part, Stock: 5.43M)
+- C5, C6: 22µF bulk capacitors (Samsung CL21A226MAQNNNE, 25V X5R) for better transient response during module power-on
+- C7-C14: +12V per-header decoupling capacitors near each IDC output
+- C15-C22: -12V per-header decoupling capacitors near each IDC output
 
 **KiCad:**
 
-- Symbol: `CC0603KRX7R9BB104` (0.1µF), `CGA0603X5R105K160JT` (1µF), `TCC0805X5R106K250FT` (10µF in `zudo-bus-protection.kicad_sym`)
+- Symbol: `CC0603KRX7R9BB104` (0.1µF), `CL21A106KAYNNNE` (10µF), `CL21A226MAQNNNE` (22µF)
 - Footprint: `C0603.kicad_mod`, `C0805.kicad_mod`
 
 ### Resistors
 
-| Designator | Value | Package | LCSC                                           | Function             |
-| ---------- | ----- | ------- | ---------------------------------------------- | -------------------- |
-| R1, R2, R3 | 1kΩ   | 0603    | [C21190](https://jlcpcb.com/partdetail/C21190) | LED current limiting |
+| Designator | Value | Package | LCSC                                           | Function                   |
+| ---------- | ----- | ------- | ---------------------------------------------- | -------------------------- |
+| R1, R2, R3 | 1kΩ   | 0805    | [C25623](https://jlcpcb.com/partdetail/C25623) | LED current limiting (all) |
+
+**Notes:**
+
+- All LEDs use 1kΩ resistors (same as zudo-power-usb-pd for consistency)
+- LED current: ~10mA for ±12V LEDs, ~2mA for +5V LED
 
 **KiCad:**
 
-- Symbol: `0603WAF1001T5E`
-- Footprint: `R0603.kicad_mod`
+- Symbol: `0805WAF1001T5E` (1kΩ)
+- Footprint: `R0805.kicad_mod`
 
 ---
 
@@ -158,13 +173,20 @@ Complete list of components for the zudo-bus board.
 
 ### Reverse Polarity Diodes
 
-| Designator | Value    | Package   | LCSC                                           | Function                |
-| ---------- | -------- | --------- | ---------------------------------------------- | ----------------------- |
-| D1         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection |
-| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection |
-| D3         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V reverse protection  |
+| Designator | Value    | Package   | LCSC                                           | Function                  |
+| ---------- | -------- | --------- | ---------------------------------------------- | ------------------------- |
+| D1         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection   |
+| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection   |
+| D3         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V PSU path protection   |
+| D4         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V LDO output protection |
 
-**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. D3 protects the +5V input path from PSU.
+**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. D3 protects the +5V PSU input path, D4 protects the LDO output path.
+
+**Protection Order (Input to Output):**
+
+```
+Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
+```
 
 **KiCad:**
 
@@ -250,6 +272,25 @@ Complete list of components for the zudo-bus board.
 
 ---
 
+## Test Points
+
+| Designator | Location                    | Function         |
+| ---------- | --------------------------- | ---------------- |
+| TP1        | +12V rail (after PTC F1)    | +12V measurement |
+| TP2        | -12V rail (after PTC F2)    | -12V measurement |
+| TP3        | +5V rail (after jumper JP1) | +5V measurement  |
+| TP4        | Ground reference            | GND reference    |
+| TP5        | LDO input (+12V to U1)      | LDO input check  |
+| TP6        | LDO output (+5V from U1)    | LDO output check |
+
+**Notes:**
+
+- Test points enable easy debugging and measurement during development
+- Use standard through-hole test point pads or SMD test points
+- TP4 (GND) provides reference for all voltage measurements
+
+---
+
 ## JLCPCB Assembly Notes
 
 ### SMT Assembly
@@ -305,26 +346,32 @@ From zudo-bus v1/v2:
 - `SMF5.0CA_C908214` - TVS diode 5V bidirectional
 - `BSMD1812-200-30V` - PTC fuse 2A
 - `BSMD1812-150-33V` - PTC fuse 1.5A
-- `TCC0805X5R106K250FT` - 10µF bulk capacitor
+- `CL21A106KAYNNNE` - 10µF capacitor (Samsung, C15850)
+- `CL21A226MAQNNNE` - 22µF capacitor (Samsung, C45783)
+
+**New symbol library:** `symbols/samsung-caps.kicad_sym`
+
+- `CL21A106KAYNNNE` - 10µF capacitor (C15850)
+- `CL21A226MAQNNNE` - 22µF capacitor (C45783)
 
 ### Footprint Library
 
 **Directory:** `footprints/kicad/zudo-bus.pretty/`
 
-| Footprint                                       | Package    | Used By                         |
-| ----------------------------------------------- | ---------- | ------------------------------- |
-| `C0603.kicad_mod`                               | 0603       | C1, C2, C3, C4, C7-C14 (caps)   |
-| `C0805.kicad_mod`                               | 0805       | C5, C6 (bulk caps)              |
-| `R0603.kicad_mod`                               | 0603       | R1, R2, R3 (resistors)          |
-| `LED0603-RD.kicad_mod`                          | 0603       | LED1 (Red), LED3 (Blue)         |
-| `LED0603-FD.kicad_mod`                          | 0603       | LED2 (Green)                    |
-| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`         | SOD-123F   | D1, D2, D3 (reverse protection) |
-| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`          | SOD-123    | TVS1, TVS2, TVS3 (TVS diodes)   |
-| `F1812.kicad_mod`                               | 1812       | F1, F2, F3 (PTC fuses)          |
-| `SOT-89-3_L4.5-W2.5-P1.50-LS4.1-BR-1.kicad_mod` | SOT-89     | U1 (LDO regulator)              |
-| `HDR-TH_3P-P2.54-V-M-1.kicad_mod`               | 2.54mm     | JP1 (jumper header)             |
-| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod`    | 2x8 2.54mm | J1-J8 (IDC headers)             |
-| `CONN-TH_1217754-1.kicad_mod`                   | FASTON     | J_F1-J_F4 (FASTON terminals)    |
-| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`     | 5.08mm     | J_S1-J_S4 (screw terminals)     |
+| Footprint                                    | Package    | Used By                             |
+| -------------------------------------------- | ---------- | ----------------------------------- |
+| `C0603.kicad_mod`                            | 0603       | C1, C4, C7-C22 (0.1µF caps)         |
+| `C0805.kicad_mod`                            | 0805       | C2, C3, C5, C6 (10µF, 22µF caps)    |
+| `R0805.kicad_mod`                            | 0805       | R1, R2, R3 (1kΩ resistors)          |
+| `LED0603-RD.kicad_mod`                       | 0603       | LED1 (Red), LED3 (Blue)             |
+| `LED0603-FD.kicad_mod`                       | 0603       | LED2 (Green)                        |
+| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`      | SOD-123F   | D1, D2, D3, D4 (reverse protection) |
+| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`       | SOD-123    | TVS1, TVS2, TVS3 (TVS diodes)       |
+| `F1812.kicad_mod`                            | 1812       | F1, F2, F3 (PTC fuses)              |
+| `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223    | U1 (LDO regulator)                  |
+| `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm     | JP1 (jumper header)                 |
+| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm | J1-J8 (IDC headers)                 |
+| `CONN-TH_1217754-1.kicad_mod`                | FASTON     | J_F1-J_F4 (FASTON terminals)        |
+| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm     | J_S1-J_S4 (screw terminals)         |
 
 **Total footprints:** 13 files

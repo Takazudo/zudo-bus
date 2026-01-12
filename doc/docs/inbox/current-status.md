@@ -38,6 +38,10 @@ Project status and circuit design plan for the bus board.
   - Position 2-3: Use PSU +5V directly
   - No jumper: +5V disabled
 
+### PCB Design
+
+- **2-layer PCB** - Cost-effective design with good copper pours for thermal management
+
 ---
 
 ## Circuit Design Plan
@@ -71,21 +75,31 @@ Project status and circuit design plan for the bus board.
 │                    │    LDO +5V ────────┘ │      ▼              │
 │                    └──────────────────────┘   +5V rail          │
 │                                                                 │
-│  INDICATORS        PROTECTION                                   │
+│  INDICATORS        PROTECTION (Order: PTC → TVS → Diode → Caps) │
 │  ┌─────────┐      ┌─────────────────────────────────────────┐  │
-│  │ LED +12V│      │ Reverse Polarity: D1(+12V), D2(-12V),   │  │
-│  │ LED -12V│      │                   D3(+5V)               │  │
+│  │ LED +12V│      │ PTC Fuses: F1(+12V 2A), F2(-12V 2A),    │  │
+│  │ LED -12V│      │           F3(+5V 1.5A)                  │  │
 │  │ LED +5V │      │ TVS Clamp: TVS1(+12V), TVS2(-12V),      │  │
 │  └─────────┘      │           TVS3(+5V)                     │  │
-│                   │ PTC Fuses: F1(+12V 2A), F2(-12V 2A),    │  │
-│  FILTERING        │           F3(+5V 1.5A)                  │  │
+│                   │ Reverse Polarity: D1(+12V), D2(-12V),   │  │
+│  FILTERING        │           D3(+5V PSU), D4(+5V LDO)      │  │
 │  ┌─────────┐      └─────────────────────────────────────────┘  │
 │  │C5,C6    │                                                   │
-│  │10µF bulk│      DECOUPLING                                   │
-│  │at input │      ┌─────────────┐                              │
-│  └─────────┘      │ C7-C14 0.1µF│                              │
-│                   │ per header  │                              │
-│                   └─────────────┘                              │
+│  │22µF bulk│      DECOUPLING                                   │
+│  │at input │      ┌──────────────────┐                         │
+│  └─────────┘      │ C7-C14: +12V 0.1µF│                        │
+│                   │ C15-C22: -12V 0.1µF│                        │
+│  TEST POINTS      │ per header x8     │                        │
+│  ┌─────────┐      └──────────────────┘                         │
+│  │TP1: +12V│                                                   │
+│  │TP2: -12V│                                                   │
+│  │TP3: +5V │                                                   │
+│  │TP4: GND │                                                   │
+│  │TP5: LDO │                                                   │
+│  │   input │                                                   │
+│  │TP6: LDO │                                                   │
+│  │   output│                                                   │
+│  └─────────┘                                                   │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -166,17 +180,34 @@ Jumper 2-3: Use PSU (direct +5V from power supply)
 #### LED Indicators
 
 ```
-LED1 (Red):    -12V Rail → R1 (1kΩ) → LED1 → GND
-LED2 (Green):  +12V Rail → R2 (1kΩ) → LED2 → GND
-LED3 (Blue):   +5V Rail  → R3 (470Ω) → LED3 → GND
+LED1 (Red):    GND → LED1 (anode→cathode) → R1 (1kΩ) → -12V Rail
+LED2 (Green):  +12V Rail → R2 (1kΩ) → LED2 (anode→cathode) → GND
+LED3 (Blue):   +5V Rail  → R3 (1kΩ) → LED3 (anode→cathode) → GND
 ```
+
+**LED Current Calculations (all using 1kΩ resistors, same as zudo-power-usb-pd):**
+
+```
+LED1 (Red, -12V):   I = (12V - 2V) / 1kΩ ≈ 10mA
+LED2 (Green, +12V): I = (12V - 2V) / 1kΩ ≈ 10mA
+LED3 (Blue, +5V):   I = (5V - 3V) / 1kΩ ≈ 2mA
+```
+
+**Note:** For the -12V indicator (LED1), current flows from GND (higher potential, 0V) through the LED to -12V (lower potential). The LED anode connects to the GND side.
 
 #### Reverse Polarity Protection
 
 ```
 D1 (SM4007PL): Cathode → +12V Rail, Anode → GND
 D2 (SM4007PL): Cathode → GND, Anode → -12V Rail
-D3 (SM4007PL): Cathode → +5V Input, Anode → GND (PSU +5V path)
+D3 (SM4007PL): Cathode → +5V Input, Anode → GND (PSU +5V path, JP1 Pin 3)
+D4 (SM4007PL): Cathode → LDO Output, Anode → GND (LDO +5V path, JP1 Pin 1)
+```
+
+**Protection Order (Input to Output):**
+
+```
+Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
 ```
 
 #### TVS Transient Protection
@@ -198,33 +229,50 @@ F3 (BSMD1812-150): In series with +5V rail, 1.5A hold current
 #### Input Bulk Capacitors
 
 ```
-C5 (10µF): Across +12V input to GND (transient filtering)
-C6 (10µF): Across -12V input to GND (transient filtering)
+C5 (22µF): Across +12V input to GND (transient filtering, after protection)
+C6 (22µF): Across -12V input to GND (transient filtering, after protection)
 ```
 
 #### Per-Header Decoupling
 
 ```
-C7-C14 (0.1µF x8): Near each IDC header output for HF filtering
+C7-C14 (0.1µF x8):  +12V decoupling near each IDC header
+C15-C22 (0.1µF x8): -12V decoupling near each IDC header
+```
+
+#### Test Points
+
+```
+TP1: +12V rail (after PTC F1)
+TP2: -12V rail (after PTC F2)
+TP3: +5V rail (after jumper JP1)
+TP4: GND reference
+TP5: LDO input (+12V to U1)
+TP6: LDO output (+5V from U1, before JP1)
 ```
 
 ---
 
 ## Selected Components
 
-| Component        | Part Number      | LCSC     | Stock | Notes             |
-| ---------------- | ---------------- | -------- | ----- | ----------------- |
-| FASTON Terminal  | 1217754-1        | C305825  | -     | x4, 7A rated      |
-| Screw Terminal   | WJ500V-5.08-2P   | C8465    | 123K  | x4                |
-| 16-pin Header    | 2541WR-2x08P     | C5383092 | 6.8K  | x8                |
-| +5V LDO          | AMS1117-5.0      | C6187    | 116K  | SOT-223, 1A       |
-| Reverse Diode    | SM4007PL         | C64898   | -     | x3, SOD-123FL     |
-| TVS Diode 15V    | SMF15CA          | C908211  | 54K   | x2, bidirectional |
-| TVS Diode 5V     | SMF5.0CA         | C908214  | 66K   | x1, bidirectional |
-| PTC Fuse 2A      | BSMD1812-200-30V | C960026  | 120K  | x2, 1812          |
-| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154  | 69K   | x1, 1812          |
-| Bulk Cap 10µF    | TCC0805X5R106K   | C5448891 | 188K  | x2, 0805 25V      |
-| Decoupling 0.1µF | CC0603           | C14663   | -     | x10, 0603         |
+| Component        | Part Number      | LCSC      | Stock | Notes                    |
+| ---------------- | ---------------- | --------- | ----- | ------------------------ |
+| FASTON Terminal  | 1217754-1        | C305825   | -     | x4, 7A rated             |
+| Screw Terminal   | WJ500V-5.08-2P   | C8465     | 123K  | x4                       |
+| 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                       |
+| +5V LDO          | AMS1117-5.0      | C6187     | 116K  | SOT-223, 1A              |
+| Reverse Diode    | SM4007PL         | C64898    | -     | x4, SOD-123FL (D1-D4)    |
+| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional        |
+| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional        |
+| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812                 |
+| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812                 |
+| Bulk Cap 22µF    | CL21A226MAQNNNE  | C45783    | 5.43M | x3, 0805 25V (C2,C5,C6)  |
+| LDO Input 10µF   | CL21A106KAYNNNE  | C15850    | 1.38M | x1, 0805 25V (C3)        |
+| Decoupling 0.1µF | CC0603           | C14663    | -     | x18, 0603 (C1,C4,C7-C22) |
+| LED Red          | KT-0603R         | C2286     | -     | 0603, -12V indicator     |
+| LED Green        | YLED0603YG       | C19171392 | -     | 0603, +12V indicator     |
+| LED Blue         | NCD1608A1        | C5382145  | -     | 0603, +5V indicator      |
+| LED Resistor     | 1kΩ 0805         | C25623    | -     | x3, 125mW (R1,R2,R3)     |
 
 ---
 

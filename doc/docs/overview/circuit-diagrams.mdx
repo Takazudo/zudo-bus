@@ -31,11 +31,11 @@ Circuit diagrams for the zudo-bus board.
 │                    ┌───────────────────────┐                         │
 │                    │   +5V LDO SECTION     │                         │
 │                    │                       │                         │
-│                    │  +12V ─► L78L05 ─┐    │                         │
-│                    │                  │    │                         │
-│                    │  PSU +5V ────────┼────┼─► 3-pin JP1             │
-│                    │                  │    │      │                  │
-│                    │  LDO +5V ────────┘    │      ▼                  │
+│                    │  +12V ─► AMS1117 ─┐   │                         │
+│                    │                   │   │                         │
+│                    │  PSU +5V ─────────┼───┼─► 3-pin JP1             │
+│                    │                   │   │      │                  │
+│                    │  LDO +5V ─────────┘   │      ▼                  │
 │                    └───────────────────────┘   +5V Rail              │
 │                                                                      │
 │   ┌─────────────┐    ┌─────────────────┐                            │
@@ -60,7 +60,7 @@ Circuit diagrams for the zudo-bus board.
     │                            │                            │
     ▼                            ▼                            ▼
    R2                           R1                           R3
-  1kΩ                          1kΩ                         470Ω
+  1kΩ                          1kΩ                          1kΩ
     │                            │                            │
     │                            │                            │
     ▼                            ▼                            ▼
@@ -72,6 +72,12 @@ Circuit diagrams for the zudo-bus board.
     ▼                            ▼                            ▼
    GND                          GND                          GND
 ```
+
+**LED Current (all 1kΩ resistors, same as zudo-power-usb-pd):**
+
+- LED1 (Red, -12V): ~10mA
+- LED2 (Green, +12V): ~10mA
+- LED3 (Blue, +5V): ~2mA
 
 ## Reverse Polarity Protection
 

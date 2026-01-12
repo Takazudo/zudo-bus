@@ -11,6 +11,7 @@ This is a hardware project for designing a Eurorack bus board for modular synthe
 The documentation is automatically deployed to Netlify:
 
 - **Production URL**: https://takazudomodular.com/pj/zudo-bus/
+- **Netlify URL**: https://zudobus.netlify.app/pj/zudo-bus/ (rewritten to production URL)
 - **Base Path**: `/pj/zudo-bus/`
 - **Deployment**: Automatic on every push to `main` branch
 - **Technology**: Docusaurus static site deployed via Netlify CLI on GitHub Actions

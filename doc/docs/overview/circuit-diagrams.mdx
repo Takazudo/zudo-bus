@@ -63,29 +63,50 @@ Circuit diagrams for the zudo-bus board.
 ## LED Indicator Circuit
 
 ```
-+12V Rail                    -12V Rail                    +5V Rail
-    │                            │                            │
-    │                            │                            │
-    ▼                            ▼                            ▼
-   R2                           R1                           R3
-  1kΩ                          1kΩ                          1kΩ
-    │                            │                            │
-    │                            │                            │
-    ▼                            ▼                            ▼
- ┌─────┐                     ┌─────┐                     ┌─────┐
- │LED2 │                     │LED1 │                     │LED3 │
- │Green│                     │ Red │                     │Blue │
- └──┬──┘                     └──┬──┘                     └──┬──┘
-    │                            │                            │
-    ▼                            ▼                            ▼
-   GND                          GND                          GND
++12V Rail                                                +5V Rail
+    │                                                        │
+    │                                                        │
+    ▼                                                        ▼
+   R2                                                       R3
+  1kΩ                                                      1kΩ
+    │                                                        │
+    ▼                                                        ▼
+ ┌─────┐                                                 ┌─────┐
+ │LED2 │                                                 │LED3 │
+ │Green│                                                 │Blue │
+ │A → K│                                                 │A → K│
+ └──┬──┘                                                 └──┬──┘
+    │                                                        │
+    ▼                                                        ▼
+   GND                                                      GND
+
+
+LED1 (-12V Indicator) - Different topology:
+
+   GND (0V)
+    │
+    ▼
+ ┌─────┐
+ │LED1 │  Current flows from GND (higher potential)
+ │ Red │  to -12V (lower potential)
+ │A → K│
+ └──┬──┘
+    │
+    ▼
+   R1
+  1kΩ
+    │
+    ▼
+ -12V Rail
 ```
 
 **LED Current (all 1kΩ resistors, same as zudo-power-usb-pd):**
 
-- LED1 (Red, -12V): ~10mA
-- LED2 (Green, +12V): ~10mA
-- LED3 (Blue, +5V): ~2mA
+- LED1 (Red, -12V): I = (0V - (-12V) - 2V) / 1kΩ ≈ 10mA
+- LED2 (Green, +12V): I = (12V - 2V) / 1kΩ ≈ 10mA
+- LED3 (Blue, +5V): I = (5V - 3V) / 1kΩ ≈ 2mA
+
+**Note:** For LED1 (-12V indicator), the LED anode connects to GND (0V) and current flows toward the -12V rail. This is the reverse of the +12V and +5V LEDs where current flows from the positive rail to GND.
 
 ## Reverse Polarity Protection
 
@@ -155,12 +176,14 @@ Specifications:
 -12V Input ──► F2 ──► -12V Rail
               BSMD1812-200 (2A hold, 4A trip)
 
-+5V Rail ──► F3 ──► +5V Distribution
-             BSMD1812-150 (1.5A hold, 3A trip)
+JP1 Pin 2 ──► F3 ──► +5V Distribution ──► To IDC Headers
+(after jumper) BSMD1812-150 (1.5A hold, 3A trip)
 
 Notes:
 - Self-resetting: auto-recovers after fault clears
 - Protects against short circuits and overcurrent
+- F3 is placed AFTER JP1 Pin 2, protecting +5V distribution
+  regardless of source selection (LDO or PSU direct)
 ```
 
 ## Per-Header Decoupling

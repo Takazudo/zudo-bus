@@ -1,0 +1,45 @@
+{
+  "overview": {
+    "pages": [
+      {
+        "docId": "overview/overview",
+        "title": "Technical Overview",
+        "position": 2
+      },
+      {
+        "docId": "overview/circuit-diagrams",
+        "title": "Circuit Diagrams",
+        "position": 3
+      },
+      {
+        "docId": "overview/bom",
+        "title": "Bill of Materials",
+        "position": 999
+      },
+      {
+        "docId": "overview/mechanical-design",
+        "title": "Mechanical Design",
+        "position": 999
+      }
+    ],
+    "subcategories": []
+  },
+  "inbox": {
+    "pages": [
+      {
+        "docId": "inbox/current-status",
+        "title": "Current Status",
+        "position": 2
+      }
+    ],
+    "subcategories": []
+  },
+  "components": {
+    "pages": [],
+    "subcategories": []
+  },
+  "learning": {
+    "pages": [],
+    "subcategories": []
+  }
+}

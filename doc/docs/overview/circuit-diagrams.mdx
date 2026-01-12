@@ -1,0 +1,196 @@
+---
+sidebar_position: 3
+---
+
+# Circuit Diagrams
+
+Circuit diagrams for the zudo-bus board.
+
+## System Block Diagram
+
+```
+                           zudo-bus Board
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│   INPUTS                    PROCESSING              OUTPUTS          │
+│                                                                      │
+│  From PSU                                          To Modules        │
+│  ┌──────────────┐                                 ┌──────────────┐   │
+│  │ FASTON x4    │──┐     ┌──────────────┐    ┌───►│ IDC J1 (16P) │   │
+│  │ +12V,-12V    │  │     │              │    │    ├──────────────┤   │
+│  │ +5V, GND     │  │     │  POWER RAIL  │    │    │ IDC J2 (16P) │   │
+│  └──────────────┘  ├────►│  DISTRIBUTION│────┼───►├──────────────┤   │
+│         OR         │     │              │    │    │     ...      │   │
+│  ┌──────────────┐  │     └──────────────┘    │    ├──────────────┤   │
+│  │ Screw x4     │──┘            │            └───►│ IDC J8 (16P) │   │
+│  │ 5.08mm      │                │                 └──────────────┘   │
+│  └──────────────┘                │                                    │
+│                                  ▼                                    │
+│                    ┌───────────────────────┐                         │
+│                    │   +5V LDO SECTION     │                         │
+│                    │                       │                         │
+│                    │  +12V ─► L78L05 ─┐    │                         │
+│                    │                  │    │                         │
+│                    │  PSU +5V ────────┼────┼─► 3-pin JP1             │
+│                    │                  │    │      │                  │
+│                    │  LDO +5V ────────┘    │      ▼                  │
+│                    └───────────────────────┘   +5V Rail              │
+│                                                                      │
+│   ┌─────────────┐    ┌─────────────────┐                            │
+│   │  INDICATORS │    │   PROTECTION    │                            │
+│   │  LED1 +12V  │    │  D1: +12V rev   │                            │
+│   │  LED2 -12V  │    │  D2: -12V rev   │                            │
+│   │  LED3 +5V   │    │                 │                            │
+│   └─────────────┘    └─────────────────┘                            │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+## +5V LDO Circuit
+
+The +5V rail can be generated on-board from the +12V rail, or passed through directly from the PSU.
+
+```
+                         +12V Rail
+                             │
+                    C1       │
+                  0.33µF     │
+                    │        │
+                    ├────────┤
+                    │        │
+                   GND       ▼
+                        ┌─────────┐
+                        │  VIN    │
+                        │         │
+                        │ L78L05  │
+                        │ 100mA   │
+                        │         │
+                        │  VOUT   │
+                        └────┬────┘
+                             │
+                    ┌────────┤
+                    │        │
+                   C2       LDO +5V
+                 0.1µF       │
+                    │        │
+                   GND       ▼
+                        ┌─────────────────────────────────┐
+                        │       3-Pin Selection Header    │
+                        │                                 │
+                        │  Pin 1      Pin 2      Pin 3    │
+                        │ (LDO)     (+5V Rail)  (PSU)     │
+                        │    │          │          │      │
+                        │    ▼          ▼          ▼      │
+                        │  ┌───┐      ┌───┐      ┌───┐    │
+                        │  │ 1 │──────│ 2 │──────│ 3 │    │
+                        │  └───┘      └───┘      └───┘    │
+                        │       ▲            ▲            │
+                        │    Jumper       Jumper          │
+                        │     1-2          2-3            │
+                        └─────────────────────────────────┘
+                                    │
+                                    ▼
+                              +5V to IDC Headers
+
+Jumper Positions:
+- 1-2: Generate +5V from +12V using on-board LDO
+- 2-3: Use +5V directly from PSU (bypass LDO)
+- None: +5V rail disabled
+```
+
+## LED Indicator Circuit
+
+```
++12V Rail                    -12V Rail                    +5V Rail
+    │                            │                            │
+    │                            │                            │
+    ▼                            ▼                            ▼
+   R2                           R1                           R3
+  1kΩ                          1kΩ                         470Ω
+    │                            │                            │
+    │                            │                            │
+    ▼                            ▼                            ▼
+ ┌─────┐                     ┌─────┐                     ┌─────┐
+ │LED2 │                     │LED1 │                     │LED3 │
+ │Green│                     │ Red │                     │Blue │
+ └──┬──┘                     └──┬──┘                     └──┬──┘
+    │                            │                            │
+    ▼                            ▼                            ▼
+   GND                          GND                          GND
+```
+
+## Reverse Polarity Protection
+
+```
++12V Rail                              -12V Rail
+    │                                      │
+    │                                      │
+    ├──────────────┐          ┌────────────┤
+    │              │          │            │
+    │          Cathode    Anode            │
+    │            ┌─┴─┐    ┌─┴─┐            │
+    │            │ D1│    │ D2│            │
+    │            │   │    │   │            │
+    │            └─┬─┘    └─┬─┘            │
+    │          Anode    Cathode            │
+    │              │          │            │
+    │              └────┬─────┘            │
+    │                   │                  │
+    │                  GND                 │
+    │                                      │
+    ▼                                      ▼
+To IDC Headers                      To IDC Headers
+
+D1, D2: 1N4007 (1A, 1000V)
+- Clamps reverse voltage to ~0.7V
+- Protects modules from reversed power cable
+```
+
+## 16-Pin IDC Pinout (Eurorack Standard)
+
+```
+┌─────────────────────────────────┐
+│    Eurorack 16-Pin Header       │
+│         (Top View)              │
+│                                 │
+│   Pin 1  ●───────● Pin 2        │
+│   -12V         -12V             │
+│                                 │
+│   Pin 3  ●───────● Pin 4        │
+│   GND           GND             │
+│                                 │
+│   Pin 5  ●───────● Pin 6        │
+│   GND           GND             │
+│                                 │
+│   Pin 7  ●───────● Pin 8        │
+│   GND           GND             │
+│                                 │
+│   Pin 9  ●───────● Pin 10       │
+│   +12V         +12V             │
+│                                 │
+│   Pin 11 ●───────● Pin 12       │
+│   +12V         +12V             │
+│                                 │
+│   Pin 13 ●───────● Pin 14       │
+│   +5V          +5V              │
+│                                 │
+│   Pin 15 ●───────● Pin 16       │
+│   CV           GATE             │
+│   (NC)         (NC)             │
+│                                 │
+│         ▲ Keying notch          │
+└─────────────────────────────────┘
+
+Pin Functions:
+- Pins 1-2:    -12V power
+- Pins 3-8:    Ground (x6)
+- Pins 9-12:   +12V power (x4)
+- Pins 13-14:  +5V power (x2)
+- Pins 15-16:  CV/Gate (typically NC on bus boards)
+```
+
+## See Also
+
+- [Technical Overview](./overview.md) - Design rationale
+- [Bill of Materials](./bom.md) - Component list
+- [Current Status](../inbox/current-status.md) - Detailed connection list

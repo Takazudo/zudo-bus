@@ -1,0 +1,18 @@
+{
+  "components/index": "Components",
+  "how-to/create-circuit-svg": "Create Circuit SVG Files for Documentation",
+  "how-to/create-footprint-svg": "Create Footprint SVG Files for Documentation",
+  "how-to/index": "How to use tools",
+  "how-to/kicad-parts-download": "Download KiCad Footprints and Symbols",
+  "how-to/kicad-workflow": "KiCad Project Workflow",
+  "inbox/current-status": "Current Status",
+  "inbox/index": "INBOX",
+  "learning/index": "Learning",
+  "misc/footprint-preview": "Footprint Preview",
+  "misc/index": "Misc",
+  "overview/bom": "Bill of Materials",
+  "overview/circuit-diagrams": "Circuit Diagrams",
+  "overview/index": "Overview",
+  "overview/mechanical-design": "Mechanical Design",
+  "overview/overview": "Technical Overview"
+}

@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+pagination_next: null
+pagination_prev: null
+---
+
+import CategoryNav from '@site/src/components/CategoryNav';
+
+# Overview
+
+Documentation for Eurorack bus board with +5V generation capability.
+
+## Project Features
+
+### Power Distribution
+
+- **Input Options**: FASTON terminals OR screw terminals (user choice)
+- **Output**: Multiple 16-pin IDC headers for Eurorack modules
+- **Chainability**: Both input types available for daisy-chaining multiple boards
+
+### Power Rails
+
+| Rail     | Source                        | Notes                       |
+| -------- | ----------------------------- | --------------------------- |
+| **+12V** | Direct from PSU               | Main positive rail          |
+| **-12V** | Direct from PSU               | Main negative rail          |
+| **+5V**  | Generated from +12V OR direct | Selectable via 3-pin jumper |
+| **GND**  | Common ground                 | Shared across all rails     |
+
+### Key Features
+
+1. **Dual Input Connectors**
+   - FASTON 250 terminals (same as zudo-pd PSU)
+   - 5.08mm screw terminals (easy wire connection)
+   - User can choose preferred connection method
+
+2. **+5V Generation**
+   - On-board LDO regulator (L78L05ABUTR)
+   - Generated from +12V rail
+   - 3-pin header with jumper for ON/OFF selection
+   - Can bypass and use direct +5V from PSU
+
+3. **Multiple IDC Outputs**
+   - Standard 16-pin Eurorack power connectors
+   - Shrouded headers for correct orientation
+   - Quantity: 8 outputs (same as v1 design)
+
+4. **JLCPCB Compatible**
+   - All SMD parts available from JLCPCB
+   - Through-hole connectors sourced separately
+
+## Connection Options
+
+```
+From zudo-pd PSU:
+┌─────────────────┐
+│  FASTON Cable   │──→ FASTON terminals (quick connect)
+│  (one-side)     │    OR
+│                 │──→ Screw terminals (bare wire)
+└─────────────────┘
+
+To Modules:
+┌─────────────────┐
+│  16-pin ribbon  │──→ Module power header
+│  cable          │
+└─────────────────┘
+```
+
+## Pages in this category
+
+<CategoryNav category="overview" />

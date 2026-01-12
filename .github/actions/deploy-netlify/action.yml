@@ -61,16 +61,21 @@ runs:
     - name: Link Netlify site
       run: |
         echo "Linking to Netlify site..."
+        # Trim whitespace from token to avoid "Invalid character in header" error
+        export NETLIFY_AUTH_TOKEN=$(echo "$NETLIFY_AUTH_TOKEN_RAW" | tr -d '[:space:]')
         netlify link --id "${{ inputs.netlify-site-id }}"
         echo "Site linked successfully"
       shell: bash
       env:
-        NETLIFY_AUTH_TOKEN: ${{ inputs.netlify-auth-token }}
+        NETLIFY_AUTH_TOKEN_RAW: ${{ inputs.netlify-auth-token }}
 
     - name: Deploy to Netlify
       id: deploy
       run: |
         echo "Deploying to Netlify..."
+
+        # Trim whitespace from token to avoid "Invalid character in header" error
+        export NETLIFY_AUTH_TOKEN=$(echo "$NETLIFY_AUTH_TOKEN_RAW" | tr -d '[:space:]')
 
         # Verify build directory exists
         if [ ! -d "${{ inputs.build-dir }}" ]; then
@@ -84,7 +89,6 @@ runs:
           DEPLOY_OUTPUT=$(netlify deploy \
             --dir="${{ inputs.build-dir }}" \
             --site="${{ inputs.netlify-site-id }}" \
-            --auth="${{ inputs.netlify-auth-token }}" \
             --prod \
             --json \
             --message="${{ inputs.deploy-message }}" 2>&1) || {
@@ -97,7 +101,6 @@ runs:
           DEPLOY_OUTPUT=$(netlify deploy \
             --dir="${{ inputs.build-dir }}" \
             --site="${{ inputs.netlify-site-id }}" \
-            --auth="${{ inputs.netlify-auth-token }}" \
             --alias="${{ inputs.deploy-alias }}" \
             --json \
             --message="${{ inputs.deploy-message }}" 2>&1) || {
@@ -134,4 +137,4 @@ runs:
       shell: bash
       env:
         NETLIFY_SITE_ID: ${{ inputs.netlify-site-id }}
-        NETLIFY_AUTH_TOKEN: ${{ inputs.netlify-auth-token }}
+        NETLIFY_AUTH_TOKEN_RAW: ${{ inputs.netlify-auth-token }}

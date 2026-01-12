@@ -24,6 +24,10 @@ inputs:
     description: 'Directory containing build output'
     required: false
     default: 'doc/build'
+  init-netlify:
+    description: 'Run netlify link to initialize site connection (for first-time setup)'
+    required: false
+    default: 'false'
 
 outputs:
   deploy-url:
@@ -58,7 +62,8 @@ runs:
         fi
       shell: bash
 
-    - name: Link Netlify site
+    - name: Link Netlify site (init only)
+      if: inputs.init-netlify == 'true'
       run: |
         echo "Linking to Netlify site..."
         # Trim whitespace from token to avoid "Invalid character in header" error

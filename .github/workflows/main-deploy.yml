@@ -1,11 +1,18 @@
 name: Production Deploy
 
-# Runs on pushes to main branch
+# Runs on pushes to main branch or manual trigger
 # Includes quality checks, build, and production deployment
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      init-netlify:
+        description: 'Run netlify link to initialize site connection'
+        required: false
+        default: false
+        type: boolean
 
 # Prevent concurrent production deployments
 concurrency:
@@ -93,6 +100,7 @@ jobs:
           deploy-production: 'true'
           deploy-message: 'Production deploy: ${{ github.sha }}'
           build-dir: 'doc/build'
+          init-netlify: ${{ inputs.init-netlify || 'false' }}
 
       - name: Create deployment record
         uses: actions/github-script@v8

@@ -39,14 +39,14 @@ runs:
     - name: Validate inputs
       run: |
         if [ -z "${{ inputs.netlify-site-id }}" ]; then
-          echo "❌ Error: NETLIFY_SITE_ID is not set"
+          echo "Error: NETLIFY_SITE_ID is not set"
           exit 1
         fi
         if [ -z "${{ inputs.netlify-auth-token }}" ]; then
-          echo "❌ Error: NETLIFY_AUTH_TOKEN is not set"
+          echo "Error: NETLIFY_AUTH_TOKEN is not set"
           exit 1
         fi
-        echo "✅ Netlify credentials validated"
+        echo "Netlify credentials validated"
       shell: bash
 
     - name: Install Netlify CLI and jq
@@ -58,41 +58,53 @@ runs:
         fi
       shell: bash
 
+    - name: Link Netlify site
+      run: |
+        echo "Linking to Netlify site..."
+        # Trim whitespace from token to avoid "Invalid character in header" error
+        export NETLIFY_AUTH_TOKEN=$(echo "$NETLIFY_AUTH_TOKEN_RAW" | tr -d '[:space:]')
+        netlify link --id "${{ inputs.netlify-site-id }}"
+        echo "Site linked successfully"
+      shell: bash
+      env:
+        NETLIFY_AUTH_TOKEN_RAW: ${{ inputs.netlify-auth-token }}
+
     - name: Deploy to Netlify
       id: deploy
       run: |
-        echo "🚀 Deploying to Netlify..."
+        echo "Deploying to Netlify..."
+
+        # Trim whitespace from token to avoid "Invalid character in header" error
+        export NETLIFY_AUTH_TOKEN=$(echo "$NETLIFY_AUTH_TOKEN_RAW" | tr -d '[:space:]')
 
         # Verify build directory exists
         if [ ! -d "${{ inputs.build-dir }}" ]; then
-          echo "❌ Error: Build directory not found: ${{ inputs.build-dir }}"
+          echo "Error: Build directory not found: ${{ inputs.build-dir }}"
           exit 1
         fi
 
         # Build deployment command based on inputs
         if [ "${{ inputs.deploy-production }}" = "true" ]; then
-          echo "📦 Deploying to production..."
+          echo "Deploying to production..."
           DEPLOY_OUTPUT=$(netlify deploy \
             --dir="${{ inputs.build-dir }}" \
             --site="${{ inputs.netlify-site-id }}" \
-            --auth="${{ inputs.netlify-auth-token }}" \
             --prod \
             --json \
             --message="${{ inputs.deploy-message }}" 2>&1) || {
-            echo "❌ Deployment failed"
+            echo "Deployment failed"
             echo "$DEPLOY_OUTPUT"
             exit 1
           }
         else
-          echo "📦 Deploying to preview (alias: ${{ inputs.deploy-alias }})..."
+          echo "Deploying to preview (alias: ${{ inputs.deploy-alias }})..."
           DEPLOY_OUTPUT=$(netlify deploy \
             --dir="${{ inputs.build-dir }}" \
             --site="${{ inputs.netlify-site-id }}" \
-            --auth="${{ inputs.netlify-auth-token }}" \
             --alias="${{ inputs.deploy-alias }}" \
             --json \
             --message="${{ inputs.deploy-message }}" 2>&1) || {
-            echo "❌ Deployment failed"
+            echo "Deployment failed"
             echo "$DEPLOY_OUTPUT"
             exit 1
           }
@@ -105,13 +117,13 @@ runs:
         SITE_URL=$(echo "$DEPLOY_OUTPUT" | jq -r '.url // empty')
 
         if [ -z "$DEPLOY_URL" ]; then
-          echo "⚠️ Warning: Could not parse deploy_url from JSON output"
+          echo "Warning: Could not parse deploy_url from JSON output"
           # Fallback: try to extract URL from text output
           DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*netlify.app' | head -1)
         fi
 
         if [ -z "$DEPLOY_URL" ]; then
-          echo "❌ Error: Failed to extract deployment URL"
+          echo "Error: Failed to extract deployment URL"
           exit 1
         fi
 
@@ -121,8 +133,8 @@ runs:
           echo "preview-url=$SITE_URL" >> $GITHUB_OUTPUT
         fi
 
-        echo "✅ Deployed successfully to: $DEPLOY_URL"
+        echo "Deployed successfully to: $DEPLOY_URL"
       shell: bash
       env:
         NETLIFY_SITE_ID: ${{ inputs.netlify-site-id }}
-        NETLIFY_AUTH_TOKEN: ${{ inputs.netlify-auth-token }}
+        NETLIFY_AUTH_TOKEN_RAW: ${{ inputs.netlify-auth-token }}

@@ -218,8 +218,8 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 **KiCad:**
 
-- Symbol: `SS14_C2480`
-- Footprint: `SMA_L4.3-W2.6-LS5.2-RD.kicad_mod` (to be added)
+- Symbol: `SS14` (in `zudo-bus-new-protection.kicad_sym`)
+- Footprint: `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`
 
 ### TVS Diodes (Transient Protection)
 
@@ -250,8 +250,8 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 **KiCad:**
 
-- Symbol: `SMF12CA_C353317`, `SMF5.0CA_C908214` (in `zudo-bus-protection.kicad_sym`)
-- Footprint: `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`
+- Symbol: `SMF12CA_C353317` (in `zudo-bus-new-protection.kicad_sym`), `SMF5.0CA_C908214` (in `zudo-bus-protection.kicad_sym`)
+- Footprint: `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod` (SMF12CA), `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod` (SMF5.0CA)
 
 ### Resettable Fuses (PTC)
 
@@ -292,7 +292,7 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 **KiCad:**
 
-- Symbol: `BSMD1812-200-30V`, `BSMD1812-150-33V`, `BSMD1812-110-33V` (in `zudo-bus-protection.kicad_sym`)
+- Symbol: `BSMD1812-200-30V`, `BSMD1812-150-33V` (in `zudo-bus-protection.kicad_sym`), `BSMD1812-110-33V` (in `zudo-bus-new-protection.kicad_sym`)
 - Footprint: `F1812.kicad_mod`
 
 ---
@@ -377,45 +377,55 @@ From zudo-bus v1/v2:
 
 ### Symbol Libraries
 
-| Library File                    | Contents                                       |
-| ------------------------------- | ---------------------------------------------- |
-| `zudo-bus.kicad_sym`            | Main symbols (LDO, connectors, passives, LEDs) |
-| `zudo-bus-protection.kicad_sym` | Protection components (TVS, PTC fuses, caps)   |
+| Library File                        | Contents                                           |
+| ----------------------------------- | -------------------------------------------------- |
+| `zudo-bus.kicad_sym`                | Main symbols (LDO, connectors, passives, LEDs)     |
+| `zudo-bus-protection.kicad_sym`     | Original protection (SMF5.0CA, PTC 2A/1.5A)        |
+| `zudo-bus-new-protection.kicad_sym` | Updated protection (SMF12CA, PTC 1.1A, SS14, 22µF) |
+| `samsung-caps.kicad_sym`            | Samsung capacitors (10µF, 22µF)                    |
 
-**Protection library symbols:**
+**zudo-bus-protection.kicad_sym symbols:**
 
-- `SMF12CA_C353317` - TVS diode 12V bidirectional (replaces SMF15CA for safer clamping)
+- `SMF15CA_C908211` - TVS diode 15V bidirectional (legacy, replaced by SMF12CA)
 - `SMF5.0CA_C908214` - TVS diode 5V bidirectional
 - `BSMD1812-200-30V` - PTC fuse 2A
 - `BSMD1812-150-33V` - PTC fuse 1.5A
-- `BSMD1812-110-33V` - PTC fuse 1.1A (new, for LDO input protection)
-- `SS14_C2480` - Schottky diode 40V 1A (new, for +5V OR-ing)
-- `CL21A106KAYNNNE` - 10µF capacitor (Samsung, C15850)
-- `CL21A226MAYNNNE` - 22µF capacitor (Samsung, updated part number)
+- `TCC0805X5R106K250FT` - 10µF capacitor (alternative)
+- `AMS1117-5.0` - LDO regulator
 
-**New symbol library:** `symbols/samsung-caps.kicad_sym`
+**zudo-bus-new-protection.kicad_sym symbols:**
+
+- `SMF12CA_C353317` - TVS diode 12V bidirectional (replaces SMF15CA for safer clamping)
+- `BSMD1812-110-33V` - PTC fuse 1.1A (for LDO input protection)
+- `SS14` - Schottky diode 40V 1A (for +5V OR-ing)
+- `CL21A226MAQNNNE` - 22µF capacitor (Samsung C45783)
+
+**samsung-caps.kicad_sym symbols:**
 
 - `CL21A106KAYNNNE` - 10µF capacitor (C15850)
-- `CL21A226MAYNNNE` - 22µF capacitor (updated from CL21A226MAQNNNE)
+- `CL21A226MAQNNNE` - 22µF capacitor (C45783)
 
 ### Footprint Library
 
 **Directory:** `footprints/kicad/zudo-bus.pretty/`
 
-| Footprint                                    | Package    | Used By                             |
-| -------------------------------------------- | ---------- | ----------------------------------- |
-| `C0603.kicad_mod`                            | 0603       | C1, C4, C7-C22 (0.1µF caps)         |
-| `C0805.kicad_mod`                            | 0805       | C2, C3, C5, C6 (10µF, 22µF caps)    |
-| `R0805.kicad_mod`                            | 0805       | R1, R2, R3 (1kΩ resistors)          |
-| `LED0603-RD.kicad_mod`                       | 0603       | LED1 (Red), LED3 (Blue)             |
-| `LED0603-FD.kicad_mod`                       | 0603       | LED2 (Green)                        |
-| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`      | SOD-123F   | D1, D2, D3, D4 (reverse protection) |
-| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`       | SOD-123    | TVS1, TVS2, TVS3 (TVS diodes)       |
-| `F1812.kicad_mod`                            | 1812       | F1, F2, F3 (PTC fuses)              |
-| `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223    | U1 (LDO regulator)                  |
-| `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm     | JP1 (jumper header)                 |
-| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm | J1-J8 (IDC headers)                 |
-| `CONN-TH_1217754-1.kicad_mod`                | FASTON     | J_F1-J_F4 (FASTON terminals)        |
-| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm     | J_S1-J_S4 (screw terminals)         |
+| Footprint                                    | Package        | Used By                             |
+| -------------------------------------------- | -------------- | ----------------------------------- |
+| `C0603.kicad_mod`                            | 0603           | C1, C4, C7-C22 (0.1µF caps)         |
+| `C0805.kicad_mod`                            | 0805           | C2, C3, C5, C6, C23 (10µF, 22µF)    |
+| `R0603.kicad_mod`                            | 0603           | (available if needed)               |
+| `R0805.kicad_mod`                            | 0805           | R1, R2, R3 (1kΩ resistors)          |
+| `LED0603-RD.kicad_mod`                       | 0603           | LED1 (Red), LED3 (Blue)             |
+| `LED0603-FD.kicad_mod`                       | 0603           | LED2 (Green)                        |
+| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`      | SOD-123F       | D1, D2, D3, D4 (reverse protection) |
+| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`       | SOD-123        | TVS3 (SMF5.0CA)                     |
+| `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod`     | SOD-123FL      | TVS1, TVS2 (SMF12CA)                |
+| `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`         | SMA (DO-214AC) | D5, D6 (SS14 Schottky)              |
+| `F1812.kicad_mod`                            | 1812           | F1, F2, F3, F4 (PTC fuses)          |
+| `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223        | U1 (LDO regulator)                  |
+| `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm         | JP1 (jumper header)                 |
+| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J1-J8 (IDC headers)                 |
+| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | J_F1-J_F4 (FASTON terminals)        |
+| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | J_S1-J_S4 (screw terminals)         |
 
-**Total footprints:** 13 files
+**Total footprints:** 16 files

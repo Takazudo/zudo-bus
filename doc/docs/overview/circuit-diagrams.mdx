@@ -39,13 +39,15 @@ Circuit diagrams for the zudo-bus board.
 │                    └───────────────────────┘   +5V Rail              │
 │                                                                      │
 │  PROTECTION (Order: PTC → TVS → Diode → Caps)    INDICATORS         │
-│  ┌────────────────────────────────────────┐     ┌─────────────┐     │
-│  │ PTC Fuses: F1(+12V), F2(-12V), F3(+5V) │     │  LED1 -12V  │     │
-│  │ TVS Clamp: TVS1(+12V), TVS2(-12V),     │     │  LED2 +12V  │     │
-│  │            TVS3(+5V)                   │     │  LED3 +5V   │     │
-│  │ Reverse: D1(+12V), D2(-12V),           │     └─────────────┘     │
-│  │          D3(+5V PSU), D4(+5V LDO)      │                         │
-│  └────────────────────────────────────────┘     DECOUPLING          │
+│  ┌─────────────────────────────────────────────┐ ┌─────────────┐    │
+│  │ PTC Fuses: F1(+12V), F2(-12V), F3(+5V),     │ │  LED1 -12V  │    │
+│  │            F4(LDO input)                    │ │  LED2 +12V  │    │
+│  │ TVS Clamp: TVS1(+12V), TVS2(-12V),          │ │  LED3 +5V   │    │
+│  │            TVS3(+5V) - SMF12CA for ±12V     │ └─────────────┘    │
+│  │ Reverse: D1(+12V), D2(-12V),                │                    │
+│  │          D3(+5V PSU), D4(+5V LDO)           │                    │
+│  │ OR-ing: D5(+5V PSU), D6(+5V LDO) - SS14     │                    │
+│  └─────────────────────────────────────────────┘ DECOUPLING         │
 │                                                 ┌─────────────┐     │
 │  TEST POINTS                                    │ C5,C6: bulk │     │
 │  ┌─────────────────────────────────┐            │ C7-C14:+12V │     │
@@ -137,6 +139,60 @@ D1, D2, D3, D4: SM4007PL (1N4007 equivalent, SOD-123FL)
 - D4: LDO +5V output path protection
 ```
 
+## +5V OR-ing Circuit (Backfeed Protection)
+
+The +5V rail has two possible sources: the on-board LDO and the external PSU. Schottky diodes D5 and D6 form an OR-ing configuration to prevent backfeed between sources.
+
+```
+                    +5V Source Selection with OR-ing Protection
+
++12V Rail ──► F4 ──► AMS1117 ──► D6 (SS14) ──┐
+             PTC     LDO         Schottky    │
+            1.1A    +5V out      cathode     │
+                                             ├──► JP1 Pin 1
+                                             │    (LDO source)
+                                             │
+                                             │        ┌───┐
+PSU +5V ──► D3 ──► D5 (SS14) ────────────────┼──────► │ 1 │ LDO +5V
+            SM4007  Schottky                 │        │   │
+            reverse cathode                  │        │ 2 │ +5V Rail ──► F3 ──► Distribution
+            protect                          │        │   │
+                                             └──────► │ 3 │ PSU +5V
+                                                      └───┘
+                                                       JP1
+Benefits:
+- Prevents LDO damage if both sources connected simultaneously
+- Allows safe operation even with incorrect jumper configuration
+- ~0.55V drop through Schottky (lower than silicon diode)
+
+D5, D6: SS14 (40V, 1A Schottky, SMA package)
+- Forward voltage: 550mV @ 1A
+- Reverse voltage: 40V
+- Peak surge current: 25A
+```
+
+## Power Sequencing
+
+```
+Power-On Sequence (Natural):
+
+1. PSU provides +12V, -12V, (optionally +5V) simultaneously
+2. ±12V rails stabilize quickly (bulk caps charge)
+3. If using LDO mode (JP1 position 1-2):
+   - +5V rail comes up AFTER +12V stabilizes
+   - AMS1117 requires stable input before output regulation
+   - This provides natural sequencing: ±12V before +5V
+4. If using PSU direct mode (JP1 position 2-3):
+   - All rails come up simultaneously
+
+Power-Off Sequence:
+- All rails fall together when PSU is disconnected
+- Bulk capacitors provide brief hold-up time
+
+Note: The natural sequencing in LDO mode (±12V before +5V) is beneficial
+for many digital modules that expect analog supplies before digital.
+```
+
 ## Protection Circuit Order
 
 ```
@@ -144,9 +200,11 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 +12V Rail Example:
                                                               To IDC
-Input ──► F1 (2A PTC) ──► TVS1 (15V) ──► D1 (reverse) ──► C5 (22µF) ──► Headers
+Input ──► F1 (2A PTC) ──► TVS1 (12V) ──► D1 (reverse) ──► C5 (22µF) ──► Headers
           overcurrent     transient      polarity         bulk
           protection      clamp          protection       filtering
+                          (SMF12CA)
+                          clamps@19.9V
 ```
 
 ## TVS Transient Protection
@@ -156,15 +214,18 @@ Input ──► F1 (2A PTC) ──► TVS1 (15V) ──► D1 (reverse) ──�
     │                      │                      │
     │                      │                      │
    TVS1                   TVS2                   TVS3
-  SMF15CA               SMF15CA                SMF5.0CA
-  (15V bi)              (15V bi)              (5V bi)
+  SMF12CA               SMF12CA                SMF5.0CA
+  (12V bi)              (12V bi)              (5V bi)
     │                      │                      │
    GND                    GND                    GND
 
 Specifications:
-- SMF15CA: 15V standoff, clamps to 24.4V max
+- SMF12CA: 12V standoff, clamps to 19.9V max (safe for module op-amps)
 - SMF5.0CA: 5V standoff, clamps to 9.2V max
 - Bidirectional - protects against positive and negative spikes
+
+Design Note: SMF12CA chosen over SMF15CA because 24.4V clamping exceeds
+the absolute maximum ratings of many Eurorack module op-amps (15-18V).
 ```
 
 ## PTC Overcurrent Protection
@@ -176,6 +237,9 @@ Specifications:
 -12V Input ──► F2 ──► -12V Rail
               BSMD1812-200 (2A hold, 4A trip)
 
++12V Rail ──► F4 ──► LDO Input (U1 Pin 3)
+              BSMD1812-110 (1.1A hold, 2.2A trip)
+
 JP1 Pin 2 ──► F3 ──► +5V Distribution ──► To IDC Headers
 (after jumper) BSMD1812-150 (1.5A hold, 3A trip)
 
@@ -184,6 +248,8 @@ Notes:
 - Protects against short circuits and overcurrent
 - F3 is placed AFTER JP1 Pin 2, protecting +5V distribution
   regardless of source selection (LDO or PSU direct)
+- F4 provides symmetric protection for LDO input path,
+  limiting current if LDO shorts internally
 ```
 
 ## Per-Header Decoupling

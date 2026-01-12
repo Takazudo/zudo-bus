@@ -4,15 +4,15 @@ Complete list of components for the zudo-bus board.
 
 ## Summary
 
-| Category           | Count | Notes                          |
-| ------------------ | ----- | ------------------------------ |
-| Connectors         | 13    | Input + Output + Jumper        |
-| Active Components  | 1     | +5V LDO regulator              |
-| Passive Components | 25    | Capacitors (22), resistors (3) |
-| Protection         | 10    | Diodes (4), TVS (3), PTC (3)   |
-| Indicators         | 3     | Power rail LEDs                |
-| Test Points        | 6     | TP1-TP6 for debugging          |
-| **Total**          | ~58   | Full protection configuration  |
+| Category           | Count | Notes                                      |
+| ------------------ | ----- | ------------------------------------------ |
+| Connectors         | 13    | Input + Output + Jumper                    |
+| Active Components  | 1     | +5V LDO regulator                          |
+| Passive Components | 25    | Capacitors (22), resistors (3)             |
+| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2) |
+| Indicators         | 3     | Power rail LEDs                            |
+| Test Points        | 6     | TP1-TP6 for debugging                      |
+| **Total**          | ~62   | Full protection configuration              |
 
 ## PCB Design
 
@@ -142,15 +142,17 @@ Complete list of components for the zudo-bus board.
 
 **Notes:**
 
-- C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAQNNNE, 25V X5R, Basic Part, Stock: 5.43M)
-- C5, C6: 22µF bulk capacitors (Samsung CL21A226MAQNNNE, 25V X5R) for better transient response during module power-on
+- C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAYNNNE, 25V X5R, Basic Part)
+- C5, C6: 22µF bulk capacitors (Samsung CL21A226MAYNNNE, 25V X5R) for better transient response during module power-on
 - C23: 22µF bulk capacitor for +5V rail, placed after JP1 Pin 2 (provides filtering regardless of LDO or PSU direct mode)
 - C7-C14: +12V per-header decoupling capacitors near each IDC output
 - C15-C22: -12V per-header decoupling capacitors near each IDC output
 
+**DC Bias Derating Note:** X5R ceramic capacitors lose capacitance under DC bias. At 12V on a 25V-rated cap, expect ~65% of nominal capacitance (22µF → ~14µF effective). This is acceptable for bulk filtering purposes.
+
 **KiCad:**
 
-- Symbol: `CC0603KRX7R9BB104` (0.1µF), `CL21A106KAYNNNE` (10µF), `CL21A226MAQNNNE` (22µF)
+- Symbol: `CC0603KRX7R9BB104` (0.1µF), `CL21A106KAYNNNE` (10µF), `CL21A226MAYNNNE` (22µF)
 - Footprint: `C0603.kicad_mod`, `C0805.kicad_mod`
 
 ### Resistors
@@ -195,23 +197,47 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 - Symbol: `SM4007PL`
 - Footprint: `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`
 
+### +5V OR-ing Schottky Diodes (Backfeed Protection)
+
+| Designator | Value | Package       | LCSC                                         | Function                    |
+| ---------- | ----- | ------------- | -------------------------------------------- | --------------------------- |
+| D5         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V PSU path OR-ing diode   |
+| D6         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V LDO output OR-ing diode |
+
+**Notes:** SS14 Schottky diodes (40V, 1A) create an OR-ing configuration to prevent backfeed between the LDO and PSU +5V sources. This allows safe operation even if both sources are inadvertently connected (e.g., jumper across all three JP1 pins).
+
+**Specifications (SS14):**
+
+- Reverse voltage: 40V
+- Forward current: 1A
+- Forward voltage drop: 550mV @ 1A
+- Peak surge current: 25A
+- Package: SMA (DO-214AC), Stock: 1.09M
+
+**Circuit Position:** D5 in series with PSU +5V path (before JP1 Pin 3), D6 in series with LDO output (before JP1 Pin 1).
+
+**KiCad:**
+
+- Symbol: `SS14_C2480`
+- Footprint: `SMA_L4.3-W2.6-LS5.2-RD.kicad_mod` (to be added)
+
 ### TVS Diodes (Transient Protection)
 
-| Designator | Value    | Package | LCSC                                             | Function             |
-| ---------- | -------- | ------- | ------------------------------------------------ | -------------------- |
-| TVS1       | SMF15CA  | SOD-123 | [C908211](https://jlcpcb.com/partdetail/C908211) | +12V transient clamp |
-| TVS2       | SMF15CA  | SOD-123 | [C908211](https://jlcpcb.com/partdetail/C908211) | -12V transient clamp |
-| TVS3       | SMF5.0CA | SOD-123 | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
+| Designator | Value    | Package   | LCSC                                             | Function             |
+| ---------- | -------- | --------- | ------------------------------------------------ | -------------------- |
+| TVS1       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | +12V transient clamp |
+| TVS2       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | -12V transient clamp |
+| TVS3       | SMF5.0CA | SOD-123   | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
 
-**Notes:** Bidirectional TVS diodes for ESD and transient spike protection. SMF15CA (Stock: 54K) has 15V standoff for ±12V rails. SMF5.0CA (Stock: 66K) has 5V standoff for +5V rail.
+**Notes:** Bidirectional TVS diodes for ESD and transient spike protection. SMF12CA (Stock: 67K) has 12V standoff for ±12V rails - chosen over SMF15CA for lower clamping voltage that better protects Eurorack module components. SMF5.0CA (Stock: 66K) has 5V standoff for +5V rail.
 
-**Specifications (SMF15CA):**
+**Specifications (SMF12CA):**
 
-- Standoff voltage: 15V
-- Breakdown voltage: 16.7V
-- Clamping voltage: 24.4V @ 8.2A
-- Peak pulse current: 8.2A (8/20µs)
-- Package: SOD-123 (SMD)
+- Standoff voltage: 12V
+- Breakdown voltage: 13.3V - 14.7V
+- Clamping voltage: 19.9V @ 10.1A (safe for op-amps rated 15-18V abs max)
+- Peak pulse current: 10.1A (8/20µs)
+- Package: SOD-123FL (SMD)
 
 **Specifications (SMF5.0CA):**
 
@@ -220,20 +246,27 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 - Clamping voltage: 9.2V @ 11.7A
 - Package: SOD-123 (SMD)
 
+**Design Note:** SMF12CA was chosen over SMF15CA because the SMF15CA clamps at 24.4V, which exceeds the absolute maximum ratings of many Eurorack module op-amps (typically 15-18V). The SMF12CA clamps at 19.9V, providing better protection for downstream components while still allowing normal 12V operation.
+
 **KiCad:**
 
-- Symbol: `SMF15CA_C908211`, `SMF5.0CA_C908214` (in `zudo-bus-protection.kicad_sym`)
+- Symbol: `SMF12CA_C353317`, `SMF5.0CA_C908214` (in `zudo-bus-protection.kicad_sym`)
 - Footprint: `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`
 
 ### Resettable Fuses (PTC)
 
-| Designator | Value            | Package | LCSC                                             | Function               |
-| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------- |
-| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)  |
-| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)  |
-| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V overcurrent (1.5A) |
+| Designator | Value            | Package | LCSC                                             | Function                     |
+| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------------- |
+| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)        |
+| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)        |
+| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V rail overcurrent (1.5A)  |
+| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | LDO input overcurrent (1.1A) |
 
-**Notes:** Self-resetting PTC fuses (Stock: F1/F2 120K, F3 69K). Trip on overcurrent, auto-reset when cooled. F3 rated 1.5A for +5V rail protection (covers both LDO mode and PSU direct mode).
+**Notes:** Self-resetting PTC fuses. Trip on overcurrent, auto-reset when cooled.
+
+- F1/F2 (Stock: 120K): Main ±12V rail protection
+- F3 (Stock: 69K): +5V distribution rail protection (after JP1 Pin 2, regardless of source)
+- F4 (Stock: 50K): LDO input path protection - provides symmetric protection for the LDO, limiting input current to prevent damage if LDO shorts internally
 
 **Specifications (BSMD1812-200-30V):**
 
@@ -250,9 +283,16 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 - Max voltage: 33V
 - Package: 1812 SMD
 
+**Specifications (BSMD1812-110-33V):**
+
+- Hold current: 1.1A
+- Trip current: 2.2A
+- Max voltage: 33V
+- Package: 1812 SMD
+
 **KiCad:**
 
-- Symbol: `BSMD1812-200-30V`, `BSMD1812-150-33V` (in `zudo-bus-protection.kicad_sym`)
+- Symbol: `BSMD1812-200-30V`, `BSMD1812-150-33V`, `BSMD1812-110-33V` (in `zudo-bus-protection.kicad_sym`)
 - Footprint: `F1812.kicad_mod`
 
 ---
@@ -344,17 +384,19 @@ From zudo-bus v1/v2:
 
 **Protection library symbols:**
 
-- `SMF15CA_C908211` - TVS diode 15V bidirectional
+- `SMF12CA_C353317` - TVS diode 12V bidirectional (replaces SMF15CA for safer clamping)
 - `SMF5.0CA_C908214` - TVS diode 5V bidirectional
 - `BSMD1812-200-30V` - PTC fuse 2A
 - `BSMD1812-150-33V` - PTC fuse 1.5A
+- `BSMD1812-110-33V` - PTC fuse 1.1A (new, for LDO input protection)
+- `SS14_C2480` - Schottky diode 40V 1A (new, for +5V OR-ing)
 - `CL21A106KAYNNNE` - 10µF capacitor (Samsung, C15850)
-- `CL21A226MAQNNNE` - 22µF capacitor (Samsung, C45783)
+- `CL21A226MAYNNNE` - 22µF capacitor (Samsung, updated part number)
 
 **New symbol library:** `symbols/samsung-caps.kicad_sym`
 
 - `CL21A106KAYNNNE` - 10µF capacitor (C15850)
-- `CL21A226MAQNNNE` - 22µF capacitor (C45783)
+- `CL21A226MAYNNNE` - 22µF capacitor (updated from CL21A226MAQNNNE)
 
 ### Footprint Library
 

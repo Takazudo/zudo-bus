@@ -62,11 +62,15 @@ No jumper: +5V rail disabled
 
 **Protection Circuit (+5V Rail):**
 
+- **F4 (PTC 1.1A)**: LDO input overcurrent protection (symmetric protection)
+- **D5, D6 (SS14 Schottky)**: OR-ing diodes to prevent backfeed between LDO and PSU sources
 - **D3 (SM4007PL)**: Reverse polarity protection on PSU input path (JP1 Pin 3)
 - **D4 (SM4007PL)**: Reverse polarity protection on LDO output path (JP1 Pin 1)
-- **F3 (PTC 1.5A)**: Self-resetting overcurrent protection
+- **F3 (PTC 1.5A)**: Self-resetting overcurrent protection for +5V distribution
 - **TVS3 (SMF5.0CA)**: Bidirectional TVS clamps transients to 9.2V max
 
 **Protection Order:** `Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution`
+
+**Power Sequencing Note:** When using LDO mode (JP1 position 1-2), the +5V rail naturally sequences after ±12V since the AMS1117 requires stable +12V input before providing regulated output. This is beneficial for digital modules that expect analog supplies before digital.
 
 See [AMS1117-5.0 Component Documentation](/docs/components/ams1117) for detailed specifications.

@@ -76,14 +76,14 @@ Project status and circuit design plan for the bus board.
 │                    └──────────────────────┘   +5V rail          │
 │                                                                 │
 │  INDICATORS        PROTECTION (Order: PTC → TVS → Diode → Caps) │
-│  ┌─────────┐      ┌─────────────────────────────────────────┐  │
-│  │ LED +12V│      │ PTC Fuses: F1(+12V 2A), F2(-12V 2A),    │  │
-│  │ LED -12V│      │           F3(+5V 1.5A)                  │  │
-│  │ LED +5V │      │ TVS Clamp: TVS1(+12V), TVS2(-12V),      │  │
-│  └─────────┘      │           TVS3(+5V)                     │  │
-│                   │ Reverse Polarity: D1(+12V), D2(-12V),   │  │
-│  FILTERING        │           D3(+5V PSU), D4(+5V LDO)      │  │
-│  ┌─────────┐      └─────────────────────────────────────────┘  │
+│  ┌─────────┐      ┌──────────────────────────────────────────┐ │
+│  │ LED +12V│      │ PTC Fuses: F1(+12V 2A), F2(-12V 2A),     │ │
+│  │ LED -12V│      │           F3(+5V 1.5A), F4(LDO 1.1A)     │ │
+│  │ LED +5V │      │ TVS Clamp: TVS1/2(SMF12CA), TVS3(5V)     │ │
+│  └─────────┘      │ Reverse: D1-D4 (SM4007PL)                │ │
+│                   │ OR-ing: D5, D6 (SS14 Schottky)           │ │
+│  FILTERING        └──────────────────────────────────────────┘ │
+│  ┌─────────┐                                                   │
 │  │C5,C6    │                                                   │
 │  │22µF bulk│      DECOUPLING                                   │
 │  │at input │      ┌──────────────────┐                         │
@@ -159,9 +159,12 @@ GND:   FASTON J_F4 ──┬── Screw J_S4 ──► GND Rail
 ```
 U1 (AMS1117-5.0):
   - Pin 1 (GND)    ← GND
-  - Pin 2 (OUTPUT) → JP1 Pin 1 (LDO output)
-  - Pin 3 (INPUT)  ← +12V Rail
+  - Pin 2 (OUTPUT) → D6 (SS14) → JP1 Pin 1 (LDO output with OR-ing)
+  - Pin 3 (INPUT)  ← F4 (1.1A PTC) ← +12V Rail
   - TAB (OUTPUT)   → Connected to Pin 2, thermal pad
+
+F4 (BSMD1812-110): In series with LDO input, provides symmetric protection
+D6 (SS14):         Schottky OR-ing diode, prevents backfeed into LDO
 
 C1 (0.1µF):  INPUT to GND (high-frequency decoupling)
 C2 (22µF):   OUTPUT to GND (output stability - CRITICAL for AMS1117)
@@ -172,12 +175,15 @@ C4 (0.1µF):  OUTPUT to GND (high-frequency output decoupling)
 #### 3-Pin Jumper (JP1)
 
 ```
-Pin 1: LDO +5V output (from U1)
-Pin 2: +5V Rail (to all IDC headers)
-Pin 3: PSU +5V input (from J_F3/J_S3)
+Pin 1: LDO +5V output (from U1 via D6 Schottky)
+Pin 2: +5V Rail (to all IDC headers via F3)
+Pin 3: PSU +5V input (from J_F3/J_S3 via D5 Schottky)
 
 Jumper 1-2: Use LDO (generate +5V from +12V)
 Jumper 2-3: Use PSU (direct +5V from power supply)
+
+Note: D5 and D6 (SS14 Schottky) form an OR-ing configuration that
+prevents backfeed between sources. Safe even if both are connected.
 ```
 
 #### LED Indicators
@@ -216,9 +222,12 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 #### TVS Transient Protection
 
 ```
-TVS1 (SMF15CA): Bidirectional, across +12V rail to GND
-TVS2 (SMF15CA): Bidirectional, across -12V rail to GND
-TVS3 (SMF5.0CA): Bidirectional, across +5V rail to GND
+TVS1 (SMF12CA): Bidirectional, across +12V rail to GND (clamps to 19.9V)
+TVS2 (SMF12CA): Bidirectional, across -12V rail to GND (clamps to 19.9V)
+TVS3 (SMF5.0CA): Bidirectional, across +5V rail to GND (clamps to 9.2V)
+
+Note: SMF12CA chosen over SMF15CA because 24.4V clamping exceeds the
+absolute maximum ratings of many Eurorack module op-amps (15-18V).
 ```
 
 #### Overcurrent Protection (PTC Fuses)
@@ -227,9 +236,12 @@ TVS3 (SMF5.0CA): Bidirectional, across +5V rail to GND
 F1 (BSMD1812-200): In series with +12V rail, 2A hold current
 F2 (BSMD1812-200): In series with -12V rail, 2A hold current
 F3 (BSMD1812-150): In series with +5V rail (after JP1 Pin 2), 1.5A hold current
+F4 (BSMD1812-110): In series with LDO input, 1.1A hold current
 ```
 
-**Note on F3 Position:** F3 is placed after JP1 Pin 2, meaning it protects the +5V distribution rail regardless of whether the LDO or PSU direct mode is selected. This ensures overcurrent protection is always active for the +5V rail going to modules.
+**Note on F3 Position:** F3 is placed after JP1 Pin 2, meaning it protects the +5V distribution rail regardless of whether the LDO or PSU direct mode is selected.
+
+**Note on F4:** F4 provides symmetric protection for the LDO input path. If the LDO shorts internally, F4 limits current draw from the +12V rail.
 
 #### Input Bulk Capacitors
 
@@ -275,11 +287,13 @@ TP6: LDO output (+5V from U1, before JP1)
 | 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                          |
 | +5V LDO          | AMS1117-5.0      | C6187     | 116K  | SOT-223, 1A                 |
 | Reverse Diode    | SM4007PL         | C64898    | -     | x4, SOD-123FL (D1-D4)       |
-| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional           |
-| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional           |
-| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812                    |
-| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812                    |
-| Bulk Cap 22µF    | CL21A226MAQNNNE  | C45783    | 5.43M | x4, 0805 25V (C2,C5,C6,C23) |
+| OR-ing Schottky  | SS14             | C2480     | 1.09M | x2, SMA (D5-D6)             |
+| TVS Diode 12V    | SMF12CA          | C353317   | 67K   | x2, bidirectional (±12V)    |
+| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional (+5V)     |
+| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812 (F1,F2)            |
+| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812 (F3)               |
+| PTC Fuse 1.1A    | BSMD1812-110-33V | C883150   | 50K   | x1, 1812 (F4, LDO input)    |
+| Bulk Cap 22µF    | CL21A226MAYNNNE  | C45783    | 5.43M | x4, 0805 25V (C2,C5,C6,C23) |
 | LDO Input 10µF   | CL21A106KAYNNNE  | C15850    | 1.38M | x1, 0805 25V (C3)           |
 | Decoupling 0.1µF | CC0603           | C14663    | -     | x18, 0603 (C1,C4,C7-C22)    |
 | LED Red          | KT-0603R         | C2286     | -     | 0603, -12V indicator        |

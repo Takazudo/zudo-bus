@@ -72,11 +72,20 @@ Project status and circuit design plan for the bus board.
 │                    └──────────────────────┘   +5V rail          │
 │                                                                 │
 │  INDICATORS        PROTECTION                                   │
-│  ┌─────────┐      ┌─────────────┐                              │
-│  │ LED +12V│      │ D1: +12V    │                              │
-│  │ LED -12V│      │ D2: -12V    │                              │
-│  │ LED +5V │      │ (reverse)   │                              │
-│  └─────────┘      └─────────────┘                              │
+│  ┌─────────┐      ┌─────────────────────────────────────────┐  │
+│  │ LED +12V│      │ Reverse Polarity: D1(+12V), D2(-12V),   │  │
+│  │ LED -12V│      │                   D3(+5V)               │  │
+│  │ LED +5V │      │ TVS Clamp: TVS1(+12V), TVS2(-12V),      │  │
+│  └─────────┘      │           TVS3(+5V)                     │  │
+│                   │ PTC Fuses: F1(+12V 2A), F2(-12V 2A),    │  │
+│  FILTERING        │           F3(+5V 1.5A)                  │  │
+│  ┌─────────┐      └─────────────────────────────────────────┘  │
+│  │C5,C6    │                                                   │
+│  │10µF bulk│      DECOUPLING                                   │
+│  │at input │      ┌─────────────┐                              │
+│  └─────────┘      │ C7-C14 0.1µF│                              │
+│                   │ per header  │                              │
+│                   └─────────────┘                              │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -162,21 +171,57 @@ LED3 (Blue):   +5V Rail  → R3 (470Ω) → LED3 → GND
 #### Reverse Polarity Protection
 
 ```
-D1 (1N4007): Cathode → +12V Rail, Anode → GND
-D2 (1N4007): Cathode → GND, Anode → -12V Rail
+D1 (SM4007PL): Cathode → +12V Rail, Anode → GND
+D2 (SM4007PL): Cathode → GND, Anode → -12V Rail
+D3 (SM4007PL): Cathode → +5V Input, Anode → GND (PSU +5V path)
+```
+
+#### TVS Transient Protection
+
+```
+TVS1 (SMF15CA): Bidirectional, across +12V rail to GND
+TVS2 (SMF15CA): Bidirectional, across -12V rail to GND
+TVS3 (SMF5.0CA): Bidirectional, across +5V rail to GND
+```
+
+#### Overcurrent Protection (PTC Fuses)
+
+```
+F1 (BSMD1812-200): In series with +12V rail, 2A hold current
+F2 (BSMD1812-200): In series with -12V rail, 2A hold current
+F3 (BSMD1812-150): In series with +5V rail, 1.5A hold current
+```
+
+#### Input Bulk Capacitors
+
+```
+C5 (10µF): Across +12V input to GND (transient filtering)
+C6 (10µF): Across -12V input to GND (transient filtering)
+```
+
+#### Per-Header Decoupling
+
+```
+C7-C14 (0.1µF x8): Near each IDC header output for HF filtering
 ```
 
 ---
 
 ## Selected Components
 
-| Component       | Part Number    | LCSC      | Stock    | Notes  |
-| --------------- | -------------- | --------- | -------- | ------ |
-| FASTON Terminal | 1217754-1      | C305825   | 7A rated | x4     |
-| Screw Terminal  | WJ500V-5.08-2P | C8465     | 123K     | x4     |
-| 16-pin Header   | 2541WR-2x08P   | C5383092  | 6.8K     | x8     |
-| +5V LDO         | 78L05          | C20628877 | 57K      | SOT-89 |
-| Diode           | 1N4007         | TBD       | -        | x2     |
+| Component        | Part Number      | LCSC      | Stock | Notes             |
+| ---------------- | ---------------- | --------- | ----- | ----------------- |
+| FASTON Terminal  | 1217754-1        | C305825   | -     | x4, 7A rated      |
+| Screw Terminal   | WJ500V-5.08-2P   | C8465     | 123K  | x4                |
+| 16-pin Header    | 2541WR-2x08P     | C5383092  | 6.8K  | x8                |
+| +5V LDO          | 78L05            | C20628877 | 57K   | SOT-89            |
+| Reverse Diode    | SM4007PL         | C64898    | -     | x3, SOD-123FL     |
+| TVS Diode 15V    | SMF15CA          | C908211   | 54K   | x2, bidirectional |
+| TVS Diode 5V     | SMF5.0CA         | C908214   | 66K   | x1, bidirectional |
+| PTC Fuse 2A      | BSMD1812-200-30V | C960026   | 120K  | x2, 1812          |
+| PTC Fuse 1.5A    | BSMD1812-150-33V | C883154   | 69K   | x1, 1812          |
+| Bulk Cap 10µF    | TCC0805X5R106K   | C5448891  | 188K  | x2, 0805 25V      |
+| Decoupling 0.1µF | CC0603           | C14663    | -     | x10, 0603         |
 
 ---
 
@@ -207,7 +252,7 @@ D2 (1N4007): Cathode → GND, Anode → -12V Rail
 ## Questions to Resolve
 
 - [ ] Exact LED values and colors to match zudo-pd
-- [ ] Need bulk capacitors on power rails?
+- [x] Need bulk capacitors on power rails? → Yes, added C5/C6 (10µF) at input
 - [ ] PCB size constraints (case compatibility)
 - [ ] Shrouded vs unshrouded IDC headers?
 

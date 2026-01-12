@@ -58,6 +58,15 @@ runs:
         fi
       shell: bash
 
+    - name: Link Netlify site
+      run: |
+        echo "Linking to Netlify site..."
+        netlify link --id "${{ inputs.netlify-site-id }}"
+        echo "Site linked successfully"
+      shell: bash
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ inputs.netlify-auth-token }}
+
     - name: Deploy to Netlify
       id: deploy
       run: |

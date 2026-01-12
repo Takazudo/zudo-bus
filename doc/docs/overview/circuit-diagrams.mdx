@@ -165,24 +165,51 @@ Notes:
 
 ## Per-Header Decoupling
 
+Each IDC header has dedicated decoupling capacitors for +12V and -12V rails.
+
 ```
-IDC Header J1                    IDC Header J2
-┌─────────────────────┐          ┌─────────────────────┐
-│   +12V ──┬── -12V   │          │   +12V ──┬── -12V   │
-│          │          │          │          │          │
-│   C7    C15         │          │   C8    C16         │
-│  0.1µF  0.1µF       │          │  0.1µF  0.1µF       │
-│    │      │         │          │    │      │         │
-│   GND    GND        │          │   GND    GND        │
-└─────────────────────┘          └─────────────────────┘
++12V Rail Decoupling (per header):
 
-... (same pattern for J3-J8 with C9-C14 and C17-C22)
++12V Rail ──┬────────┬────────┬─── ... ───┬─── To IDC Headers
+            │        │        │           │
+           C7       C8       C9         C14
+         0.1µF    0.1µF    0.1µF      0.1µF
+        ceramic  ceramic  ceramic    ceramic
+            │        │        │           │
+           GND      GND      GND         GND
+          (J1)     (J2)     (J3)       (J8)
 
-Purpose:
+-12V Rail Decoupling (per header):
+
+-12V Rail ──┬────────┬────────┬─── ... ───┬─── To IDC Headers
+            │        │        │           │
+          C15      C16      C17         C22
+         0.1µF    0.1µF    0.1µF      0.1µF
+        ceramic  ceramic  ceramic    ceramic
+            │        │        │           │
+           GND      GND      GND         GND
+          (J1)     (J2)     (J3)       (J8)
+```
+
+**Capacitor Assignment:**
+
+| Header | +12V Cap | -12V Cap |
+| ------ | -------- | -------- |
+| J1     | C7       | C15      |
+| J2     | C8       | C16      |
+| J3     | C9       | C17      |
+| J4     | C10      | C18      |
+| J5     | C11      | C19      |
+| J6     | C12      | C20      |
+| J7     | C13      | C21      |
+| J8     | C14      | C22      |
+
+**Purpose:**
+
 - High-frequency noise filtering at each output
 - Prevents noise coupling between modules
 - Local energy storage for transient loads
-```
+- Place capacitors as close to IDC header pins as possible
 
 ## 16-Pin IDC Pinout (Eurorack Standard)
 

@@ -32,7 +32,7 @@ const sidebars = {
     'how-to/create-circuit-svg',
   ],
   miscSidebar: ['misc/index', 'misc/footprint-preview'],
-  inboxSidebar: ['inbox/index', 'inbox/current-status'],
+  inboxSidebar: ['inbox/index', 'inbox/current-status', 'inbox/power-cable-recommendations'],
 };
 
 export default sidebars;

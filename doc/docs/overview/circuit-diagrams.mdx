@@ -2,368 +2,521 @@
 sidebar_position: 3
 ---
 
-import Ldo78l05Diagram from '../_fragments/ldo-78l05-diagram.mdx';
-
 # Circuit Diagrams
 
-Circuit diagrams for the zudo-bus board.
+Complete circuit configuration shown in stages. Each diagram represents a functional block of the zudo-bus power distribution board.
 
-## System Block Diagram
+## Power Flow Overview
 
-```
-                           zudo-bus Board
-┌──────────────────────────────────────────────────────────────────────┐
-│                                                                      │
-│   INPUTS                    PROCESSING              OUTPUTS          │
-│                                                                      │
-│  From PSU                                          To Modules        │
-│  ┌──────────────┐                                 ┌──────────────┐   │
-│  │ FASTON x4    │──┐     ┌──────────────┐    ┌───►│ IDC J1 (16P) │   │
-│  │ +12V,-12V    │  │     │              │    │    ├──────────────┤   │
-│  │ +5V, GND     │  │     │  POWER RAIL  │    │    │ IDC J2 (16P) │   │
-│  └──────────────┘  ├────►│  DISTRIBUTION│────┼───►├──────────────┤   │
-│         OR         │     │              │    │    │     ...      │   │
-│  ┌──────────────┐  │     └──────────────┘    │    ├──────────────┤   │
-│  │ Screw x4     │──┘            │            └───►│ IDC J8 (16P) │   │
-│  │ 5.08mm      │                │                 └──────────────┘   │
-│  └──────────────┘                │                                    │
-│                                  ▼                                    │
-│                    ┌───────────────────────┐                         │
-│                    │   +5V LDO SECTION     │                         │
-│                    │                       │                         │
-│                    │  +12V ─► AMS1117 ─┐   │                         │
-│                    │                   │   │                         │
-│                    │  PSU +5V ─────────┼───┼─► 3-pin JP1             │
-│                    │                   │   │      │                  │
-│                    │  LDO +5V ─────────┘   │      ▼                  │
-│                    └───────────────────────┘   +5V Rail              │
-│                                                                      │
-│  PROTECTION (Order: PTC → TVS → Diode → Caps)    INDICATORS         │
-│  ┌─────────────────────────────────────────────┐ ┌─────────────┐    │
-│  │ PTC Fuses: F1(+12V), F2(-12V), F3(+5V),     │ │  LED1 -12V  │    │
-│  │            F4(LDO input)                    │ │  LED2 +12V  │    │
-│  │ TVS Clamp: TVS1(+12V), TVS2(-12V),          │ │  LED3 +5V   │    │
-│  │            TVS3(+5V) - SMF12CA for ±12V     │ └─────────────┘    │
-│  │ Reverse: D1(+12V), D2(-12V),                │                    │
-│  │          D3(+5V PSU), D4(+5V LDO)           │                    │
-│  │ OR-ing: D5(+5V PSU), D6(+5V LDO) - SS14     │                    │
-│  └─────────────────────────────────────────────┘ DECOUPLING         │
-│                                                 ┌─────────────┐     │
-│  TEST POINTS                                    │ C5,C6: bulk │     │
-│  ┌─────────────────────────────────┐            │ C7-C14:+12V │     │
-│  │ TP1:+12V  TP2:-12V  TP3:+5V     │            │ C15-C22:-12V│     │
-│  │ TP4:GND   TP5:LDO in TP6:LDO out│            │ per header  │     │
-│  └─────────────────────────────────┘            └─────────────┘     │
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
-```
+This diagram shows the complete power distribution chain from input terminals to IDC module headers, including the relationship between all circuit diagrams.
 
-## +5V LDO Circuit
+```mermaid
+flowchart TD
+    IN["Power Input
+    Diagram1
+    P1, P2 Screw Terminals"]
 
-<Ldo78l05Diagram />
+    PROT12["Protection +12V
+    Diagram2
+    F1 → D1 TVS → D6"]
 
-## LED Indicator Circuit
+    PROTN12["Protection -12V
+    Diagram3
+    F3 → D3 TVS → D8"]
 
-```
-+12V Rail                                                +5V Rail
-    │                                                        │
-    │                                                        │
-    ▼                                                        ▼
-   R2                                                       R3
-  1kΩ                                                      1kΩ
-    │                                                        │
-    ▼                                                        ▼
- ┌─────┐                                                 ┌─────┐
- │LED2 │                                                 │LED3 │
- │Green│                                                 │Blue │
- │A → K│                                                 │A → K│
- └──┬──┘                                                 └──┬──┘
-    │                                                        │
-    ▼                                                        ▼
-   GND                                                      GND
+    PROT5["Protection +5V
+    Diagram4
+    F4 → D2 TVS → D9"]
 
+    SEL5["+5V Selection
+    Diagram5
+    LDO U3/U4, D4/D5, H1"]
 
-LED1 (-12V Indicator) - Different topology:
+    DIST["Distribution
+    Diagram6
+    U12, U13, U14, U15"]
 
-   GND (0V)
-    │
-    ▼
- ┌─────┐
- │LED1 │  Current flows from GND (higher potential)
- │ Red │  to -12V (lower potential)
- │A → K│
- └──┬──┘
-    │
-    ▼
-   R1
-  1kΩ
-    │
-    ▼
- -12V Rail
+    IDC["IDC Headers
+    Diagram7
+    U2, U5-U11 + Caps"]
+
+    LED["Status LEDs
+    Diagram8
+    LED1 + R1"]
+
+    OUT1["+12V to Modules"]
+    OUT2["-12V to Modules"]
+    OUT3["+5V to Modules"]
+
+    IN -->|"+12V"| PROT12
+    IN -->|"-12V"| PROTN12
+    IN -->|"+5V PSU"| PROT5
+    IN -->|"+12V"| SEL5
+
+    PROT12 --> DIST
+    PROTN12 --> DIST
+    PROT5 --> SEL5
+    SEL5 --> DIST
+
+    DIST --> IDC
+    IDC --> OUT1
+    IDC --> OUT2
+    IDC --> OUT3
+
+    DIST --> LED
 ```
 
-**LED Current (all 1kΩ resistors, same as zudo-power-usb-pd):**
+**Power Distribution Strategy:**
 
-- LED1 (Red, -12V): I = (0V - (-12V) - 2V) / 1kΩ ≈ 10mA
-- LED2 (Green, +12V): I = (12V - 2V) / 1kΩ ≈ 10mA
-- LED3 (Blue, +5V): I = (5V - 3V) / 1kΩ ≈ 2mA
+- **+12V rail**: Input → PTC F1 → TVS D1 → Reverse D6 → Distribution → IDC Headers
+- **-12V rail**: Input → PTC F3 → TVS D3 → Reverse D8 → Distribution → IDC Headers
+- **+5V rail**: Either PSU direct (via D5) or LDO from +12V (via D4) → Selected by H1 jumper
 
-**Note:** For LED1 (-12V indicator), the LED anode connects to GND (0V) and current flows toward the -12V rail. This is the reverse of the +12V and +5V LEDs where current flows from the positive rail to GND.
+## Diagram1: Power Input Section
 
-## Reverse Polarity Protection
-
-```
-+12V Rail                              -12V Rail
-    │                                      │
-    │                                      │
-    ├──────────────┐          ┌────────────┤
-    │              │          │            │
-    │          Cathode    Anode            │
-    │            ┌─┴─┐    ┌─┴─┐            │
-    │            │ D1│    │ D2│            │
-    │            │   │    │   │            │
-    │            └─┬─┘    └─┬─┘            │
-    │          Anode    Cathode            │
-    │              │          │            │
-    │              └────┬─────┘            │
-    │                   │                  │
-    │                  GND                 │
-    │                                      │
-    ▼                                      ▼
-To IDC Headers                      To IDC Headers
-
-D1, D2, D3, D4: SM4007PL (1N4007 equivalent, SOD-123FL)
-- Clamps reverse voltage to ~0.7V
-- Protects modules from reversed power cable
-- D3: PSU +5V input path protection
-- D4: LDO +5V output path protection
-```
-
-## +5V OR-ing Circuit (Backfeed Protection)
-
-The +5V rail has two possible sources: the on-board LDO and the external PSU. Schottky diodes D5 and D6 form an OR-ing configuration to prevent backfeed between sources.
+Screw terminals P1 and P2 receive power from the external PSU (zudo-pd or other Eurorack PSU).
 
 ```
-                    +5V Source Selection with OR-ing Protection
+Power Input Terminals:
 
-+12V Rail ──► F4 ──► AMS1117 ──► D6 (SS14) ──┐
-             PTC     LDO         Schottky    │
-            1.1A    +5V out      cathode     │
-                                             ├──► JP1 Pin 1
-                                             │    (LDO source)
-                                             │
-                                             │        ┌───┐
-PSU +5V ──► D3 ──► D5 (SS14) ────────────────┼──────► │ 1 │ LDO +5V
-            SM4007  Schottky                 │        │   │
-            reverse cathode                  │        │ 2 │ +5V Rail ──► F3 ──► Distribution
-            protect                          │        │   │
-                                             └──────► │ 3 │ PSU +5V
-                                                      └───┘
-                                                       JP1
-Benefits:
-- Prevents LDO damage if both sources connected simultaneously
-- Allows safe operation even with incorrect jumper configuration
-- ~0.55V drop through Schottky (lower than silicon diode)
+P1 (5.08mm Screw Terminal - 2 positions):
+┌─────────────────────────────────────┐
+│  Pin 1: +12V input ─────────────────┼──→ To Protection (Diagram2)
+│  Pin 2: GND ────────────────────────┼──→ System GND
+└─────────────────────────────────────┘
 
-D5, D6: SS14 (40V, 1A Schottky, SMA package)
-- Forward voltage: 550mV @ 1A
-- Reverse voltage: 40V
-- Peak surge current: 25A
+P2 (5.08mm Screw Terminal - 2 positions):
+┌─────────────────────────────────────┐
+│  Pin 1: -12V input ─────────────────┼──→ To Protection (Diagram3)
+│  Pin 2: GND ────────────────────────┼──→ System GND
+└─────────────────────────────────────┘
+
+Note: +5V input from PSU connects through the +5V protection path
+      if using PSU direct mode (not LDO mode).
 ```
 
-## Power Sequencing
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref | Part                     | Description        |
+| --- | ------------------------ | ------------------ |
+| P1  | 5.08mm Screw Terminal 2P | +12V and GND input |
+| P2  | 5.08mm Screw Terminal 2P | -12V and GND input |
+
+**Connections:**
+
+- `P1 Pin 1` → `+12V in` net → To F1 (Diagram2)
+- `P1 Pin 2` → `GND` net → System ground
+- `P2 Pin 1` → `-12V in` net → To F3 (Diagram3)
+- `P2 Pin 2` → `GND` net → System ground
+
+</details>
+
+## Diagram2: +12V Protection Path
+
+The +12V rail protection consists of a PTC fuse, TVS clamp diode, and reverse polarity diode in series.
 
 ```
-Power-On Sequence (Natural):
++12V Protection Path:
 
-1. PSU provides +12V, -12V, (optionally +5V) simultaneously
-2. ±12V rails stabilize quickly (bulk caps charge)
-3. If using LDO mode (JP1 position 1-2):
-   - +5V rail comes up AFTER +12V stabilizes
-   - AMS1117 requires stable input before output regulation
-   - This provides natural sequencing: ±12V before +5V
-4. If using PSU direct mode (JP1 position 2-3):
-   - All rails come up simultaneously
++12V in ──► F1 ──► D1 (TVS) ──► D6 ──► +12V rail
+(from P1)   PTC    SMF12CA     SM4007
+            2A     clamp       reverse
+            hold   @19.9V      protect
 
-Power-Off Sequence:
-- All rails fall together when PSU is disconnected
-- Bulk capacitors provide brief hold-up time
+Component Details:
 
-Note: The natural sequencing in LDO mode (±12V before +5V) is beneficial
-for many digital modules that expect analog supplies before digital.
+F1 (BSMD1812-200-30V):
+  │
+  ├── Pin 1: +12V in (from P1)
+  └── Pin 2: To D1
+
+D1 (SMF12CA - TVS Diode):
+  │
+  ├── Anode 1: To F1 output
+  ├── Anode 2: GND (bidirectional TVS)
+  └── Clamping: 19.9V max
+
+D6 (SM4007PL):
+  │
+  ├── Anode: From D1/F1 output
+  ├── Cathode: +12V rail
+  └── Purpose: Blocks reverse current
 ```
 
-## Protection Circuit Order
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref | Part             | Description                            |
+| --- | ---------------- | -------------------------------------- |
+| F1  | BSMD1812-200-30V | PTC fuse, 2A hold, 4A trip             |
+| D1  | SMF12CA          | TVS diode, 12V standoff, clamps @19.9V |
+| D6  | SM4007PL         | 1N4007 equivalent, reverse protection  |
+
+**Connections:**
+
+- `+12V in` → `F1 Pin 1`
+- `F1 Pin 2` → `D1 anode`
+- `D1 cathode` → `GND` (TVS is bidirectional)
+- `F1 Pin 2` → `D6 anode`
+- `D6 cathode` → `+12V rail` net
+
+**Protection Order:**
+
+1. PTC fuse (F1) - Overcurrent protection, self-resetting
+2. TVS diode (D1) - Transient voltage clamping
+3. Reverse diode (D6) - Reverse polarity protection
+
+</details>
+
+## Diagram3: -12V Protection Path
+
+The -12V rail uses the same protection topology as +12V but with appropriate polarity.
 
 ```
-Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
+-12V Protection Path:
 
-+12V Rail Example:
-                                                              To IDC
-Input ──► F1 (2A PTC) ──► TVS1 (12V) ──► D1 (reverse) ──► C5 (22µF) ──► Headers
-          overcurrent     transient      polarity         bulk
-          protection      clamp          protection       filtering
-                          (SMF12CA)
-                          clamps@19.9V
+-12V in ──► F3 ──► D3 (TVS) ──► D8 ──► -12V rail
+(from P2)   PTC    SMF12CA     SM4007
+            2A     clamp       reverse
+            hold   @19.9V      protect
+
+Note: For -12V, "reverse" protection means blocking
+      current flowing from GND toward -12V rail.
+
+D8 (SM4007PL):
+  │
+  ├── Cathode: From -12V in (after F3)
+  ├── Anode: -12V rail
+  └── Purpose: Blocks reverse current from GND
 ```
 
-## TVS Transient Protection
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref | Part             | Description                            |
+| --- | ---------------- | -------------------------------------- |
+| F3  | BSMD1812-150-33V | PTC fuse, 1.5A hold, 3A trip           |
+| D3  | SMF12CA          | TVS diode, 12V standoff, clamps @19.9V |
+| D8  | SM4007PL         | 1N4007 equivalent, reverse protection  |
+
+**Connections:**
+
+- `-12V in` → `F3 Pin 1`
+- `F3 Pin 2` → `D3 anode`
+- `D3 cathode` → `GND` (TVS is bidirectional)
+- `F3 Pin 2` → `D8 cathode`
+- `D8 anode` → `-12V rail` net
+
+</details>
+
+## Diagram4: +5V Protection Path (PSU Direct)
+
+When using PSU-provided +5V (not LDO), this protection path is active.
 
 ```
-+12V Rail              -12V Rail              +5V Rail
-    │                      │                      │
-    │                      │                      │
-   TVS1                   TVS2                   TVS3
-  SMF12CA               SMF12CA                SMF5.0CA
-  (12V bi)              (12V bi)              (5V bi)
-    │                      │                      │
-   GND                    GND                    GND
++5V PSU Protection Path:
 
-Specifications:
-- SMF12CA: 12V standoff, clamps to 19.9V max (safe for module op-amps)
-- SMF5.0CA: 5V standoff, clamps to 9.2V max
-- Bidirectional - protects against positive and negative spikes
++5V PSU ──► F4 ──► D2 (TVS) ──► D9 ──► +5V in net
+input       PTC    SMF5.0CA    SM4007
+            1.5A   clamp       reverse
+            hold   @9.2V       protect
 
-Design Note: SMF12CA chosen over SMF15CA because 24.4V clamping exceeds
-the absolute maximum ratings of many Eurorack module op-amps (15-18V).
+Then to +5V selection (Diagram5):
++5V in net ──► D5 (SS14 Schottky) ──► H1 jumper ──► +5V rail
 ```
 
-## PTC Overcurrent Protection
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref | Part             | Description                          |
+| --- | ---------------- | ------------------------------------ |
+| F4  | BSMD1812-150-33V | PTC fuse, 1.5A hold                  |
+| D2  | SMF5.0CA         | TVS diode, 5V standoff, clamps @9.2V |
+| D9  | SM4007PL         | Reverse protection                   |
+
+**Connections:**
+
+- `+5V PSU` → `F4 Pin 1`
+- `F4 Pin 2` → `D2 anode`
+- `D2 cathode` → `GND`
+- `F4 Pin 2` → `D9 anode`
+- `D9 cathode` → `+5V in` net → To D5 in Diagram5
+
+</details>
+
+## Diagram5: +5V Selection (LDO and Jumper)
+
+The +5V rail can be sourced from either:
+
+1. On-board LDO (from +12V)
+2. External PSU direct
+
+Schottky diodes D4 and D5 form OR-ing protection.
 
 ```
-+12V Input ──► F1 ──► +12V Rail
-              BSMD1812-200 (2A hold, 4A trip)
++5V Source Selection:
 
--12V Input ──► F2 ──► -12V Rail
-              BSMD1812-200 (2A hold, 4A trip)
+                           +5V Selection with OR-ing
 
-+12V Rail ──► F4 ──► LDO Input (U1 Pin 3)
-              BSMD1812-110 (1.1A hold, 2.2A trip)
++12V rail ──► U3 ──► U4 ──► D4 (SS14) ──┐
+             LED    LDO     Schottky    │
+             drv    5V      cathode     │
+                                        ├──► H1 ──► +5V rail
+                                        │   Jumper
++5V in ─────────────────► D5 (SS14) ────┘
+(from Diagram4)           Schottky
+                          cathode
 
-JP1 Pin 2 ──► F3 ──► +5V Distribution ──► To IDC Headers
-(after jumper) BSMD1812-150 (1.5A hold, 3A trip)
+H1 Jumper (1x3 Header):
+┌─────┐
+│  1  │ LDO +5V output (via D4)
+│  2  │ +5V rail (to distribution)
+│  3  │ PSU +5V (via D5)
+└─────┘
 
-Notes:
-- Self-resetting: auto-recovers after fault clears
-- Protects against short circuits and overcurrent
-- F3 is placed AFTER JP1 Pin 2, protecting +5V distribution
-  regardless of source selection (LDO or PSU direct)
-- F4 provides symmetric protection for LDO input path,
-  limiting current if LDO shorts internally
+Jumper positions:
+- 1-2: Use LDO (on-board 5V from 12V)
+- 2-3: Use PSU direct +5V
+
+LDO Section:
+U3 (LED driver) provides current reference
+U4 (78L05 or similar) regulates +12V down to +5V
+
+OR-ing Diodes (D4, D5):
+- Prevent backfeed between LDO and PSU
+- Allow safe operation with any jumper configuration
+- ~0.55V forward drop (Schottky)
 ```
 
-## Per-Header Decoupling
+<details>
+<summary>Connection List</summary>
 
-Each IDC header has dedicated decoupling capacitors for +12V and -12V rails.
+**Components:**
+
+| Ref | Part               | Description                       |
+| --- | ------------------ | --------------------------------- |
+| U3  | YLED0603YG         | LED indicator/driver              |
+| U4  | NCD1608A1 or 78L05 | +5V LDO regulator                 |
+| D4  | SS14               | Schottky diode, LDO output OR-ing |
+| D5  | SS14               | Schottky diode, PSU +5V OR-ing    |
+| H1  | Header 1x3         | +5V source selection jumper       |
+| C21 | 22uF               | LDO output capacitor              |
+
+**Connections:**
+
+- `+12V rail` → `U3 input`
+- `U3 output` → `U4 input`
+- `U4 output` → `LDO out` net
+- `LDO out` → `D4 anode`
+- `D4 cathode` → `H1 Pin 1`
+- `+5V in` → `D5 anode`
+- `D5 cathode` → `H1 Pin 3`
+- `H1 Pin 2` → `+5V rail` net
+
+</details>
+
+## Diagram6: Power Distribution (U12-U15)
+
+Distribution ICs buffer and distribute power to all IDC headers.
 
 ```
-+12V Rail Decoupling (per header):
+Power Distribution:
 
-+12V Rail ──┬────────┬────────┬─── ... ───┬─── To IDC Headers
-            │        │        │           │
-           C7       C8       C9         C14
-         0.1µF    0.1µF    0.1µF      0.1µF
-        ceramic  ceramic  ceramic    ceramic
-            │        │        │           │
-           GND      GND      GND         GND
-          (J1)     (J2)     (J3)       (J8)
+                     Distribution ICs (1217754-1)
 
--12V Rail Decoupling (per header):
++12V rail ──► U12 ──┬──► +12V to IDC headers
+                   │
++12V rail ──► U15 ──┘
 
--12V Rail ──┬────────┬────────┬─── ... ───┬─── To IDC Headers
-            │        │        │           │
-          C15      C16      C17         C22
-         0.1µF    0.1µF    0.1µF      0.1µF
-        ceramic  ceramic  ceramic    ceramic
-            │        │        │           │
-           GND      GND      GND         GND
-          (J1)     (J2)     (J3)       (J8)
+-12V rail ──► U13 ──────► -12V to IDC headers
+
++5V rail ──► U14 ──────► +5V to IDC headers
+
+
+Each distribution IC provides:
+- Low impedance power distribution
+- Current sharing capability
+- Clean power to multiple outputs
 ```
+
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref | Part      | Description                  |
+| --- | --------- | ---------------------------- |
+| U12 | 1217754-1 | +12V distribution            |
+| U13 | 1217754-1 | -12V distribution            |
+| U14 | 1217754-1 | +5V distribution             |
+| U15 | 1217754-1 | +12V distribution (parallel) |
+
+**Connections:**
+
+- `+12V rail` → `U12 input`, `U15 input`
+- `-12V rail` → `U13 input`
+- `+5V rail` → `U14 input`
+- `U12 output`, `U15 output` → `+12V` to IDC headers
+- `U13 output` → `-12V` to IDC headers
+- `U14 output` → `+5V` to IDC headers
+
+</details>
+
+## Diagram7: IDC Headers and Decoupling
+
+8 IDC headers (U2, U5-U11) provide power to Eurorack modules. Each header has dedicated decoupling capacitors.
+
+```
+IDC Header Layout (2x4 grid):
+
+        Column 1        Column 2
+Row 1   U2              U5
+Row 2   U6              U7
+Row 3   U8              U9
+Row 4   U10             U11
+
+Each IDC Header (2541WR-2X08P, 16-pin):
+┌─────────────────────────────────────┐
+│  Pins 1-2:   -12V                   │
+│  Pins 3-8:   GND (x6)               │
+│  Pins 9-12:  +12V (x4)              │
+│  Pins 13-14: +5V (x2)               │
+│  Pins 15-16: CV/GATE (optional)     │
+└─────────────────────────────────────┘
+
+Decoupling Capacitors (per header):
+Each header has 2-3 capacitors placed adjacent:
+
++12V rail ──┬── Cx (0.1µF) ──┬── GND
+            │                │
+            └────────────────┴── To IDC +12V pins
+
+-12V rail ──┬── Cy (0.1µF) ──┬── GND
+            │                │
+            └────────────────┴── To IDC -12V pins
+```
+
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref     | Part              | Description                 |
+| ------- | ----------------- | --------------------------- |
+| U2      | 2541WR-2X08P      | IDC header 16-pin           |
+| U5      | 2541WR-2X08P      | IDC header 16-pin           |
+| U6      | 2541WR-2X08P      | IDC header 16-pin           |
+| U7      | 2541WR-2X08P      | IDC header 16-pin           |
+| U8      | 2541WR-2X08P      | IDC header 16-pin           |
+| U9      | 2541WR-2X08P      | IDC header 16-pin           |
+| U10     | 2541WR-2X08P      | IDC header 16-pin           |
+| U11     | 2541WR-2X08P      | IDC header 16-pin           |
+| C1-C12  | CC0603KRX7R9BB104 | 0.1µF decoupling (Column 1) |
+| C13-C23 | CC0603KRX7R9BB104 | 0.1µF decoupling (Column 2) |
 
 **Capacitor Assignment:**
 
-| Header | +12V Cap | -12V Cap |
-| ------ | -------- | -------- |
-| J1     | C7       | C15      |
-| J2     | C8       | C16      |
-| J3     | C9       | C17      |
-| J4     | C10      | C18      |
-| J5     | C11      | C19      |
-| J6     | C12      | C20      |
-| J7     | C13      | C21      |
-| J8     | C14      | C22      |
+| Header | +12V Cap | -12V Cap | +5V Cap |
+| ------ | -------- | -------- | ------- |
+| U2     | C1       | C2       | C3      |
+| U5     | C13      | C14      | -       |
+| U6     | C4       | C5       | -       |
+| U7     | C15      | C16      | -       |
+| U8     | C6       | C7       | -       |
+| U9     | C17      | C18      | C19     |
+| U10    | C8       | C9       | -       |
+| U11    | C20      | C21      | C22     |
 
-**Purpose:**
+**IDC Pin Connections (each header):**
 
-- High-frequency noise filtering at each output
-- Prevents noise coupling between modules
-- Local energy storage for transient loads
-- Place capacitors as close to IDC header pins as possible
+- `Pins 1, 2` → `-12V rail`
+- `Pins 3, 4, 5, 6, 7, 8` → `GND rail`
+- `Pins 9, 10, 11, 12` → `+12V rail`
+- `Pins 13, 14` → `+5V rail`
+- `Pins 15, 16` → `CV rail`, `GATE rail` (optional)
 
-## 16-Pin IDC Pinout (Eurorack Standard)
+</details>
 
-```
-┌─────────────────────────────────┐
-│    Eurorack 16-Pin Header       │
-│         (Top View)              │
-│                                 │
-│   Pin 1  ●───────● Pin 2        │
-│   -12V         -12V             │
-│                                 │
-│   Pin 3  ●───────● Pin 4        │
-│   GND           GND             │
-│                                 │
-│   Pin 5  ●───────● Pin 6        │
-│   GND           GND             │
-│                                 │
-│   Pin 7  ●───────● Pin 8        │
-│   GND           GND             │
-│                                 │
-│   Pin 9  ●───────● Pin 10       │
-│   +12V         +12V             │
-│                                 │
-│   Pin 11 ●───────● Pin 12       │
-│   +12V         +12V             │
-│                                 │
-│   Pin 13 ●───────● Pin 14       │
-│   +5V          +5V              │
-│                                 │
-│   Pin 15 ●───────● Pin 16       │
-│   CV           GATE             │
-│   (NC)         (NC)             │
-│                                 │
-│         ▲ Keying notch          │
-└─────────────────────────────────┘
+## Diagram8: Status LED Circuit
 
-Pin Functions:
-- Pins 1-2:    -12V power
-- Pins 3-8:    Ground (x6)
-- Pins 9-12:   +12V power (x4)
-- Pins 13-14:  +5V power (x2)
-- Pins 15-16:  CV/Gate (typically NC on bus boards)
-```
-
-## Test Points
+LED1 indicates power status.
 
 ```
-┌────────────────────────────────────────────────────────────────┐
-│                       Test Point Locations                      │
-├────────────────────────────────────────────────────────────────┤
-│                                                                │
-│  TP1 (+12V) ────── After PTC F1, main +12V rail               │
-│  TP2 (-12V) ────── After PTC F2, main -12V rail               │
-│  TP3 (+5V)  ────── After jumper JP1, +5V to modules           │
-│  TP4 (GND)  ────── Ground reference for measurements          │
-│  TP5 (LDO in) ─── +12V input to LDO U1                        │
-│  TP6 (LDO out) ── +5V output from LDO U1 (before JP1)         │
-│                                                                │
-└────────────────────────────────────────────────────────────────┘
+Status LED:
 
-Usage:
-- Use TP4 (GND) as reference for all voltage measurements
-- TP5/TP6 useful for diagnosing LDO issues
-- TP1-TP3 verify protection circuits are passing power correctly
++12V rail
+    │
+    ├── R1 (current sense)
+    │     │
+    │     └── To distribution
+    │
+    └── LED1 circuit (via U3)
+         │
+        GND
+
+LED1 (Power Indicator):
+- Lights when +12V rail is active
+- Current limited by driver circuit
 ```
+
+<details>
+<summary>Connection List</summary>
+
+**Components:**
+
+| Ref  | Part           | Description              |
+| ---- | -------------- | ------------------------ |
+| LED1 | KT-0603R       | Red LED, power indicator |
+| R1   | 0805W8J0102T5E | Current sense resistor   |
+| U3   | YLED0603YG     | LED driver               |
+
+**Connections:**
+
+- `+12V rail` → `R1` → Current sense
+- `U3` drives `LED1`
+- `LED1 cathode` → `GND`
+
+</details>
+
+## Component Summary
+
+### All Components by Diagram
+
+| Diagram  | Components              |
+| -------- | ----------------------- |
+| Diagram1 | P1, P2                  |
+| Diagram2 | F1, D1, D6              |
+| Diagram3 | F3, D3, D8              |
+| Diagram4 | F4, D2, D9              |
+| Diagram5 | U3, U4, D4, D5, H1, C21 |
+| Diagram6 | U12, U13, U14, U15      |
+| Diagram7 | U2, U5-U11, C1-C23      |
+| Diagram8 | LED1, R1                |
+
+### Net Names
+
+| Net       | Description                      |
+| --------- | -------------------------------- |
+| +12V in   | Input from PSU before protection |
+| -12V in   | Input from PSU before protection |
+| +5V in    | Input from PSU before protection |
+| +12V rail | Protected +12V distribution      |
+| -12V rail | Protected -12V distribution      |
+| +5V rail  | Selected +5V (LDO or PSU)        |
+| GND rail  | System ground                    |
+| LDO out   | +5V from on-board LDO            |
+| LDO in    | +12V input to LDO                |
+| CV rail   | Optional CV bus                  |
+| GATE rail | Optional GATE bus                |
 
 ## See Also
 

@@ -571,6 +571,211 @@ J1: (50, 250)     J2: (95, 250)    J3: (140, 250)   J4: (185, 250)
 J5: (50, 285)     J6: (95, 285)    J7: (140, 285)   J8: (185, 285)
 ```
 
+## Wiring Best Practices - Label Direction Rules
+
+### Core Principle: Labels Point OUTWARD
+
+For readable schematics, labels should extend **outward** from components, not overlap with them.
+
+### Label Rotation Values
+
+| Rotation | Direction    | Arrow Points |
+| -------- | ------------ | ------------ |
+| 0        | Points RIGHT | →            |
+| 180      | Points LEFT  | ←            |
+| 90       | Points UP    | ↑            |
+| 270      | Points DOWN  | ↓            |
+
+### Component Type Wiring Patterns
+
+#### 1. Two-Pin Horizontal Components (LEDs, Resistors, Diodes, PTC Fuses)
+
+Both pins on same Y axis - labels extend outward from both sides:
+
+```
+[← Left Label]───[Pin1]═══[Component]═══[Pin2]───[Right Label →]
+```
+
+| Pin           | Label Direction | Rotation |
+| ------------- | --------------- | -------- |
+| Pin 1 (left)  | Points LEFT     | 180      |
+| Pin 2 (right) | Points RIGHT    | 0        |
+
+**Example - LED (LED1):**
+
+```
+[LED1_R1 ←]───[Pin1]═══[LED1]═══[Pin2]───[→ GND rail]
+```
+
+**Example - PTC Fuse (F3):**
+
+```
+[+5V in ←]───[Pin1]═══[F3]═══[Pin2]───[→ +5V rail]
+```
+
+#### 2. Single-Pin Connectors (FASTON Terminals)
+
+FASTON 1217754-1 is a quick-connect terminal. Label points toward the input side:
+
+```
+[← Input Label]───[Pin]═══[FASTON]
+```
+
+| Pin   | Label Direction | Rotation |
+| ----- | --------------- | -------- |
+| Pin 1 | Points LEFT     | 180      |
+
+**Example - FASTON U12 (+12V input):**
+
+```
+[+12V in ←]───[Pin1]═══[U12]
+```
+
+**Note:** If FASTON has 2 pins (input/output), apply the 2-pin horizontal pattern.
+
+#### 3. Two-Pin Connectors (FASTON with 2 pins)
+
+If the FASTON or similar connector has both input and output pins:
+
+```
+[← Input Label]───[Pin1]═══[FASTON]═══[Pin2]───[Output Label →]
+```
+
+**Example - 2-pin FASTON for power distribution:**
+
+```
+[+12V in ←]───[Pin1]═══[U12]═══[Pin2]───[→ +12V rail]
+```
+
+#### 4. Multi-Pin Headers with Pins on One Side (H1, IDC Headers)
+
+Headers with all pins on one side - all labels point away from component body:
+
+```
+                    ┌─────────────┐
+[← LDO out]─────────┤ Pin 1       │
+[← +5V rail]────────┤ Pin 2   H1  │
+[← +5V in]──────────┤ Pin 3       │
+                    └─────────────┘
+```
+
+| Pin Side | Label Direction | Rotation |
+| -------- | --------------- | -------- |
+| Left     | Points LEFT     | 180      |
+| Right    | Points RIGHT    | 0        |
+
+#### 5. IDC Headers (16-pin Eurorack)
+
+IDC headers have pins on both left and right sides:
+
+```
+                ┌─────────────────┐
+[← -12V rail]───┤ Pin 1    Pin 9  ├───[→ -12V rail]
+[← GND rail]────┤ Pin 2    Pin 10 ├───[→ GND rail]
+[← GND rail]────┤ Pin 3    Pin 11 ├───[→ GND rail]
+[← GND rail]────┤ Pin 4    Pin 12 ├───[→ GND rail]
+[← +12V rail]───┤ Pin 5    Pin 13 ├───[→ +12V rail]
+[← +5V rail]────┤ Pin 6    Pin 14 ├───[→ +5V rail]
+[← CV rail]─────┤ Pin 7    Pin 15 ├───[→ CV rail]
+[← GATE rail]───┤ Pin 8    Pin 16 ├───[→ GATE rail]
+                └─────────────────┘
+```
+
+### Wire Length Standard
+
+Use consistent wire length for visual clarity:
+
+| Wire Type         | Length      | Purpose             |
+| ----------------- | ----------- | ------------------- |
+| Pin to Label      | 5.08mm      | Standard connection |
+| Component spacing | 2.54mm grid | Alignment           |
+
+### Label Position Calculation
+
+For a component at position (X, Y):
+
+**Left pin label (pointing left):**
+
+```
+pin_x = component_x - 5.08    (pin offset from center)
+label_x = pin_x - 5.08        (5.08mm wire length)
+wire: (pin_x, Y) → (label_x, Y)
+label: (label_x, Y) rotation=180
+```
+
+**Right pin label (pointing right):**
+
+```
+pin_x = component_x + 5.08    (pin offset from center)
+label_x = pin_x + 5.08        (5.08mm wire length)
+wire: (pin_x, Y) → (label_x, Y)
+label: (label_x, Y) rotation=0
+```
+
+### Common Mistakes to Avoid
+
+#### 1. Labels Overlapping Components
+
+**Wrong:**
+
+```
+[Label]═══[Component]═══[Label]
+   ↑ Label at component position
+```
+
+**Correct:**
+
+```
+[Label]───[Pin]═══[Component]═══[Pin]───[Label]
+             ↑ Wire separates label from component
+```
+
+#### 2. Adjacent Labels Same Direction
+
+When multiple components are close together horizontally:
+
+**Wrong:**
+
+```
+[A→]═[Comp1]═[B→]═[Comp2]═[C→]
+       Labels B and C overlap!
+```
+
+**Correct:**
+
+```
+[←A]═[Comp1]═[B→]  [←C]═[Comp2]═[D→]
+       Adequate spacing between components
+```
+
+#### 3. Duplicate Labels
+
+Don't create duplicate labels when fixing orientation:
+
+- **Replace** the existing label, don't add a new one
+- Check label count before and after edits
+
+### Fixing Overlapping Labels Checklist
+
+1. **Identify the component type** (2-pin horizontal, FASTON, header, etc.)
+2. **Determine correct label directions** based on pin positions
+3. **Check for duplicates** - should only have ONE label per connection point
+4. **Verify wire connections** - each label needs a wire to its pin
+5. **Test in KiCad** - run ERC to verify electrical connections
+
+### Quick Reference Table
+
+| Component            | Left Pin | Right Pin | Notes              |
+| -------------------- | -------- | --------- | ------------------ |
+| LED, Resistor, Diode | ← (180)  | → (0)     | 2-pin horizontal   |
+| PTC Fuse             | ← (180)  | → (0)     | 2-pin horizontal   |
+| TVS Diode            | ← (180)  | → (0)     | 2-pin horizontal   |
+| FASTON (1-pin)       | ← (180)  | N/A       | Single connection  |
+| FASTON (2-pin)       | ← (180)  | → (0)     | Input/output       |
+| Header (pins left)   | ← (180)  | N/A       | All pins same side |
+| Header (pins right)  | N/A      | → (0)     | All pins same side |
+| IDC Header           | ← (180)  | → (0)     | Pins both sides    |
+
 ## References
 
 - [KiCad File Formats Documentation](https://dev-docs.kicad.org/en/file-formats/)

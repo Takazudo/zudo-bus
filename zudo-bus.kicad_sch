@@ -11870,26 +11870,6 @@
 			)
 		)
 	)
-	(global_label "GND in"
-		(shape input)
-		(at 219.70999999999998 19.05 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "p0000001-0001-0001-0001-000000000037")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.79 19.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "LDO out"
 		(shape input)
 		(at 247.65 351.79 180)

@@ -269,8 +269,22 @@ For reorganizing an entire schematic:
 2. **Design new layout**: Create a position map based on circuit blocks
 3. **Calculate new positions**: Use grid-aligned coordinates (2.54mm grid recommended)
 4. **Update symbols**: Modify `(at X Y rotation)` for each symbol
-5. **Reconnect with labels/wires**: Add global labels at new pin positions
+5. **Update all connected labels**: Move labels to new pin positions
 6. **Verify in KiCad**: Open schematic and run ERC
+
+**IMPORTANT: Labels must move with components**
+
+Global labels connect to pins by **position**, not just by name. When moving a component:
+
+- All labels connected to its pins must also move
+- Calculate new pin positions: `new_pin = new_component_center + pin_offset`
+- Pin offsets depend on symbol definition and rotation
+
+**Recommendation**: For major layout reorganization, use KiCad's schematic editor directly. Manual drag-and-drop keeps connections intact. Programmatic repositioning is best for:
+
+- Adding new components at specific positions
+- Fine-tuning individual component positions
+- Generating new schematics from scratch
 
 ### Grid Alignment
 

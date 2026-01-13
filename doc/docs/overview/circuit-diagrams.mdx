@@ -81,18 +81,15 @@ Power Input Terminals:
 
 P1 (5.08mm Screw Terminal - 2 positions):
 ┌─────────────────────────────────────┐
-│  Pin 1: +12V input ─────────────────┼──→ To Protection (Diagram2)
-│  Pin 2: GND ────────────────────────┼──→ System GND
+│  Pin 1: GND ────────────────────────┼──→ System GND
+│  Pin 2: -12V input ─────────────────┼──→ To Protection (Diagram3)
 └─────────────────────────────────────┘
 
 P2 (5.08mm Screw Terminal - 2 positions):
 ┌─────────────────────────────────────┐
-│  Pin 1: -12V input ─────────────────┼──→ To Protection (Diagram3)
-│  Pin 2: GND ────────────────────────┼──→ System GND
+│  Pin 1: +5V input ──────────────────┼──→ To Protection (Diagram4)
+│  Pin 2: +12V input ─────────────────┼──→ To Protection (Diagram2)
 └─────────────────────────────────────┘
-
-Note: +5V input from PSU connects through the +5V protection path
-      if using PSU direct mode (not LDO mode).
 ```
 
 <details>
@@ -100,17 +97,19 @@ Note: +5V input from PSU connects through the +5V protection path
 
 **Components:**
 
-| Ref | Part                     | Description        |
-| --- | ------------------------ | ------------------ |
-| P1  | 5.08mm Screw Terminal 2P | +12V and GND input |
-| P2  | 5.08mm Screw Terminal 2P | -12V and GND input |
+| Ref | Part                     | Description        | KiCad Symbol                   |
+| --- | ------------------------ | ------------------ | ------------------------------ |
+| P1  | 5.08mm Screw Terminal 2P | -12V and GND input | zudo-bus:WJ500V-5.08-2P-14-00A |
+| P2  | 5.08mm Screw Terminal 2P | +12V and +5V input | zudo-bus:WJ500V-5.08-2P-14-00A |
 
-**Connections:**
+**Net Connections:**
 
-- `P1 Pin 1` → `+12V in` net → To F1 (Diagram2)
-- `P1 Pin 2` → `GND` net → System ground
-- `P2 Pin 1` → `-12V in` net → To F3 (Diagram3)
-- `P2 Pin 2` → `GND` net → System ground
+| Component | Pin | Net     | Description      |
+| --------- | --- | ------- | ---------------- |
+| P1        | 1   | GND     | System ground    |
+| P1        | 2   | -12V in | To F3 (Diagram3) |
+| P2        | 1   | +5V in  | To F4 (Diagram4) |
+| P2        | 2   | +12V in | To F1 (Diagram2) |
 
 </details>
 

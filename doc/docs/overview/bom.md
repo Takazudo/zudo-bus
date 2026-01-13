@@ -6,13 +6,13 @@ Complete list of components for the zudo-bus board.
 
 | Category           | Count | Notes                                      |
 | ------------------ | ----- | ------------------------------------------ |
-| Connectors         | 13    | Input + Output + Jumper                    |
+| Connectors         | 11    | Input (2) + IDC Output (8) + Jumper (1)    |
 | Active Components  | 1     | +5V LDO regulator                          |
 | Passive Components | 25    | Capacitors (22), resistors (3)             |
 | Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2) |
 | Indicators         | 3     | Power rail LEDs                            |
 | Test Points        | 6     | TP1-TP6 for debugging                      |
-| **Total**          | ~62   | Full protection configuration              |
+| **Total**          | ~60   | Full protection configuration              |
 
 ## PCB Design
 
@@ -38,14 +38,19 @@ Complete list of components for the zudo-bus board.
 - Symbol: `1217754-1`
 - Footprint: `CONN-TH_1217754-1.kicad_mod`
 
-### Screw Terminals 5.08mm (x4)
+### Screw Terminals 5.08mm (x2)
 
-| Designator | Value          | Package   | LCSC                                         | Function   |
-| ---------- | -------------- | --------- | -------------------------------------------- | ---------- |
-| J_S1       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +12V input |
-| J_S2       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | -12V input |
-| J_S3       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +5V input  |
-| J_S4       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | GND        |
+| Designator | Value          | Package   | LCSC                                         | Function           |
+| ---------- | -------------- | --------- | -------------------------------------------- | ------------------ |
+| P1         | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | -12V and GND input |
+| P2         | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +12V and +5V input |
+
+**Pin Assignments:**
+
+| Terminal | Pin 1  | Pin 2   |
+| -------- | ------ | ------- |
+| P1       | GND    | -12V in |
+| P2       | +5V in | +12V in |
 
 **Notes:** 2-position screw terminals for easy wire connection. Alternative to FASTON.
 

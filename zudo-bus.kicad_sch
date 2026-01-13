@@ -11570,26 +11570,6 @@
 			)
 		)
 	)
-	(global_label "+5V in"
-		(shape input)
-		(at 135.89000000000001 175.26 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "p0000001-0001-0001-0001-000000000018")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.81 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "+12V in"
 		(shape input)
 		(at 71.12 57.15 180)
@@ -11890,66 +11870,6 @@
 			)
 		)
 	)
-	(global_label "+12V in"
-		(shape input)
-		(at 210.82000000000002 35.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "p0000001-0001-0001-0001-000000000034")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 205.74 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "-12V in"
-		(shape input)
-		(at 232.41000000000003 35.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "p0000001-0001-0001-0001-000000000035")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.33 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "+5V in"
-		(shape input)
-		(at 252.73000000000002 34.29 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "p0000001-0001-0001-0001-000000000036")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "GND in"
 		(shape input)
 		(at 219.70999999999998 19.05 180)
@@ -11992,7 +11912,7 @@
 	)
 	(global_label "+5V rail"
 		(shape input)
-		(at 257.81 354.33 0)
+		(at 247.65 354.33 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14292,7 +14212,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 354.33) (xy 257.81 354.33)
+			(xy 252.73 354.33) (xy 247.65 354.33)
 		)
 		(stroke
 			(width 0)

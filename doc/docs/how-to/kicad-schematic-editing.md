@@ -381,24 +381,79 @@ Add new elements before the `(sheet_instances` section at the end of the file:
 
 6. **Test incrementally** - Make small changes and verify before large batch edits
 
-## Example: Connect Capacitor to Power Rail
+7. **Always use wires between pins and labels** - Never place labels directly on pins
 
-Given capacitor C1 at position (100, 200):
+### Wire Between Pin and Label Rule
+
+**IMPORTANT**: Always add a short wire between component pins and labels.
+
+**Wrong** - Label directly on pin:
+
+```
+[Pin]←Label    (label at exact pin position)
+```
+
+**Correct** - Wire connects pin to label:
+
+```
+[Pin]───────[Label]    (wire between pin and label)
+```
+
+Benefits:
+
+- **Readable**: Clear visual connection between pin and net
+- **Movable**: Components can be repositioned without breaking connections
+- **Standard**: Follows conventional schematic design practice
+
+Example wire + label for a capacitor pin:
 
 ```lisp
-;; Connect Pin 1 to +12V rail
+;; Wire from pin to label position (5mm offset)
+(wire
+    (pts
+        (xy 94.92 200) (xy 89.84 200)  ;; 5.08mm wire
+    )
+    (stroke (width 0) (type default))
+    (uuid "w1234567-...")
+)
+;; Label at end of wire
 (global_label "+12V rail"
     (shape input)
-    (at 94.92 200 0)
+    (at 89.84 200 180)  ;; At wire endpoint, pointing left
+    ...
+)
+```
+
+## Example: Connect Capacitor to Power Rail
+
+Given capacitor C1 at position (100, 200) with pins at X ± 5.08mm:
+
+- Pin 1 (left): (94.92, 200)
+- Pin 2 (right): (105.08, 200)
+
+```lisp
+;; Wire from Pin 1 to label position (5mm left of pin)
+(wire
+    (pts
+        (xy 94.92 200) (xy 89.84 200)
+    )
+    (stroke (width 0) (type default))
+    (uuid "c1-p1-wire")
+)
+
+;; Label at end of wire, pointing left (180°)
+(global_label "+12V rail"
+    (shape input)
+    (at 89.84 200 180)
     (effects
         (font
             (size 1.27 1.27)
         )
-        (justify left)
+        (justify right)
     )
     (uuid "c1-p1-label")
     (property "Intersheetrefs" "${INTERSHEET_REFS}"
-        (at 94.92 200 0)
+        (at 89.84 200 180)
         (effects
             (font
                 (size 1.27 1.27)
@@ -408,10 +463,19 @@ Given capacitor C1 at position (100, 200):
     )
 )
 
-;; Connect Pin 2 to GND rail
+;; Wire from Pin 2 to label position (5mm right of pin)
+(wire
+    (pts
+        (xy 105.08 200) (xy 110.16 200)
+    )
+    (stroke (width 0) (type default))
+    (uuid "c1-p2-wire")
+)
+
+;; Label at end of wire, pointing right (0°)
 (global_label "GND rail"
     (shape input)
-    (at 105.08 200 0)
+    (at 110.16 200 0)
     (effects
         (font
             (size 1.27 1.27)
@@ -420,7 +484,7 @@ Given capacitor C1 at position (100, 200):
     )
     (uuid "c1-p2-label")
     (property "Intersheetrefs" "${INTERSHEET_REFS}"
-        (at 105.08 200 0)
+        (at 110.16 200 0)
         (effects
             (font
                 (size 1.27 1.27)

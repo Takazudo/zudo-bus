@@ -3692,7 +3692,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus-new-protection:SS14")
-		(at 125.73 175.26 0)
+		(at 115.57 175.26 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3735,7 +3735,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 125.73 175.26 0)
+			(at 115.57 175.26 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6367,7 +6367,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus-new-protection:SS14")
-		(at 110.49 176.53 0)
+		(at 100.33 176.53 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6410,7 +6410,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 110.49 176.53 0)
+			(at 100.33 176.53 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11512,7 +11512,7 @@
 	)
 	(global_label "LDO out"
 		(shape input)
-		(at 110.49 176.53 0)
+		(at 100.33 176.53 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11521,7 +11521,7 @@
 		)
 		(uuid "p0000001-0001-0001-0001-000000000015")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 105.41 176.53 0)
+			(at 100.33 176.53 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11552,7 +11552,7 @@
 	)
 	(global_label "+5V JP1"
 		(shape input)
-		(at 125.73 175.26 0)
+		(at 115.57 175.26 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11561,7 +11561,7 @@
 		)
 		(uuid "p0000001-0001-0001-0001-000000000017")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 175.26 0)
+			(at 115.57 175.26 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11972,7 +11972,7 @@
 	)
 	(global_label "LDO out"
 		(shape input)
-		(at 257.81 351.79 0)
+		(at 247.65 351.79 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11981,7 +11981,7 @@
 		)
 		(uuid "p0000001-0001-0001-0001-000000000038")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 252.73 351.79 0)
+			(at 247.65 351.79 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11992,7 +11992,7 @@
 	)
 	(global_label "+5V rail"
 		(shape input)
-		(at 257.81 354.33 0)
+		(at 247.65 354.33 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12001,7 +12001,7 @@
 		)
 		(uuid "p0000001-0001-0001-0001-000000000039")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 252.73 354.33 0)
+			(at 247.65 354.33 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12012,7 +12012,7 @@
 	)
 	(global_label "+5V in"
 		(shape input)
-		(at 257.81 356.87 0)
+		(at 247.65 356.87 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12021,7 +12021,7 @@
 		)
 		(uuid "p0000001-0001-0001-0001-000000000040")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 252.73 356.87 0)
+			(at 247.65 356.87 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14052,7 +14052,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 176.53) (xy 110.49 176.53)
+			(xy 105.41 176.53) (xy 100.33 176.53)
 		)
 		(stroke
 			(width 0)
@@ -14072,7 +14072,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 175.26) (xy 125.73 175.26)
+			(xy 120.65 175.26) (xy 115.57 175.26)
 		)
 		(stroke
 			(width 0)
@@ -14282,7 +14282,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 351.79) (xy 257.81 351.79)
+			(xy 252.73 351.79) (xy 247.65 351.79)
 		)
 		(stroke
 			(width 0)
@@ -14292,7 +14292,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 354.33) (xy 257.81 354.33)
+			(xy 252.73 354.33) (xy 247.65 354.33)
 		)
 		(stroke
 			(width 0)
@@ -14302,7 +14302,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 356.87) (xy 257.81 356.87)
+			(xy 252.73 356.87) (xy 247.65 356.87)
 		)
 		(stroke
 			(width 0)

@@ -577,14 +577,31 @@ J5: (50, 285)     J6: (95, 285)    J7: (140, 285)   J8: (185, 285)
 
 For readable schematics, labels should extend **outward** from components, not overlap with them.
 
-### Label Rotation Values
+### Label Rotation and Justify Values
 
-| Rotation | Direction    | Arrow Points |
-| -------- | ------------ | ------------ |
-| 0        | Points RIGHT | →            |
-| 180      | Points LEFT  | ←            |
-| 90       | Points UP    | ↑            |
-| 270      | Points DOWN  | ↓            |
+For KiCad global labels, both `rotation` AND `justify` values must be set correctly:
+
+| Rotation | Direction    | Arrow Points | Justify |
+| -------- | ------------ | ------------ | ------- |
+| 0        | Points RIGHT | →            | right   |
+| 180      | Points LEFT  | ←            | left    |
+| 90       | Points UP    | ↑            | left    |
+| 270      | Points DOWN  | ↓            | right   |
+
+**IMPORTANT**: The `justify` value determines text positioning relative to the arrow. Using the wrong justify value will cause the label to appear to point in the wrong direction visually.
+
+**KiCad Format Example:**
+
+```lisp
+(global_label "GND in"
+    (shape input)
+    (at 50.8 53.34 0)        ; rotation 0 = points RIGHT
+    (effects
+        (font (size 1.27 1.27))
+        (justify right)       ; MUST be "right" for rotation 0
+    )
+)
+```
 
 ### Component Type Wiring Patterns
 
@@ -596,10 +613,10 @@ Both pins on same Y axis - labels extend outward from both sides:
 [← Left Label]───[Pin1]═══[Component]═══[Pin2]───[Right Label →]
 ```
 
-| Pin           | Label Direction | Rotation |
-| ------------- | --------------- | -------- |
-| Pin 1 (left)  | Points LEFT     | 180      |
-| Pin 2 (right) | Points RIGHT    | 0        |
+| Pin           | Label Direction | Rotation | Justify |
+| ------------- | --------------- | -------- | ------- |
+| Pin 1 (left)  | Points LEFT     | 180      | left    |
+| Pin 2 (right) | Points RIGHT    | 0        | right   |
 
 **Example - LED (LED1):**
 
@@ -621,9 +638,9 @@ FASTON 1217754-1 is a quick-connect terminal. Label points toward the input side
 [← Input Label]───[Pin]═══[FASTON]
 ```
 
-| Pin   | Label Direction | Rotation |
-| ----- | --------------- | -------- |
-| Pin 1 | Points LEFT     | 180      |
+| Pin   | Label Direction | Rotation | Justify |
+| ----- | --------------- | -------- | ------- |
+| Pin 1 | Points LEFT     | 180      | left    |
 
 **Example - FASTON U12 (+12V input):**
 
@@ -659,12 +676,61 @@ Headers with all pins on one side - all labels point away from component body:
                     └─────────────┘
 ```
 
-| Pin Side | Label Direction | Rotation |
-| -------- | --------------- | -------- |
-| Left     | Points LEFT     | 180      |
-| Right    | Points RIGHT    | 0        |
+| Pin Side | Label Direction | Rotation | Justify |
+| -------- | --------------- | -------- | ------- |
+| Left     | Points LEFT     | 180      | left    |
+| Right    | Points RIGHT    | 0        | right   |
 
-#### 5. IDC Headers (16-pin Eurorack)
+#### 5. Two-Pin Screw Terminals (P1, P2 - Vertical Wiring Pattern)
+
+For 2-pin screw terminals with vertical wire routing, use this pattern:
+
+```
+           [Terminal]
+             ┌────┐
+             │1  2│
+             └─┬──┘
+               │
+               │ ← Vertical wires go DOWN
+               │
+[← Left Label]─┴─[Right Label →]
+```
+
+| Pin           | Label Direction | Rotation | Justify |
+| ------------- | --------------- | -------- | ------- |
+| Pin 1 (left)  | Points LEFT     | 180      | left    |
+| Pin 2 (right) | Points RIGHT    | 0        | right   |
+
+**Example - P2 (-12V and GND screw terminal):**
+
+```
+             P2
+           ┌────┐
+           │1  2│
+           └─┬──┘
+             │
+[← -12V in]──┴──[GND in →]
+```
+
+**Example - P1 (+12V and GND screw terminal):**
+
+```
+             P1
+           ┌────┐
+           │1  2│
+           └─┬──┘
+             │
+[← +12V in]──┴──[GND in →]
+```
+
+**Key Points:**
+
+- Both labels at the SAME Y level (below the terminal)
+- Vertical wires from pins meet a horizontal bus
+- Left label extends LEFT with rotation 180, justify left
+- Right label extends RIGHT with rotation 0, justify right
+
+#### 6. IDC Headers (16-pin Eurorack)
 
 IDC headers have pins on both left and right sides:
 

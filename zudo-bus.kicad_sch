@@ -2907,16 +2907,6 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 175.26) (xy 135.89 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1e9d4406-3d50-418d-bce2-958cba1e172b")
-	)
-	(wire
-		(pts
 			(xy 242.57 309.88) (xy 247.65 309.88)
 		)
 		(stroke
@@ -3247,7 +3237,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 -27.94) (xy 106.68 -27.94)
+			(xy 109.22 -44.45) (xy 104.14 -44.45)
 		)
 		(stroke
 			(width 0)
@@ -3467,7 +3457,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 53.34) (xy 50.8 53.34)
+			(xy 29.21 55.88) (xy 34.29 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3827,7 +3817,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 53.34) (xy 38.1 53.34)
+			(xy 26.67 55.88) (xy 21.59 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3997,7 +3987,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 -27.94) (xy 127 -27.94)
+			(xy 119.38 -44.45) (xy 124.46 -44.45)
 		)
 		(stroke
 			(width 0)
@@ -4857,16 +4847,6 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 52.07) (xy 72.39 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f0000001-0001-0001-0001-000000000005")
-	)
-	(wire
-		(pts
 			(xy 226.06 137.16) (xy 231.14 137.16)
 		)
 		(stroke
@@ -5047,16 +5027,16 @@
 	)
 	(global_label "GND rail"
 		(shape input)
-		(at 81.28 -29.21 0)
+		(at 81.28 -29.21 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "0dd86325-3b2e-4f0a-84f1-d9b4ab7644ca")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 86.36 -29.21 0)
+			(at 76.2 -29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5087,16 +5067,16 @@
 	)
 	(global_label "GND rail"
 		(shape input)
-		(at 134.62 128.27 0)
+		(at 134.62 128.27 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "14d4a99e-e3d5-4b8a-a58b-204fb320466c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 139.7 128.27 0)
+			(at 129.54 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5247,16 +5227,16 @@
 	)
 	(global_label "GND rail"
 		(shape input)
-		(at 90.17 -13.97 0)
+		(at 90.17 -13.97 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "225df35a-b876-4dfb-92da-509004a5e4b3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 95.25 -13.97 0)
+			(at 85.09 -13.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5307,16 +5287,16 @@
 	)
 	(global_label "LED1_R1"
 		(shape input)
-		(at 134.62 83.82 0)
+		(at 134.62 83.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "2698a3f5-3635-4b4a-afe0-f7504c407350")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 139.7 83.82 0)
+			(at 129.54 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5447,16 +5427,16 @@
 	)
 	(global_label "+12V in"
 		(shape input)
-		(at 71.12 57.15 0)
+		(at 71.12 57.15 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "3e45feda-1d68-4cff-b4ca-9e962791a6c3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 76.2 57.15 0)
+			(at 66.04 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5507,7 +5487,7 @@
 	)
 	(global_label "GND in"
 		(shape input)
-		(at 50.8 53.34 0)
+		(at 34.29 55.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5516,7 +5496,7 @@
 		)
 		(uuid "447df9bd-aca6-4f50-b920-0067b2f4233c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 45.72 53.34 0)
+			(at 29.21 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5567,16 +5547,16 @@
 	)
 	(global_label "+5V rail"
 		(shape input)
-		(at 247.65 354.33 0)
+		(at 247.65 354.33 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "4af53958-1538-4885-8a2d-45490bf5266c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 354.33 180)
+			(at 242.57 354.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5587,16 +5567,16 @@
 	)
 	(global_label "LED1_R1"
 		(shape input)
-		(at 68.58 140.97 0)
+		(at 68.58 140.97 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "4f56d4fc-3017-4e03-8fd9-2ed16e906e1a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 140.97 0)
+			(at 63.5 140.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5767,16 +5747,16 @@
 	)
 	(global_label "LDO out"
 		(shape input)
-		(at 100.33 176.53 0)
+		(at 100.33 176.53 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "74852d09-4e13-4d52-a825-ee8e6d1cbaaf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.33 176.53 180)
+			(at 95.25 176.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5807,7 +5787,7 @@
 	)
 	(global_label "GND rail"
 		(shape input)
-		(at 127 -27.94 0)
+		(at 124.46 -44.45 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5816,7 +5796,7 @@
 		)
 		(uuid "7f0113df-e597-4947-82a5-8fde8434d019")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 121.92 -27.94 0)
+			(at 119.38 -44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5847,7 +5827,7 @@
 	)
 	(global_label "-12V in"
 		(shape input)
-		(at 38.1 53.34 180)
+		(at 21.59 55.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5856,7 +5836,7 @@
 		)
 		(uuid "88e503b8-e382-4959-ad9e-320ba9a76f57")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 33.02 53.34 0)
+			(at 16.51 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5996,7 +5976,7 @@
 		)
 		(uuid "9e1703b1-379a-4c14-8513-f5f162143a99")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 115.57 175.26 180)
+			(at 115.57 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6087,16 +6067,36 @@
 	)
 	(global_label "LDO out"
 		(shape input)
-		(at 247.65 351.79 0)
+		(at 247.65 351.79 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a012579c-5dce-4d6c-86ef-c1af3e6ecbce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 242.57 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND in"
+		(shape input)
+		(at 83.82 57.15 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "a012579c-5dce-4d6c-86ef-c1af3e6ecbce")
+		(uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 351.79 180)
+			(at 88.9 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6127,16 +6127,16 @@
 	)
 	(global_label "GND rail"
 		(shape input)
-		(at 134.62 106.68 0)
+		(at 134.62 106.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "ab62a907-c057-40cf-9362-d74a5b42f9d8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 139.7 106.68 0)
+			(at 129.54 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6187,16 +6187,16 @@
 	)
 	(global_label "+5V rail"
 		(shape input)
-		(at 106.68 -27.94 0)
+		(at 104.14 -44.45 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "bb0adf48-f402-4cbd-8861-9ee2d6679e73")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 111.76 -27.94 0)
+			(at 99.06 -44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6687,16 +6687,16 @@
 	)
 	(global_label "+5V in"
 		(shape input)
-		(at 247.65 356.87 0)
+		(at 247.65 356.87 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "c3aa8235-2614-40b4-a177-b2489699d800")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 356.87 180)
+			(at 242.57 356.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8245,26 +8245,6 @@
 			)
 		)
 	)
-	(global_label "GND in"
-		(shape input)
-		(at 83.82 57.15 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 88.9 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "LDO out"
 		(shape input)
 		(at 95.25 5.08 0)
@@ -8296,7 +8276,7 @@
 		)
 		(uuid "d6304e9e-57e0-4675-9a2a-a7a913ff9ad7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.52 -29.21 0)
+			(at 106.68 -29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12318,7 +12298,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:WJ500V-5.08-2P-14-00A")
-		(at 44.45 48.26 0)
+		(at 27.94 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12327,7 +12307,7 @@
 		(fields_autoplaced yes)
 		(uuid "98eed222-8531-4522-ae22-8859253ea63f")
 		(property "Reference" "P2"
-			(at 49.53 44.4499 0)
+			(at 33.02 46.9899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12336,7 +12316,7 @@
 			)
 		)
 		(property "Value" "WJ500V-5.08-2P-14-00A"
-			(at 49.53 46.9899 0)
+			(at 33.02 49.5299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12345,7 +12325,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:CONN-TH_2P-P5.00_WJ500V-5.08-2P"
-			(at 44.45 60.96 0)
+			(at 27.94 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12354,7 +12334,7 @@
 			)
 		)
 		(property "Datasheet" "https://lcsc.com/product-detail/Terminal-Blocks_WJ500V-5-08-2P_C8465.html"
-			(at 44.45 63.5 0)
+			(at 27.94 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12363,7 +12343,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 44.45 48.26 0)
+			(at 27.94 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12372,7 +12352,7 @@
 			)
 		)
 		(property "LCSC Part" "C8465"
-			(at 44.45 66.04 0)
+			(at 27.94 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13985,7 +13965,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus-protection:SMF5.0CA_C908214")
-		(at 116.84 -27.94 0)
+		(at 114.3 -44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13994,7 +13974,7 @@
 		(fields_autoplaced yes)
 		(uuid "ff28c793-af5c-4175-af44-c4d2be0568b9")
 		(property "Reference" "D2"
-			(at 116.84 -33.02 0)
+			(at 114.3 -49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14002,7 +13982,7 @@
 			)
 		)
 		(property "Value" "SMF5.0CA_C908214"
-			(at 116.84 -30.48 0)
+			(at 114.3 -46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14010,7 +13990,7 @@
 			)
 		)
 		(property "Footprint" ":SOD-123_L2.8-W1.8-LS3.7-BI"
-			(at 116.84 -20.32 0)
+			(at 114.3 -36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14019,7 +13999,7 @@
 			)
 		)
 		(property "Datasheet" "https://lcsc.com/product-detail/TVS_FUXINSEMI-SMF5-0CA_C908214.html"
-			(at 116.84 -17.78 0)
+			(at 114.3 -34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14028,7 +14008,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 -27.94 0)
+			(at 114.3 -44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14037,7 +14017,7 @@
 			)
 		)
 		(property "LCSC Part" "C908214"
-			(at 116.84 -15.24 0)
+			(at 114.3 -31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)

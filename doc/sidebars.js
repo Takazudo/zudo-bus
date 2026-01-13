@@ -27,6 +27,7 @@ const sidebars = {
   howToSidebar: [
     'how-to/index',
     'how-to/kicad-workflow',
+    'how-to/kicad-schematic-editing',
     'how-to/kicad-parts-download',
     'how-to/create-footprint-svg',
     'how-to/create-circuit-svg',

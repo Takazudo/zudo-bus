@@ -825,6 +825,76 @@ Don't create duplicate labels when fixing orientation:
 | Header (pins right)  | N/A      | → (0)     | All pins same side |
 | IDC Header           | ← (180)  | → (0)     | Pins both sides    |
 
+## Flipping Label Direction (File Format)
+
+When you need to change a label's pointing direction without moving its position, you must change THREE properties together:
+
+### Label Direction Formula
+
+| Visual Direction | rotation | justify | Intersheetrefs Position   |
+| ---------------- | -------- | ------- | ------------------------- |
+| Points LEFT ←    | 0        | left    | +5.08 (to RIGHT of label) |
+| Points RIGHT →   | 180      | right   | -5.08 (to LEFT of label)  |
+
+### Example: Flip Label from LEFT to RIGHT
+
+**Before (pointing LEFT):**
+
+```lisp
+(global_label "+12V in"
+    (shape input)
+    (at 71.12 57.15 0)           ;; rotation 0
+    (effects
+        (font (size 1.27 1.27))
+        (justify left)            ;; justify left
+    )
+    (uuid "...")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+        (at 76.2 57.15 0)         ;; 71.12 + 5.08 = to the RIGHT
+        ...
+    )
+)
+```
+
+**After (pointing RIGHT):**
+
+```lisp
+(global_label "+12V in"
+    (shape input)
+    (at 71.12 57.15 180)         ;; rotation 180
+    (effects
+        (font (size 1.27 1.27))
+        (justify right)           ;; justify right
+    )
+    (uuid "...")
+    (property "Intersheetrefs" "${INTERSHEET_REFS}"
+        (at 66.04 57.15 0)        ;; 71.12 - 5.08 = to the LEFT
+        ...
+    )
+)
+```
+
+### Key Points
+
+1. **All three changes are required** - changing only rotation or justify alone won't work correctly
+2. **Intersheetrefs offset is always ±5.08mm** from the label position
+3. **The label position (at X Y) stays the same** - only the direction flips
+4. **Note the Intersheetrefs rotation stays 0** - only its position changes
+
+### Quick Reference for Flipping
+
+To flip **LEFT → RIGHT**:
+
+- rotation: `0` → `180`
+- justify: `left` → `right`
+- Intersheetrefs X: `label_x + 5.08` → `label_x - 5.08`
+
+To flip **RIGHT → LEFT**:
+
+- rotation: `180` → `0`
+- justify: `right` → `left`
+- Intersheetrefs X: `label_x - 5.08` → `label_x + 5.08`
+
 ## References
 
 - [KiCad File Formats Documentation](https://dev-docs.kicad.org/en/file-formats/)

@@ -180,6 +180,113 @@ Power symbols represent power nets (VCC, GND, etc.) and are special global label
 )
 ```
 
+## Symbol Positioning
+
+Symbols (components) can be repositioned by modifying their `(at X Y rotation)` property.
+
+### Symbol Format
+
+```lisp
+(symbol
+    (lib_id "zudo-bus:CC0603KRX7R9BB104")
+    (at 100 150 0)          ;; Position: X=100mm, Y=150mm, rotation=0°
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (fields_autoplaced yes) ;; KiCad auto-positions labels
+    (uuid "...")
+    (property "Reference" "C1"
+        (at 100 143.65 0)   ;; Reference label position
+        ...
+    )
+    (property "Value" "..."
+        (at 100 146.19 0)   ;; Value label position
+        ...
+    )
+    ;; ... more properties
+    (pin "1" (uuid "..."))
+    (pin "2" (uuid "..."))
+    (instances ...)
+)
+```
+
+### Symbol Position Properties
+
+| Property            | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `at` (main)         | Symbol center position `(at X Y rotation)`              |
+| `rotation`          | 0, 90, 180, or 270 degrees                              |
+| `fields_autoplaced` | `yes` = KiCad auto-positions labels relative to symbol  |
+| Property `at`       | Each property (Reference, Value, etc.) has own position |
+
+### Rotation Values
+
+| Rotation | Description           | Pin orientation             |
+| -------- | --------------------- | --------------------------- |
+| 0        | Default orientation   | Horizontal, pins left/right |
+| 90       | 90° counter-clockwise | Vertical, pins up/down      |
+| 180      | Flipped horizontal    | Horizontal, pins right/left |
+| 270      | 90° clockwise         | Vertical, pins down/up      |
+
+### Moving a Symbol
+
+To move a symbol:
+
+1. **Find the symbol** by its Reference or UUID
+2. **Update the main `(at X Y rotation)`** line
+3. **If `fields_autoplaced` is `yes`**: KiCad will recalculate label positions on load
+4. **If `fields_autoplaced` is `no`**: Manually update each property's `(at ...)` position
+
+### Example: Move C1 from (73.66, 219.71) to (100, 150)
+
+Before:
+
+```lisp
+(symbol
+    (lib_id "zudo-bus:CC0603KRX7R9BB104")
+    (at 73.66 219.71 0)
+    ...
+)
+```
+
+After:
+
+```lisp
+(symbol
+    (lib_id "zudo-bus:CC0603KRX7R9BB104")
+    (at 100 150 0)
+    ...
+)
+```
+
+### Batch Repositioning Strategy
+
+For reorganizing an entire schematic:
+
+1. **Extract current positions**: Parse all symbols and their positions
+2. **Design new layout**: Create a position map based on circuit blocks
+3. **Calculate new positions**: Use grid-aligned coordinates (2.54mm grid recommended)
+4. **Update symbols**: Modify `(at X Y rotation)` for each symbol
+5. **Reconnect with labels/wires**: Add global labels at new pin positions
+6. **Verify in KiCad**: Open schematic and run ERC
+
+### Grid Alignment
+
+KiCad uses 2.54mm (100 mil) grid by default. Recommended positions:
+
+```
+Good: (100, 150), (102.54, 152.54), (50.8, 76.2)
+Bad:  (100.5, 150.3), (101, 151)
+```
+
+Common grid values:
+
+- 2.54mm = 100 mil (standard)
+- 1.27mm = 50 mil (fine grid)
+- 5.08mm = 200 mil (coarse grid)
+
 ## Coordinate System
 
 - Origin (0, 0) is at top-left
@@ -308,6 +415,82 @@ Given capacitor C1 at position (100, 200):
         )
     )
 )
+```
+
+## Schematic Layout Organization
+
+Organize schematic components into logical blocks for readability.
+
+### Recommended Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        SCHEMATIC LAYOUT                             │
+│                                                                     │
+│  TOP AREA (Y: 0-100mm)                                              │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │ PROTECTION CIRCUITS                                         │   │
+│  │ - PTC Fuses (F1-F4)                                         │   │
+│  │ - TVS Diodes (D1-D3)                                        │   │
+│  │ - Reverse Diodes (D6-D9)                                    │   │
+│  │ - Input Bulk Caps (C5, C6)                                  │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  MIDDLE AREA (Y: 100-200mm)                                         │
+│  ┌──────────────────────┐  ┌──────────────────────┐                │
+│  │ LDO SECTION          │  │ INPUT CONNECTORS     │                │
+│  │ - LDO U1             │  │ - FASTON U12-U15     │                │
+│  │ - Caps C1-C4         │  │ - Screw P1, P2       │                │
+│  │ - Schottky D4, D5    │  │                      │                │
+│  │ - Jumper H1          │  │                      │                │
+│  └──────────────────────┘  └──────────────────────┘                │
+│                                                                     │
+│  BOTTOM AREA (Y: 200-400mm)                                         │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │ IDC HEADERS (J1-J8) with decoupling capacitors (C7-C22)     │   │
+│  │                                                             │   │
+│  │  [J1+C7+C15] [J2+C8+C16] [J3+C9+C17] [J4+C10+C18]          │   │
+│  │  [J5+C11+C19] [J6+C12+C20] [J7+C13+C21] [J8+C14+C22]       │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  INDICATORS & TEST POINTS (Right side)                              │
+│  ┌────────────────┐                                                │
+│  │ LEDs + R1-R3   │                                                │
+│  │ Test Points    │                                                │
+│  └────────────────┘                                                │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Signal Flow Direction
+
+Arrange components following signal/power flow:
+
+```
+LEFT → RIGHT: Input → Protection → Distribution → Output
+
+TOP → BOTTOM: Power sources → Regulation → Headers
+```
+
+### Spacing Guidelines
+
+| Component Type   | Horizontal Spacing | Vertical Spacing |
+| ---------------- | ------------------ | ---------------- |
+| Small (0603 cap) | 15-20mm            | 10-15mm          |
+| Medium (SOT-223) | 25-30mm            | 20-25mm          |
+| Large (IDC 16p)  | 40-50mm            | 30-40mm          |
+| Block separation | 30-50mm            | 30-50mm          |
+
+### Position Calculation Example
+
+For 8 IDC headers in 2 rows:
+
+```
+Base position: (50, 250)
+Horizontal spacing: 45mm
+Vertical spacing: 35mm
+
+J1: (50, 250)     J2: (95, 250)    J3: (140, 250)   J4: (185, 250)
+J5: (50, 285)     J6: (95, 285)    J7: (140, 285)   J8: (185, 285)
 ```
 
 ## References

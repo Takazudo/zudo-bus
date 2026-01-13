@@ -18,19 +18,19 @@ flowchart TD
 
     PROT12["Protection +12V
     Diagram2
-    F1 → D1 TVS → D6"]
+    F1 → D1 TVS → D2"]
 
     PROTN12["Protection -12V
     Diagram3
-    F3 → D3 TVS → D8"]
+    F2 → D3 TVS → D4"]
 
     PROT5["Protection +5V
     Diagram4
-    F4 → D2 TVS → D9"]
+    F3 → D5 TVS → D6"]
 
     SEL5["+5V Selection
     Diagram5
-    LDO U3/U4, D4/D5, H1"]
+    LDO, Schottky OR-ing, H1"]
 
     DIST["Distribution
     Diagram6
@@ -68,9 +68,9 @@ flowchart TD
 
 **Power Distribution Strategy:**
 
-- **+12V rail**: Input → PTC F1 → TVS D1 → Reverse D6 → Distribution → IDC Headers
-- **-12V rail**: Input → PTC F3 → TVS D3 → Reverse D8 → Distribution → IDC Headers
-- **+5V rail**: Either PSU direct (via D5) or LDO from +12V (via D4) → Selected by H1 jumper
+- **+12V rail**: Input → PTC F1 → TVS D1 → Reverse D2 → Distribution → IDC Headers
+- **-12V rail**: Input → PTC F2 → TVS D3 → Reverse D4 → Distribution → IDC Headers
+- **+5V rail**: Input → PTC F3 → TVS D5 → Reverse D6 → `+5V PSU` → OR-ing → H1 jumper → `+5V rail`
 
 ## Diagram1: Power Input Section
 
@@ -107,8 +107,8 @@ P2 (5.08mm Screw Terminal - 2 positions):
 | Component | Pin | Net     | Description      |
 | --------- | --- | ------- | ---------------- |
 | P1        | 1   | GND     | System ground    |
-| P1        | 2   | -12V in | To F3 (Diagram3) |
-| P2        | 1   | +5V in  | To F4 (Diagram4) |
+| P1        | 2   | -12V in | To F2 (Diagram3) |
+| P2        | 1   | +5V in  | To F3 (Diagram4) |
 | P2        | 2   | +12V in | To F1 (Diagram2) |
 
 </details>
@@ -120,29 +120,13 @@ The +12V rail protection consists of a PTC fuse, TVS clamp diode, and reverse po
 ```
 +12V Protection Path:
 
-+12V in ──► F1 ──► D1 (TVS) ──► D6 ──► +12V rail
-(from P1)   PTC    SMF12CA     SM4007
-            2A     clamp       reverse
-            hold   @19.9V      protect
-
-Component Details:
-
-F1 (BSMD1812-200-30V):
-  │
-  ├── Pin 1: +12V in (from P1)
-  └── Pin 2: To D1
-
-D1 (SMF12CA - TVS Diode):
-  │
-  ├── Anode 1: To F1 output
-  ├── Anode 2: GND (bidirectional TVS)
-  └── Clamping: 19.9V max
-
-D6 (SM4007PL):
-  │
-  ├── Anode: From D1/F1 output
-  ├── Cathode: +12V rail
-  └── Purpose: Blocks reverse current
++12V in ──► F1 ──┬──► D2 ──► +12V rail
+(from P2)   PTC  │   SM4007
+            2A   │   reverse protect
+            hold │
+                 └── D1 (TVS) ── GND
+                     SMF12CA
+                     clamp @19.9V
 ```
 
 <details>
@@ -154,21 +138,18 @@ D6 (SM4007PL):
 | --- | ---------------- | -------------------------------------- |
 | F1  | BSMD1812-200-30V | PTC fuse, 2A hold, 4A trip             |
 | D1  | SMF12CA          | TVS diode, 12V standoff, clamps @19.9V |
-| D6  | SM4007PL         | 1N4007 equivalent, reverse protection  |
+| D2  | SM4007PL         | 1N4007 equivalent, reverse protection  |
 
 **Connections:**
 
-- `+12V in` → `F1 Pin 1`
-- `F1 Pin 2` → `D1 anode`
-- `D1 cathode` → `GND` (TVS is bidirectional)
-- `F1 Pin 2` → `D6 anode`
-- `D6 cathode` → `+12V rail` net
-
-**Protection Order:**
-
-1. PTC fuse (F1) - Overcurrent protection, self-resetting
-2. TVS diode (D1) - Transient voltage clamping
-3. Reverse diode (D6) - Reverse polarity protection
+| Component | Pin | Net        | Description     |
+| --------- | --- | ---------- | --------------- |
+| F1        | 1   | +12V in    | From P2 Pin 2   |
+| F1        | 2   | (junction) | To D1 and D2    |
+| D1        | A1  | (junction) | TVS clamp       |
+| D1        | A2  | GND        | TVS to ground   |
+| D2        | 2   | (junction) | Anode from F1   |
+| D2        | 1   | +12V rail  | Cathode to rail |
 
 </details>
 
@@ -179,19 +160,16 @@ The -12V rail uses the same protection topology as +12V but with appropriate pol
 ```
 -12V Protection Path:
 
--12V in ──► F3 ──► D3 (TVS) ──► D8 ──► -12V rail
-(from P2)   PTC    SMF12CA     SM4007
-            2A     clamp       reverse
-            hold   @19.9V      protect
+-12V in ──► F2 ──┬──► D4 ──► -12V rail
+(from P1)   PTC  │   SM4007
+            2A   │   reverse protect
+            hold │   (REVERSED polarity)
+                 └── D3 (TVS) ── GND
+                     SMF12CA
+                     clamp @19.9V
 
-Note: For -12V, "reverse" protection means blocking
-      current flowing from GND toward -12V rail.
-
-D8 (SM4007PL):
-  │
-  ├── Cathode: From -12V in (after F3)
-  ├── Anode: -12V rail
-  └── Purpose: Blocks reverse current from GND
+Note: D4 is oriented OPPOSITE to D2 (+12V path).
+      Cathode at input, Anode at rail.
 ```
 
 <details>
@@ -201,17 +179,20 @@ D8 (SM4007PL):
 
 | Ref | Part             | Description                            |
 | --- | ---------------- | -------------------------------------- |
-| F3  | BSMD1812-150-33V | PTC fuse, 1.5A hold, 3A trip           |
+| F2  | BSMD1812-200-30V | PTC fuse, 2A hold, 4A trip             |
 | D3  | SMF12CA          | TVS diode, 12V standoff, clamps @19.9V |
-| D8  | SM4007PL         | 1N4007 equivalent, reverse protection  |
+| D4  | SM4007PL         | 1N4007 equivalent, reverse protection  |
 
 **Connections:**
 
-- `-12V in` → `F3 Pin 1`
-- `F3 Pin 2` → `D3 anode`
-- `D3 cathode` → `GND` (TVS is bidirectional)
-- `F3 Pin 2` → `D8 cathode`
-- `D8 anode` → `-12V rail` net
+| Component | Pin | Net        | Description              |
+| --------- | --- | ---------- | ------------------------ |
+| F2        | 1   | -12V in    | From P1 Pin 2            |
+| F2        | 2   | (junction) | To D3 and D4             |
+| D3        | A1  | (junction) | TVS clamp                |
+| D3        | A2  | GND        | TVS to ground            |
+| D4        | 1   | (junction) | Cathode from F2 (note!)  |
+| D4        | 2   | -12V rail  | Anode to rail (reversed) |
 
 </details>
 
@@ -220,15 +201,18 @@ D8 (SM4007PL):
 When using PSU-provided +5V (not LDO), this protection path is active.
 
 ```
-+5V PSU Protection Path:
++5V Protection Path:
 
-+5V PSU ──► F4 ──► D2 (TVS) ──► D9 ──► +5V in net
-input       PTC    SMF5.0CA    SM4007
-            1.5A   clamp       reverse
-            hold   @9.2V       protect
++5V in ──► F3 ──┬──► D6 ──► +5V PSU
+(from P2)  PTC  │   SM4007
+           1.5A │   reverse protect
+           hold │
+                └── D5 (TVS) ── GND
+                    SMF5.0CA
+                    clamp @9.2V
 
 Then to +5V selection (Diagram5):
-+5V in net ──► D5 (SS14 Schottky) ──► H1 jumper ──► +5V rail
++5V PSU ──► Schottky OR-ing ──► H1 jumper ──► +5V rail
 ```
 
 <details>
@@ -238,17 +222,20 @@ Then to +5V selection (Diagram5):
 
 | Ref | Part             | Description                          |
 | --- | ---------------- | ------------------------------------ |
-| F4  | BSMD1812-150-33V | PTC fuse, 1.5A hold                  |
-| D2  | SMF5.0CA         | TVS diode, 5V standoff, clamps @9.2V |
-| D9  | SM4007PL         | Reverse protection                   |
+| F3  | BSMD1812-150-33V | PTC fuse, 1.5A hold                  |
+| D5  | SMF5.0CA         | TVS diode, 5V standoff, clamps @9.2V |
+| D6  | SM4007PL         | Reverse protection                   |
 
 **Connections:**
 
-- `+5V PSU` → `F4 Pin 1`
-- `F4 Pin 2` → `D2 anode`
-- `D2 cathode` → `GND`
-- `F4 Pin 2` → `D9 anode`
-- `D9 cathode` → `+5V in` net → To D5 in Diagram5
+| Component | Pin | Net        | Description       |
+| --------- | --- | ---------- | ----------------- |
+| F3        | 1   | +5V in     | From P2 Pin 1     |
+| F3        | 2   | (junction) | To D5 and D6      |
+| D5        | A1  | (junction) | TVS clamp         |
+| D5        | A2  | GND        | TVS to ground     |
+| D6        | 2   | (junction) | Anode from F3     |
+| D6        | 1   | +5V PSU    | Cathode to OR-ing |
 
 </details>
 
@@ -490,32 +477,32 @@ LED1 (Power Indicator):
 
 ### All Components by Diagram
 
-| Diagram  | Components              |
-| -------- | ----------------------- |
-| Diagram1 | P1, P2                  |
-| Diagram2 | F1, D1, D6              |
-| Diagram3 | F3, D3, D8              |
-| Diagram4 | F4, D2, D9              |
-| Diagram5 | U3, U4, D4, D5, H1, C21 |
-| Diagram6 | U12, U13, U14, U15      |
-| Diagram7 | U2, U5-U11, C1-C23      |
-| Diagram8 | LED1, R1                |
+| Diagram  | Components               |
+| -------- | ------------------------ |
+| Diagram1 | P1, P2                   |
+| Diagram2 | F1, D1 (TVS), D2         |
+| Diagram3 | F2, D3 (TVS), D4         |
+| Diagram4 | F3, D5 (TVS), D6         |
+| Diagram5 | LDO, Schottky OR-ing, H1 |
+| Diagram6 | (Distribution)           |
+| Diagram7 | IDC Headers + Caps       |
+| Diagram8 | Status LEDs              |
 
 ### Net Names
 
-| Net       | Description                      |
-| --------- | -------------------------------- |
-| +12V in   | Input from PSU before protection |
-| -12V in   | Input from PSU before protection |
-| +5V in    | Input from PSU before protection |
-| +12V rail | Protected +12V distribution      |
-| -12V rail | Protected -12V distribution      |
-| +5V rail  | Selected +5V (LDO or PSU)        |
-| GND rail  | System ground                    |
-| LDO out   | +5V from on-board LDO            |
-| LDO in    | +12V input to LDO                |
-| CV rail   | Optional CV bus                  |
-| GATE rail | Optional GATE bus                |
+| Net       | Description                           |
+| --------- | ------------------------------------- |
+| +12V in   | Input from PSU before protection      |
+| -12V in   | Input from PSU before protection      |
+| +5V in    | Input from PSU before protection      |
+| +12V rail | Protected +12V distribution           |
+| -12V rail | Protected -12V distribution           |
+| +5V PSU   | Protected PSU +5V (before OR-ing)     |
+| +5V LDO   | LDO output (before OR-ing)            |
+| +5V rail  | Selected +5V (after jumper selection) |
+| GND       | System ground                         |
+| CV rail   | Optional CV bus                       |
+| GATE rail | Optional GATE bus                     |
 
 ## See Also
 

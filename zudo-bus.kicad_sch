@@ -9552,46 +9552,6 @@
 	)
 	(global_label "+12V in"
 		(shape input)
-		(at 67.31 52.07 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "e0000001-0001-0001-0001-000000000005")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.39 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "-12V in"
-		(shape input)
-		(at 34.29 48.26 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "e0000001-0001-0001-0001-000000000006")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 39.37 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "+12V in"
-		(shape input)
 		(at 137.16 -2.54 180)
 		(effects
 			(font
@@ -12969,26 +12929,6 @@
 			(type default)
 		)
 		(uuid "7ad2ff0a-237e-4f50-a9da-3ec522c9b3b4")
-	)
-	(wire
-		(pts
-			(xy 72.39 52.07) (xy 67.31 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8946d727-7f59-4a78-aea7-c50e61c0a53e")
-	)
-	(wire
-		(pts
-			(xy 39.37 48.26) (xy 34.29 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac021d4e-1a0b-46c2-9338-de2eced17a82")
 	)
 	(wire
 		(pts

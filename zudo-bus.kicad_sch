@@ -11230,6 +11230,806 @@
 			)
 		)
 	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 96.52 -29.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000001")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.52 -29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 86.36 -29.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000002")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 86.36 -29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 111.76 -27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000003")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 111.76 -27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 121.92 -27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000004")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.92 -27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 105.41 -13.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000005")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 105.41 -13.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 95.25 -13.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000006")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.25 -13.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V in"
+		(shape input)
+		(at 54.61 3.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000007")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 54.61 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 64.77 3.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000008")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 67.31 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000009")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 67.31 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V in"
+		(shape input)
+		(at 77.47 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000010")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 77.47 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V in"
+		(shape input)
+		(at 82.55 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000011")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 82.55 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 92.71 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000012")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 92.71 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LDO out"
+		(shape input)
+		(at 100.33 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000013")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 100.33 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 110.49 5.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000014")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 110.49 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LDO out"
+		(shape input)
+		(at 105.41 176.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000015")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 105.41 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LDO in"
+		(shape input)
+		(at 115.57 176.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000016")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 115.57 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V JP1"
+		(shape input)
+		(at 120.65 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000017")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V in"
+		(shape input)
+		(at 130.81 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000018")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 130.81 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V in"
+		(shape input)
+		(at 76.2 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000019")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 76.2 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND in"
+		(shape input)
+		(at 78.74 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000020")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.74 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V in"
+		(shape input)
+		(at 43.18 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000021")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 43.18 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND in"
+		(shape input)
+		(at 45.72 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000022")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 45.72 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 152.4 31.75 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000023")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 152.4 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LDO in"
+		(shape input)
+		(at 153.67 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000024")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 153.67 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LED1_R1"
+		(shape input)
+		(at 139.7 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000025")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 139.7 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 149.86 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000026")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 139.7 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000027")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 139.7 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 149.86 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000028")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND rail"
+		(shape input)
+		(at 139.7 128.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000029")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 139.7 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 149.86 128.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000030")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LED1_R1"
+		(shape input)
+		(at 73.66 140.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000031")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 83.82 140.97 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000032")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.82 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 119.38 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000033")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 119.38 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V in"
+		(shape input)
+		(at 205.74 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000034")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 205.74 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V in"
+		(shape input)
+		(at 227.33 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000035")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V in"
+		(shape input)
+		(at 247.65 34.29 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000036")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.65 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND in"
+		(shape input)
+		(at 224.79 19.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000037")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 224.79 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LDO out"
+		(shape input)
+		(at 252.73 351.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000038")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 252.73 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 252.73 354.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000039")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 252.73 354.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V in"
+		(shape input)
+		(at 252.73 356.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "p0000001-0001-0001-0001-000000000040")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 252.73 356.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

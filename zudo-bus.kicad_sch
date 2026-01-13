@@ -11557,7 +11557,7 @@
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "p0000001-0001-0001-0001-000000000020")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
@@ -11597,7 +11597,7 @@
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "p0000001-0001-0001-0001-000000000022")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"

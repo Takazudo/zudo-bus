@@ -4,15 +4,15 @@ Complete list of components for the zudo-bus board.
 
 ## Summary
 
-| Category           | Count | Notes                                      |
-| ------------------ | ----- | ------------------------------------------ |
-| Connectors         | 11    | Input (2) + IDC Output (8) + Jumper (1)    |
-| Active Components  | 1     | +5V LDO regulator                          |
-| Passive Components | 25    | Capacitors (22), resistors (3)             |
-| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2) |
-| Indicators         | 3     | Power rail LEDs                            |
-| Test Points        | 6     | TP1-TP6 for debugging                      |
-| **Total**          | ~60   | Full protection configuration              |
+| Category           | Count | Notes                                        |
+| ------------------ | ----- | -------------------------------------------- |
+| Connectors         | 15    | Input (2) + Chain (4) + IDC (8) + Jumper (1) |
+| Active Components  | 1     | +5V LDO regulator                            |
+| Passive Components | 25    | Capacitors (22), resistors (3)               |
+| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2)   |
+| Indicators         | 3     | Power rail LEDs                              |
+| Test Points        | 6     | TP1-TP6 for debugging                        |
+| **Total**          | ~60   | Full protection configuration                |
 
 ## PCB Design
 
@@ -21,22 +21,6 @@ Complete list of components for the zudo-bus board.
 ---
 
 ## Power Input Connectors
-
-### FASTON 250 Terminals (x4)
-
-| Designator | Value     | Package | LCSC                                             | Function   |
-| ---------- | --------- | ------- | ------------------------------------------------ | ---------- |
-| J_F1       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +12V input |
-| J_F2       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | -12V input |
-| J_F3       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +5V input  |
-| J_F4       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | GND        |
-
-**Notes:** Same FASTON terminals as zudo-pd PSU output. Through-hole, hand-solderable.
-
-**KiCad:**
-
-- Symbol: `1217754-1`
-- Footprint: `CONN-TH_1217754-1.kicad_mod`
 
 ### Screw Terminals 5.08mm (x2)
 
@@ -52,7 +36,7 @@ Complete list of components for the zudo-bus board.
 | P1       | GND    | -12V in |
 | P2       | +5V in | +12V in |
 
-**Notes:** 2-position screw terminals for easy wire connection. Alternative to FASTON.
+**Notes:** 2-position screw terminals for easy wire connection.
 
 **KiCad:**
 
@@ -63,6 +47,26 @@ Complete list of components for the zudo-bus board.
 
 - [C2915639](https://jlcpcb.com/partdetail/C2915639) - DB128V-5.08-2P (19K stock)
 - [C71370](https://jlcpcb.com/partdetail/C71370) - WJ2EDGK-5.08-2P (75K stock, pluggable)
+
+---
+
+## Bus Board Chaining Connectors
+
+### FASTON 250 Terminals (x4)
+
+| Designator | Value     | Package | LCSC                                             | Function   |
+| ---------- | --------- | ------- | ------------------------------------------------ | ---------- |
+| P3         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | -12V chain |
+| P4         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | GND chain  |
+| P5         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +12V chain |
+| P6         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +5V chain  |
+
+**Notes:** FASTON terminals for daisy-chaining multiple bus boards. Through-hole, hand-solderable. 7A rated per terminal. Compatible with standard 6.3mm FASTON receptacles.
+
+**KiCad:**
+
+- Symbol: `1217754-1`
+- Footprint: `CONN-TH_1217754-1.kicad_mod`
 
 ---
 
@@ -430,7 +434,7 @@ From zudo-bus v1/v2:
 | `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223        | U1 (LDO regulator)                  |
 | `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm         | JP1 (jumper header)                 |
 | `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J1-J8 (IDC headers)                 |
-| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | J_F1-J_F4 (FASTON terminals)        |
-| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | J_S1-J_S4 (screw terminals)         |
+| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | P3-P6 (FASTON chain output)         |
+| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | P1, P2 (screw terminals)            |
 
 **Total footprints:** 16 files

@@ -32,9 +32,9 @@ flowchart TD
     Diagram5
     LDO, Schottky OR-ing, H1"]
 
-    DIST["Distribution
+    DIST["Chaining Output
     Diagram6
-    U12, U13, U14, U15"]
+    P3, P4, P5, P6 FASTON"]
 
     IDC["IDC Headers
     Diagram7
@@ -53,17 +53,20 @@ flowchart TD
     IN -->|"+5V PSU"| PROT5
     IN -->|"+12V"| SEL5
 
+    PROT12 --> IDC
+    PROTN12 --> IDC
+    PROT5 --> SEL5
+    SEL5 --> IDC
+
     PROT12 --> DIST
     PROTN12 --> DIST
-    PROT5 --> SEL5
     SEL5 --> DIST
 
-    DIST --> IDC
     IDC --> OUT1
     IDC --> OUT2
     IDC --> OUT3
 
-    DIST --> LED
+    PROT12 --> LED
 ```
 
 **Power Distribution Strategy:**
@@ -310,28 +313,23 @@ OR-ing Diodes (D4, D5):
 
 </details>
 
-## Diagram6: Power Distribution (U12-U15)
+## Diagram6: Bus Board Chaining (FASTON Connectors)
 
-Distribution ICs buffer and distribute power to all IDC headers.
+FASTON 250 terminals allow daisy-chaining multiple bus boards or parallel power input.
 
 ```
-Power Distribution:
+Bus Board Chaining (Input Side):
 
-                     Distribution ICs (1217754-1)
+-12V in ──────► P3 ──────► To/from another bus board -12V
+GND     ──────► P4 ──────► To/from another bus board GND
++12V in ──────► P5 ──────► To/from another bus board +12V
++5V in  ──────► P6 ──────► To/from another bus board +5V
 
-+12V rail ──► U12 ──┬──► +12V to IDC headers
-                   │
-+12V rail ──► U15 ──┘
-
--12V rail ──► U13 ──────► -12V to IDC headers
-
-+5V rail ──► U14 ──────► +5V to IDC headers
-
-
-Each distribution IC provides:
-- Low impedance power distribution
-- Current sharing capability
-- Clean power to multiple outputs
+FASTON 250 terminals (1217754-1):
+- Quick connect/disconnect for modular expansion
+- 7A rated per terminal
+- Compatible with standard 6.3mm FASTON receptacles
+- Connected to input nets (each board has its own protection)
 ```
 
 <details>
@@ -339,21 +337,21 @@ Each distribution IC provides:
 
 **Components:**
 
-| Ref | Part      | Description                  |
-| --- | --------- | ---------------------------- |
-| U12 | 1217754-1 | +12V distribution            |
-| U13 | 1217754-1 | -12V distribution            |
-| U14 | 1217754-1 | +5V distribution             |
-| U15 | 1217754-1 | +12V distribution (parallel) |
+| Ref | Part      | Description         |
+| --- | --------- | ------------------- |
+| P3  | 1217754-1 | -12V chain (FASTON) |
+| P4  | 1217754-1 | GND chain (FASTON)  |
+| P5  | 1217754-1 | +12V chain (FASTON) |
+| P6  | 1217754-1 | +5V chain (FASTON)  |
 
 **Connections:**
 
-- `+12V rail` → `U12 input`, `U15 input`
-- `-12V rail` → `U13 input`
-- `+5V rail` → `U14 input`
-- `U12 output`, `U15 output` → `+12V` to IDC headers
-- `U13 output` → `-12V` to IDC headers
-- `U14 output` → `+5V` to IDC headers
+| Component | Pin | Net     | Description            |
+| --------- | --- | ------- | ---------------------- |
+| P3        | 1   | -12V in | To next bus board -12V |
+| P4        | 1   | GND     | To next bus board GND  |
+| P5        | 1   | +12V in | To next bus board +12V |
+| P6        | 1   | +5V in  | To next bus board +5V  |
 
 </details>
 
@@ -484,7 +482,7 @@ LED1 (Power Indicator):
 | Diagram3 | F2, D3 (TVS), D4         |
 | Diagram4 | F3, D5 (TVS), D6         |
 | Diagram5 | LDO, Schottky OR-ing, H1 |
-| Diagram6 | (Distribution)           |
+| Diagram6 | P3, P4, P5, P6 (FASTON)  |
 | Diagram7 | IDC Headers + Caps       |
 | Diagram8 | Status LEDs              |
 

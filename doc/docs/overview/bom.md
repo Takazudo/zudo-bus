@@ -4,15 +4,15 @@ Complete list of components for the zudo-bus board.
 
 ## Summary
 
-| Category           | Count | Notes                                      |
-| ------------------ | ----- | ------------------------------------------ |
-| Connectors         | 13    | Input + Output + Jumper                    |
-| Active Components  | 1     | +5V LDO regulator                          |
-| Passive Components | 25    | Capacitors (22), resistors (3)             |
-| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2) |
-| Indicators         | 3     | Power rail LEDs                            |
-| Test Points        | 6     | TP1-TP6 for debugging                      |
-| **Total**          | ~62   | Full protection configuration              |
+| Category           | Count | Notes                                        |
+| ------------------ | ----- | -------------------------------------------- |
+| Connectors         | 15    | Input (2) + Chain (4) + IDC (8) + Jumper (1) |
+| Active Components  | 1     | +5V LDO regulator                            |
+| Passive Components | 25    | Capacitors (22), resistors (3)               |
+| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2)   |
+| Indicators         | 3     | Power rail LEDs                              |
+| Test Points        | 6     | TP1-TP6 for debugging                        |
+| **Total**          | ~60   | Full protection configuration                |
 
 ## PCB Design
 
@@ -22,32 +22,21 @@ Complete list of components for the zudo-bus board.
 
 ## Power Input Connectors
 
-### FASTON 250 Terminals (x4)
+### Screw Terminals 5.08mm (x2)
 
-| Designator | Value     | Package | LCSC                                             | Function   |
-| ---------- | --------- | ------- | ------------------------------------------------ | ---------- |
-| J_F1       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +12V input |
-| J_F2       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | -12V input |
-| J_F3       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +5V input  |
-| J_F4       | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | GND        |
+| Designator | Value          | Package   | LCSC                                         | Function           |
+| ---------- | -------------- | --------- | -------------------------------------------- | ------------------ |
+| P1         | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | -12V and GND input |
+| P2         | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +12V and +5V input |
 
-**Notes:** Same FASTON terminals as zudo-pd PSU output. Through-hole, hand-solderable.
+**Pin Assignments:**
 
-**KiCad:**
+| Terminal | Pin 1  | Pin 2   |
+| -------- | ------ | ------- |
+| P1       | GND    | -12V in |
+| P2       | +5V in | +12V in |
 
-- Symbol: `1217754-1`
-- Footprint: `CONN-TH_1217754-1.kicad_mod`
-
-### Screw Terminals 5.08mm (x4)
-
-| Designator | Value          | Package   | LCSC                                         | Function   |
-| ---------- | -------------- | --------- | -------------------------------------------- | ---------- |
-| J_S1       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +12V input |
-| J_S2       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | -12V input |
-| J_S3       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | +5V input  |
-| J_S4       | WJ500V-5.08-2P | 5.08mm 2P | [C8465](https://jlcpcb.com/partdetail/C8465) | GND        |
-
-**Notes:** 2-position screw terminals for easy wire connection. Alternative to FASTON.
+**Notes:** 2-position screw terminals for easy wire connection.
 
 **KiCad:**
 
@@ -61,15 +50,35 @@ Complete list of components for the zudo-bus board.
 
 ---
 
+## Bus Board Chaining Connectors
+
+### FASTON 250 Terminals (x4)
+
+| Designator | Value     | Package | LCSC                                             | Function   |
+| ---------- | --------- | ------- | ------------------------------------------------ | ---------- |
+| P3         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | -12V chain |
+| P4         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | GND chain  |
+| P5         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +12V chain |
+| P6         | 1217754-1 | CONN-TH | [C305825](https://jlcpcb.com/partdetail/C305825) | +5V chain  |
+
+**Notes:** FASTON terminals for daisy-chaining multiple bus boards. Through-hole, hand-solderable. 7A rated per terminal. Compatible with standard 6.3mm FASTON receptacles.
+
+**KiCad:**
+
+- Symbol: `1217754-1`
+- Footprint: `CONN-TH_1217754-1.kicad_mod`
+
+---
+
 ## Power Output Connectors
 
 ### 16-Pin IDC Headers (x8)
 
 | Designator | Value        | Package    | LCSC                                               | Function      |
 | ---------- | ------------ | ---------- | -------------------------------------------------- | ------------- |
-| J1-J8      | 2541WR-2x08P | 2x8 2.54mm | [C5383092](https://jlcpcb.com/partdetail/C5383092) | Module output |
+| J101-J108  | 2541WR-2x08P | 2x8 2.54mm | [C5383092](https://jlcpcb.com/partdetail/C5383092) | Module output |
 
-**Notes:** Standard Eurorack 16-pin power connector. Through-hole, right-angle.
+**Notes:** Standard Eurorack 16-pin power connector. Through-hole, right-angle. Numbering scheme: J1XX where XX = unit number (01-08).
 
 **KiCad:**
 
@@ -137,16 +146,16 @@ Complete list of components for the zudo-bus board.
 | C5         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +12V input bulk cap           |
 | C6         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | -12V input bulk cap           |
 | C23        | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +5V rail bulk cap (after JP1) |
-| C7-C14     | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
-| C15-C22    | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
+| C101-C108  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
+| C201-C208  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
 
 **Notes:**
 
 - C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAYNNNE, 25V X5R, Basic Part)
 - C5, C6: 22µF bulk capacitors (Samsung CL21A226MAYNNNE, 25V X5R) for better transient response during module power-on
 - C23: 22µF bulk capacitor for +5V rail, placed after JP1 Pin 2 (provides filtering regardless of LDO or PSU direct mode)
-- C7-C14: +12V per-header decoupling capacitors near each IDC output
-- C15-C22: -12V per-header decoupling capacitors near each IDC output
+- C101-C108: -12V per-header decoupling capacitors (C1XX matches J1XX header number)
+- C201-C208: +12V per-header decoupling capacitors (C2XX matches J1XX header number)
 
 **DC Bias Derating Note:** X5R ceramic capacitors lose capacitance under DC bias. At 12V on a 25V-rated cap, expect ~65% of nominal capacitance (22µF → ~14µF effective). This is acceptable for bulk filtering purposes.
 
@@ -168,28 +177,42 @@ Complete list of components for the zudo-bus board.
 
 **KiCad:**
 
-- Symbol: `0805WAF1001T5E` (1kΩ)
-- Footprint: `R0805.kicad_mod`
+- Symbol: `RC0603FR-071KL` (1kΩ)
+- Footprint: `R0603.kicad_mod`
 
 ---
 
 ## Protection Components
 
+### TVS Diodes (Transient Protection)
+
+| Designator | Value    | Package   | LCSC                                             | Function             |
+| ---------- | -------- | --------- | ------------------------------------------------ | -------------------- |
+| D1         | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | +12V transient clamp |
+| D3         | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | -12V transient clamp |
+| D5         | SMF5.0CA | SOD-123   | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
+
+**Notes:** Bidirectional TVS diodes for ESD and transient spike protection. Connected between rail junction and GND.
+
+**KiCad:**
+
+- Symbol: `SMF12CA_C353317`, `SMF5.0CA_C908214`
+- Footprint: `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod`
+
 ### Reverse Polarity Diodes
 
-| Designator | Value    | Package   | LCSC                                           | Function                  |
-| ---------- | -------- | --------- | ---------------------------------------------- | ------------------------- |
-| D1         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection   |
-| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection   |
-| D3         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V PSU path protection   |
-| D4         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V LDO output protection |
+| Designator | Value    | Package   | LCSC                                           | Function                |
+| ---------- | -------- | --------- | ---------------------------------------------- | ----------------------- |
+| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection |
+| D4         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection |
+| D6         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V reverse protection  |
 
-**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. D3 protects the +5V PSU input path, D4 protects the LDO output path.
+**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. In series with each rail after PTC fuse.
 
 **Protection Order (Input to Output):**
 
 ```
-Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
+Input → PTC Fuse → TVS Diode (to GND) → Reverse Diode → Rail
 ```
 
 **KiCad:**
@@ -201,33 +224,28 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 | Designator | Value | Package       | LCSC                                         | Function                    |
 | ---------- | ----- | ------------- | -------------------------------------------- | --------------------------- |
-| D5         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V PSU path OR-ing diode   |
-| D6         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V LDO output OR-ing diode |
+| D7         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V LDO output OR-ing diode |
+| D8         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V PSU path OR-ing diode   |
 
-**Notes:** SS14 Schottky diodes (40V, 1A) create an OR-ing configuration to prevent backfeed between the LDO and PSU +5V sources. This allows safe operation even if both sources are inadvertently connected (e.g., jumper across all three JP1 pins).
-
-**Specifications (SS14):**
-
-- Reverse voltage: 40V
-- Forward current: 1A
-- Forward voltage drop: 550mV @ 1A
-- Peak surge current: 25A
-- Package: SMA (DO-214AC), Stock: 1.09M
-
-**Circuit Position:** D5 in series with PSU +5V path (before JP1 Pin 3), D6 in series with LDO output (before JP1 Pin 1).
+**Notes:** SS14 Schottky diodes (40V, 1A) create an OR-ing configuration to prevent backfeed between the LDO and PSU +5V sources.
 
 **KiCad:**
 
 - Symbol: `SS14` (in `zudo-bus-new-protection.kicad_sym`)
 - Footprint: `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`
 
-### TVS Diodes (Transient Protection)
+### Diode Summary by Diagram
 
-| Designator | Value    | Package   | LCSC                                             | Function             |
-| ---------- | -------- | --------- | ------------------------------------------------ | -------------------- |
-| TVS1       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | +12V transient clamp |
-| TVS2       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | -12V transient clamp |
-| TVS3       | SMF5.0CA | SOD-123   | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
+| Diagram  | Ref | Part     | Function                 |
+| -------- | --- | -------- | ------------------------ |
+| Diagram2 | D1  | SMF12CA  | +12V TVS (bidirectional) |
+| Diagram2 | D2  | SM4007PL | +12V reverse protection  |
+| Diagram3 | D3  | SMF12CA  | -12V TVS (bidirectional) |
+| Diagram3 | D4  | SM4007PL | -12V reverse protection  |
+| Diagram4 | D5  | SMF5.0CA | +5V TVS (bidirectional)  |
+| Diagram4 | D6  | SM4007PL | +5V reverse protection   |
+| Diagram5 | D7  | SS14     | +5V LDO OR-ing Schottky  |
+| Diagram5 | D8  | SS14     | +5V PSU OR-ing Schottky  |
 
 **Notes:** Bidirectional TVS diodes for ESD and transient spike protection. SMF12CA (Stock: 67K) has 12V standoff for ±12V rails - chosen over SMF15CA for lower clamping voltage that better protects Eurorack module components. SMF5.0CA (Stock: 66K) has 5V standoff for +5V rail.
 
@@ -255,18 +273,18 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 ### Resettable Fuses (PTC)
 
-| Designator | Value            | Package | LCSC                                             | Function                     |
-| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------------- |
-| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)        |
-| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)        |
-| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V rail overcurrent (1.5A)  |
-| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | LDO input overcurrent (1.1A) |
+| Designator | Value            | Package | LCSC                                             | Function               |
+| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------- |
+| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)  |
+| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)  |
+| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V PSU input (1.5A)   |
+| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | +5V rail output (1.1A) |
 
 **Notes:** Self-resetting PTC fuses. Trip on overcurrent, auto-reset when cooled.
 
 - F1/F2 (Stock: 120K): Main ±12V rail protection
-- F3 (Stock: 69K): +5V distribution rail protection (after JP1 Pin 2, regardless of source)
-- F4 (Stock: 50K): LDO input path protection - provides symmetric protection for the LDO, limiting input current to prevent damage if LDO shorts internally
+- F3 (Stock: 69K): +5V PSU input protection - protects TVS D5 during transients
+- F4 (Stock: 50K): +5V rail output protection - placed after JP1 jumper, protects +5V distribution from module shorts regardless of LDO or PSU source
 
 **Specifications (BSMD1812-200-30V):**
 
@@ -424,8 +442,8 @@ From zudo-bus v1/v2:
 | `F1812.kicad_mod`                            | 1812           | F1, F2, F3, F4 (PTC fuses)          |
 | `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223        | U1 (LDO regulator)                  |
 | `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm         | JP1 (jumper header)                 |
-| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J1-J8 (IDC headers)                 |
-| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | J_F1-J_F4 (FASTON terminals)        |
-| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | J_S1-J_S4 (screw terminals)         |
+| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J101-J108 (IDC headers)             |
+| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | P3-P6 (FASTON chain output)         |
+| `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | P1, P2 (screw terminals)            |
 
 **Total footprints:** 16 files

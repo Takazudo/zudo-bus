@@ -1,0 +1,8684 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "97ba6e37-4f66-4fd6-a244-8dd24aa590e2")
+	(paper "A4")
+	(lib_symbols
+		(symbol "power:GND"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "zudo-bus:2541WR-2X08P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "2541WR-2X08P"
+				(at 0 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+				(at 0 -16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C5383092"
+				(at 0 -19.05 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "2541WR-2X08P_0_1"
+				(rectangle
+					(start -5.08 11.43)
+					(end 5.08 -11.43)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -3.81 10.16)
+					(radius 0.38)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 8.89 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 6.35 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 3.81 0)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 1.27 0)
+					(length 2.54)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 -1.27 0)
+					(length 2.54)
+					(name "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 -3.81 0)
+					(length 2.54)
+					(name "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 -6.35 0)
+					(length 2.54)
+					(name "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at -7.62 -8.89 0)
+					(length 2.54)
+					(name "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 8.89 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 3.81 180)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 1.27 180)
+					(length 2.54)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 -1.27 180)
+					(length 2.54)
+					(name "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 -3.81 180)
+					(length 2.54)
+					(name "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 -6.35 180)
+					(length 2.54)
+					(name "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 7.62 -8.89 180)
+					(length 2.54)
+					(name "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "zudo-bus:CC0603KRX7R9BB104"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CC0603KRX7R9BB104"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "easyeda2kicad:C0603"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C14663"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CC0603KRX7R9BB104_0_1"
+				(polyline
+					(pts
+						(xy -0.51 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.51 -2.03) (xy -0.51 2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.51 2.03) (xy 0.51 -2.03)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 0.51 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 71.12 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "015f3609-ca12-439a-8d86-7a1541f305fe")
+	)
+	(junction
+		(at 149.86 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0d89e4d5-12b1-4c63-b646-6ca201858e02")
+	)
+	(junction
+		(at 187.96 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "16d42c30-0152-440b-9c9f-f0006c56c8e7")
+	)
+	(junction
+		(at 149.86 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2671333b-4b51-4333-9974-49031066b07c")
+	)
+	(junction
+		(at 243.84 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f7e1e84-54eb-4e43-9370-f95fa70c456a")
+	)
+	(junction
+		(at 149.86 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "49f73708-0f57-4f41-ba5b-45806ac310f9")
+	)
+	(junction
+		(at 71.12 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4be8eb94-4734-4ed3-9260-e13f64480e36")
+	)
+	(junction
+		(at 223.52 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5397defa-73f9-4e21-93d2-c9e0a862f2ba")
+	)
+	(junction
+		(at 109.22 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "54895a2f-9d5d-412e-9465-eec82852f11a")
+	)
+	(junction
+		(at 187.96 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6d288039-d672-4120-a025-78fa0441cd07")
+	)
+	(junction
+		(at 71.12 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "797e9548-efa7-487e-9bb3-49fdf0769447")
+	)
+	(junction
+		(at 71.12 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "83a48876-6528-42a5-95ec-8ef39e87e08b")
+	)
+	(junction
+		(at 187.96 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "849df43e-128f-43b1-837b-4dd47d3109a0")
+	)
+	(junction
+		(at 170.18 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8eaf9e46-d65a-48e9-9217-8df7521130ab")
+	)
+	(junction
+		(at 149.86 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "995bbb9f-7a9b-4605-a1ea-d7d56c56f4e7")
+	)
+	(junction
+		(at 109.22 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9971b6dd-195d-4a68-9b1b-7bb621b7469b")
+	)
+	(junction
+		(at 223.52 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9ee63a15-6332-450c-b6c7-e4e0b4d04f5d")
+	)
+	(junction
+		(at 149.86 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9ef8a4fb-56c7-474a-9ea6-9ee5c3cae776")
+	)
+	(junction
+		(at 261.62 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a2b5a8af-dbe2-499e-9ab0-b41eba45f0fc")
+	)
+	(junction
+		(at 149.86 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b1e29303-83af-4dd2-b31e-db7951a6fea2")
+	)
+	(junction
+		(at 170.18 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b87bf602-f81a-4a64-99bb-d21f392276d5")
+	)
+	(junction
+		(at 261.62 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ba27bc52-2575-4158-aa44-61f7651462f9")
+	)
+	(junction
+		(at 223.52 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bd44a479-fce1-4d04-9952-1701307ba28e")
+	)
+	(junction
+		(at 91.44 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be216798-7e86-4f38-926d-d87b592c40f3")
+	)
+	(junction
+		(at 223.52 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c18f1226-8466-401d-a704-06b4c113a8df")
+	)
+	(junction
+		(at 243.84 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3c68e6b-e5f1-46ef-8395-ab1653b69655")
+	)
+	(junction
+		(at 71.12 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c94433ee-83f0-4958-8f10-1a76e8e335fc")
+	)
+	(junction
+		(at 91.44 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e901a14a-84ac-4239-a94b-b8acd10693a7")
+	)
+	(junction
+		(at 109.22 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ecd35b93-19a4-4836-8366-997461bf35d9")
+	)
+	(junction
+		(at 170.18 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f36c1171-db92-44e3-a58d-d5e5f219e039")
+	)
+	(junction
+		(at 91.44 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb499a34-109a-4f80-b1a1-9c9edc0c5d2b")
+	)
+	(junction
+		(at 71.12 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ffced7bb-7a78-48d8-a92d-0d6b6978845e")
+	)
+	(wire
+		(pts
+			(xy 223.52 44.45) (xy 223.52 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "008e5b8d-0430-4a00-8ff3-7b5b7973d159")
+	)
+	(wire
+		(pts
+			(xy 90.17 99.06) (xy 92.71 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00ce7378-219d-4153-9f14-b888331510db")
+	)
+	(wire
+		(pts
+			(xy 90.17 147.32) (xy 92.71 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02482d38-e588-4bef-afc0-c2aa7e863599")
+	)
+	(wire
+		(pts
+			(xy 149.86 132.08) (xy 171.45 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "054da31e-b825-49a8-9a4c-bc8bed311bed")
+	)
+	(wire
+		(pts
+			(xy 245.11 41.91) (xy 243.84 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0762bb2f-c817-472f-8ffd-750911928281")
+	)
+	(wire
+		(pts
+			(xy 92.71 36.83) (xy 91.44 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07f06bcf-9517-4e86-b36b-0ec8b70dbc46")
+	)
+	(wire
+		(pts
+			(xy 260.35 101.6) (xy 262.89 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0882cfe2-74de-4553-bdcf-7083f2fba469")
+	)
+	(wire
+		(pts
+			(xy 245.11 36.83) (xy 243.84 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08cc9256-83e8-428a-bdba-1ad1c380fb55")
+	)
+	(wire
+		(pts
+			(xy 25.4 34.29) (xy 30.48 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09d38a84-af33-4105-a704-554181b16459")
+	)
+	(wire
+		(pts
+			(xy 186.69 39.37) (xy 187.96 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ae914eb-1df0-41fb-9feb-aaac9d585855")
+	)
+	(wire
+		(pts
+			(xy 243.84 39.37) (xy 245.11 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cd7e831-6a46-4b72-a601-e6d4fae603d4")
+	)
+	(wire
+		(pts
+			(xy 149.86 82.55) (xy 149.86 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0df69fa9-2763-4df0-8f57-5a589c9b9d30")
+	)
+	(wire
+		(pts
+			(xy 107.95 34.29) (xy 110.49 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fd0373c-f255-4e58-b25c-075f50f0a4c0")
+	)
+	(wire
+		(pts
+			(xy 170.18 39.37) (xy 171.45 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10284b40-86f3-4815-b867-5fde19e99a7b")
+	)
+	(wire
+		(pts
+			(xy 223.52 22.86) (xy 232.41 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1056658d-d8d7-4f55-8abb-7bcc53eab8fd")
+	)
+	(wire
+		(pts
+			(xy 261.62 88.9) (xy 261.62 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10bef14d-c406-49cc-b942-8fa6b9d39c81")
+	)
+	(wire
+		(pts
+			(xy 186.69 52.07) (xy 189.23 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1248a610-a28c-4424-9dd4-3b6a337e40c6")
+	)
+	(wire
+		(pts
+			(xy 260.35 99.06) (xy 262.89 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14cc47c4-c389-41de-89dc-b6bcfaa45bfd")
+	)
+	(wire
+		(pts
+			(xy 171.45 91.44) (xy 170.18 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14d4e815-de12-4d96-a327-056e7e99264c")
+	)
+	(wire
+		(pts
+			(xy 171.45 134.62) (xy 170.18 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15d6adb5-7470-4067-9a8f-8e00b4a2eae7")
+	)
+	(wire
+		(pts
+			(xy 107.95 39.37) (xy 109.22 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15d9441c-6398-4638-8966-4c8405b90fb5")
+	)
+	(wire
+		(pts
+			(xy 90.17 149.86) (xy 92.71 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1650f674-e690-42ca-a908-94b86ea13b77")
+	)
+	(wire
+		(pts
+			(xy 71.12 153.67) (xy 71.12 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1764ad7b-154b-4f8a-8875-a884d80f6575")
+	)
+	(wire
+		(pts
+			(xy 243.84 39.37) (xy 243.84 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17a0cdf5-c31a-4058-bda7-aec0d2ef2ee2")
+	)
+	(wire
+		(pts
+			(xy 245.11 91.44) (xy 243.84 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "180ffa0b-bc03-4ddf-b0c0-555d96ad879d")
+	)
+	(wire
+		(pts
+			(xy 242.57 101.6) (xy 245.11 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1922a2f4-faf6-4089-b325-d2ce744b1d79")
+	)
+	(wire
+		(pts
+			(xy 91.44 86.36) (xy 91.44 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b03e1b1-4de9-4d13-b63a-bd680e5eb59a")
+	)
+	(wire
+		(pts
+			(xy 107.95 36.83) (xy 109.22 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2088929a-d320-4c26-a85c-35d5def88e82")
+	)
+	(wire
+		(pts
+			(xy 110.49 93.98) (xy 107.95 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20ae21b7-6623-44ae-b8ea-f25b25453bb9")
+	)
+	(wire
+		(pts
+			(xy 107.95 147.32) (xy 110.49 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21763ead-1cf2-40c1-a290-e8260d5ff33f")
+	)
+	(wire
+		(pts
+			(xy 243.84 88.9) (xy 245.11 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "218aa23d-7465-43a3-84c6-3ada1289ff75")
+	)
+	(wire
+		(pts
+			(xy 107.95 144.78) (xy 110.49 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21e8237c-4fdb-4a2b-9fc6-61f2403ea349")
+	)
+	(wire
+		(pts
+			(xy 186.69 96.52) (xy 189.23 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23c26489-2a22-49d2-a0f1-1dcfdcd3a524")
+	)
+	(wire
+		(pts
+			(xy 260.35 86.36) (xy 261.62 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25b21278-d990-4578-b240-2080e1791fb3")
+	)
+	(wire
+		(pts
+			(xy 218.44 93.98) (xy 223.52 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26bee8e3-d856-45cc-9242-98625559175b")
+	)
+	(wire
+		(pts
+			(xy 90.17 137.16) (xy 91.44 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2846dbc4-8464-4a3f-bdcb-3cee0f7c9500")
+	)
+	(wire
+		(pts
+			(xy 186.69 147.32) (xy 189.23 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29b9348d-d180-4baf-a6c9-09d1cce4edb0")
+	)
+	(wire
+		(pts
+			(xy 168.91 147.32) (xy 171.45 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c2dd81a-caff-40ec-a68f-aed87f31a119")
+	)
+	(wire
+		(pts
+			(xy 170.18 134.62) (xy 170.18 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c3c0491-180f-4c20-979e-a9e275657a1b")
+	)
+	(wire
+		(pts
+			(xy 66.04 142.24) (xy 71.12 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c80d1dc-273d-4bb9-a1e8-268a706ce2c5")
+	)
+	(wire
+		(pts
+			(xy 260.35 52.07) (xy 262.89 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2de2cedd-0ba1-40e8-bb38-2e1b5efbe1d9")
+	)
+	(wire
+		(pts
+			(xy 71.12 33.02) (xy 71.12 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e0a7756-f129-4d3a-a0b3-da0a8cf55d84")
+	)
+	(wire
+		(pts
+			(xy 109.22 88.9) (xy 110.49 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ea2d5d9-5343-4401-a902-410b65662d58")
+	)
+	(wire
+		(pts
+			(xy 170.18 39.37) (xy 170.18 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f5ccdf4-3e25-4d27-8395-376e38af8458")
+	)
+	(wire
+		(pts
+			(xy 260.35 34.29) (xy 262.89 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2fcef677-aa3e-4792-88e5-b73aab1a8e68")
+	)
+	(wire
+		(pts
+			(xy 186.69 36.83) (xy 187.96 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31b2dc1d-8368-4a1e-92ca-39c88490f463")
+	)
+	(wire
+		(pts
+			(xy 90.17 96.52) (xy 92.71 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "320957c7-a2c5-4cf2-b789-31b4f65ceef4")
+	)
+	(wire
+		(pts
+			(xy 170.18 86.36) (xy 170.18 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3280b968-1d68-4d69-bf09-297cf226981f")
+	)
+	(wire
+		(pts
+			(xy 71.12 93.98) (xy 92.71 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "330a0fdf-be45-478d-82cb-6a37e2adec78")
+	)
+	(wire
+		(pts
+			(xy 260.35 91.44) (xy 261.62 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33564ff2-1950-4541-8778-7b391cf9615f")
+	)
+	(wire
+		(pts
+			(xy 260.35 83.82) (xy 262.89 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "335a950e-b3f2-4965-9dba-a10ceeeb7c90")
+	)
+	(wire
+		(pts
+			(xy 171.45 86.36) (xy 170.18 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3366f924-036c-48ed-b6e4-df6694c455d7")
+	)
+	(wire
+		(pts
+			(xy 107.95 139.7) (xy 109.22 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3389df7f-aafd-4e60-9b07-bbce706846f6")
+	)
+	(wire
+		(pts
+			(xy 223.52 83.82) (xy 245.11 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "338ab739-fdc5-4d54-8d4c-96c3cc89a2b0")
+	)
+	(wire
+		(pts
+			(xy 186.69 101.6) (xy 189.23 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3473ea15-e86f-4093-9ff4-088656af54f7")
+	)
+	(wire
+		(pts
+			(xy 71.12 132.08) (xy 92.71 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35ec212b-b178-4a7e-b580-4b94cd5d9268")
+	)
+	(wire
+		(pts
+			(xy 262.89 44.45) (xy 260.35 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36b2683b-22d9-482b-9a72-7006b40b8ec4")
+	)
+	(wire
+		(pts
+			(xy 186.69 49.53) (xy 189.23 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3890272c-5969-46eb-b4d7-f312fa744ca2")
+	)
+	(wire
+		(pts
+			(xy 90.17 39.37) (xy 91.44 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b2ec05d-089e-4b9a-a714-adc6aad1415d")
+	)
+	(wire
+		(pts
+			(xy 144.78 34.29) (xy 149.86 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b89d8ca-85cc-428f-a0c1-98cec4c431ec")
+	)
+	(wire
+		(pts
+			(xy 261.62 39.37) (xy 262.89 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c1bbbea-ad4d-4a51-bb41-69ac4d10e493")
+	)
+	(wire
+		(pts
+			(xy 168.91 137.16) (xy 170.18 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c1f3012-4dff-4209-a8ba-1fe206bd8dc0")
+	)
+	(wire
+		(pts
+			(xy 218.44 34.29) (xy 223.52 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c886ff6-34f4-4993-b6e0-b75633b4b2e1")
+	)
+	(wire
+		(pts
+			(xy 109.22 137.16) (xy 109.22 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d3a1692-3814-44bc-a4c2-40a252c71d24")
+	)
+	(wire
+		(pts
+			(xy 242.57 96.52) (xy 245.11 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d8024fa-4cd5-4cb8-8355-e8c2acc2df87")
+	)
+	(wire
+		(pts
+			(xy 71.12 83.82) (xy 92.71 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d8a480f-263f-4541-9559-99c4923ad46c")
+	)
+	(wire
+		(pts
+			(xy 66.04 132.08) (xy 71.12 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f53bf17-3280-48f6-ab9c-cb1e4e5514b6")
+	)
+	(wire
+		(pts
+			(xy 149.86 44.45) (xy 149.86 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40a1257a-b10e-4336-9dad-cfcd6cecc7e0")
+	)
+	(wire
+		(pts
+			(xy 170.18 137.16) (xy 171.45 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43b729eb-5baf-4396-a26b-92a0eedeab4f")
+	)
+	(wire
+		(pts
+			(xy 149.86 22.86) (xy 158.75 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4491fb96-2beb-4d19-a8ac-5bd5f57be272")
+	)
+	(wire
+		(pts
+			(xy 90.17 101.6) (xy 92.71 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44b63347-5126-44f3-8154-ae2429caabac")
+	)
+	(wire
+		(pts
+			(xy 90.17 144.78) (xy 92.71 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45a4163f-cf49-48d3-a4df-a719db8fd25e")
+	)
+	(wire
+		(pts
+			(xy 71.12 82.55) (xy 71.12 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4689e671-be09-4099-a208-40f801721a27")
+	)
+	(wire
+		(pts
+			(xy 71.12 72.39) (xy 80.01 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47011e18-1bd4-4808-a9d2-eb5d08dea37d")
+	)
+	(wire
+		(pts
+			(xy 90.17 46.99) (xy 92.71 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "478b60f2-538d-4395-a8f6-8bc88fa5ebb5")
+	)
+	(wire
+		(pts
+			(xy 149.86 33.02) (xy 149.86 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47a168a7-a8ae-4f3a-a95c-9eba413a7d6d")
+	)
+	(wire
+		(pts
+			(xy 91.44 39.37) (xy 92.71 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49016ae9-54a5-48bd-b425-00dd71b93caa")
+	)
+	(wire
+		(pts
+			(xy 186.69 139.7) (xy 187.96 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a036797-edbe-451a-bff1-fc56f3745fbe")
+	)
+	(wire
+		(pts
+			(xy 187.96 39.37) (xy 189.23 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a07bc36-9777-4f8a-8b17-c7f68bee5bab")
+	)
+	(wire
+		(pts
+			(xy 110.49 142.24) (xy 107.95 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a1d1b1e-6f61-4257-b9a6-8585a4d21426")
+	)
+	(wire
+		(pts
+			(xy 91.44 36.83) (xy 91.44 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aab0bc3-c2f3-42d9-81b4-0c49beae58a5")
+	)
+	(wire
+		(pts
+			(xy 171.45 36.83) (xy 170.18 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b295080-d359-4089-9d1a-8dadc027b6cd")
+	)
+	(wire
+		(pts
+			(xy 90.17 88.9) (xy 91.44 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d53b926-cb0b-434d-98ed-b08839aec3ed")
+	)
+	(wire
+		(pts
+			(xy 91.44 137.16) (xy 91.44 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50003b85-101f-4c72-8353-d73780de2c60")
+	)
+	(wire
+		(pts
+			(xy 223.52 105.41) (xy 223.52 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "519a2bfc-c293-4c7e-8363-a4d07ee51b2c")
+	)
+	(wire
+		(pts
+			(xy 66.04 83.82) (xy 71.12 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51db6fa7-1ec8-44bd-a739-f40ba802b4ca")
+	)
+	(wire
+		(pts
+			(xy 109.22 134.62) (xy 109.22 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5382bc27-ed47-4bdc-86df-901bc60ec846")
+	)
+	(wire
+		(pts
+			(xy 242.57 88.9) (xy 243.84 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54876fac-bae1-48b3-8dc2-0405f12a72c0")
+	)
+	(wire
+		(pts
+			(xy 260.35 36.83) (xy 261.62 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54eae699-525a-467d-8439-c332eb73d041")
+	)
+	(wire
+		(pts
+			(xy 92.71 91.44) (xy 91.44 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "551d3f9c-6744-4fb4-89b4-a4fa390b8a6d")
+	)
+	(wire
+		(pts
+			(xy 144.78 93.98) (xy 149.86 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55f88765-1d4e-46b1-a057-f391da0e36c4")
+	)
+	(wire
+		(pts
+			(xy 71.12 22.86) (xy 80.01 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57148510-c2dc-43e7-b4e0-9e50fa6c0fdc")
+	)
+	(wire
+		(pts
+			(xy 186.69 149.86) (xy 189.23 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5780b787-a985-400f-8249-1bb82f6f10bc")
+	)
+	(wire
+		(pts
+			(xy 109.22 36.83) (xy 109.22 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57ba29e4-2026-4f2f-a8fd-3ed27a617fb6")
+	)
+	(wire
+		(pts
+			(xy 218.44 44.45) (xy 223.52 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5995ef2d-6a17-47ee-9d7c-f9a2cfc86472")
+	)
+	(wire
+		(pts
+			(xy 109.22 137.16) (xy 110.49 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ce341ad-c637-4740-8dc6-b0d900263e89")
+	)
+	(wire
+		(pts
+			(xy 168.91 52.07) (xy 171.45 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d2dd962-a091-4105-9fba-6bc5055b3544")
+	)
+	(wire
+		(pts
+			(xy 90.17 49.53) (xy 92.71 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60dab3fd-b1a6-4149-8d84-bf8367c4f8cd")
+	)
+	(wire
+		(pts
+			(xy 71.12 142.24) (xy 92.71 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60daf004-a48d-4f64-8b01-e0ad44f76c7d")
+	)
+	(wire
+		(pts
+			(xy 109.22 39.37) (xy 109.22 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "610b1880-d8ca-4d5c-a79c-e4d71f54bca9")
+	)
+	(wire
+		(pts
+			(xy 187.96 137.16) (xy 187.96 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "615c5bb1-08c8-4822-9b1a-34ceb55514e2")
+	)
+	(wire
+		(pts
+			(xy 186.69 91.44) (xy 187.96 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "619b0d3e-2bd4-46cf-a929-c208014a9a8a")
+	)
+	(wire
+		(pts
+			(xy 144.78 132.08) (xy 149.86 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "621c049a-e1d2-4768-929b-a502dc57763a")
+	)
+	(wire
+		(pts
+			(xy 158.75 72.39) (xy 158.75 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65727526-da33-4658-bf16-0c38f7acd135")
+	)
+	(wire
+		(pts
+			(xy 71.12 44.45) (xy 71.12 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "672279c1-eb53-4ada-a412-fa8bfb6792e2")
+	)
+	(wire
+		(pts
+			(xy 223.52 55.88) (xy 223.52 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6770dc27-38c3-4c9c-acf9-65a965738d72")
+	)
+	(wire
+		(pts
+			(xy 149.86 93.98) (xy 149.86 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b7abce8-50a3-4963-b3d6-8f64733af0e5")
+	)
+	(wire
+		(pts
+			(xy 223.52 33.02) (xy 223.52 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ce040c3-933f-401e-9f6a-b4bea72d126b")
+	)
+	(wire
+		(pts
+			(xy 260.35 96.52) (xy 262.89 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6dbde2fb-23aa-4eb9-a8da-9384f5870338")
+	)
+	(wire
+		(pts
+			(xy 168.91 149.86) (xy 171.45 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e5f52a2-605a-4a6b-99cb-182ddd08e8ac")
+	)
+	(wire
+		(pts
+			(xy 260.35 46.99) (xy 262.89 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ea0caf8-a66a-4398-a803-a55485db4415")
+	)
+	(wire
+		(pts
+			(xy 92.71 86.36) (xy 91.44 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f4660e5-3356-41a2-8f17-5963550c2f67")
+	)
+	(wire
+		(pts
+			(xy 110.49 44.45) (xy 107.95 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7276f4c4-7599-4589-a0b4-5c1126dab7c0")
+	)
+	(wire
+		(pts
+			(xy 223.52 72.39) (xy 232.41 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73614dd9-f4bb-4983-9c85-1371f92b3176")
+	)
+	(wire
+		(pts
+			(xy 242.57 99.06) (xy 245.11 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75c4bdd4-522e-49ad-b7f9-01be09d91a15")
+	)
+	(wire
+		(pts
+			(xy 149.86 93.98) (xy 171.45 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76a9999e-bbad-49a4-b7e4-54ff3feca24c")
+	)
+	(wire
+		(pts
+			(xy 186.69 41.91) (xy 187.96 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77a458fa-cb15-4c3e-b919-9031cae2585d")
+	)
+	(wire
+		(pts
+			(xy 170.18 137.16) (xy 170.18 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7af12b9c-e0a1-4215-9e00-537ae4c98bee")
+	)
+	(wire
+		(pts
+			(xy 90.17 52.07) (xy 92.71 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d8a03da-8dfd-40ea-958c-0276381d5464")
+	)
+	(wire
+		(pts
+			(xy 186.69 46.99) (xy 189.23 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d989cce-e270-4335-96a3-1125a1b17621")
+	)
+	(wire
+		(pts
+			(xy 149.86 130.81) (xy 149.86 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f9f2982-83fc-4eb1-b8db-a1a11f71d130")
+	)
+	(wire
+		(pts
+			(xy 71.12 93.98) (xy 71.12 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "802fd81b-6b87-414c-87be-2ab6f4a4a4d0")
+	)
+	(wire
+		(pts
+			(xy 80.01 120.65) (xy 80.01 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80480740-6c00-41c6-b587-932e70921845")
+	)
+	(wire
+		(pts
+			(xy 66.04 34.29) (xy 71.12 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80ceed30-a185-4f29-9f8c-c1ffbfd6afc6")
+	)
+	(wire
+		(pts
+			(xy 107.95 132.08) (xy 110.49 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81acd572-3ca3-4ecd-a066-d6e4296ab5de")
+	)
+	(wire
+		(pts
+			(xy 186.69 88.9) (xy 187.96 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "832b1c0f-66aa-4a43-a829-9dfa19ae4c6d")
+	)
+	(wire
+		(pts
+			(xy 92.71 139.7) (xy 91.44 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8479ae39-9837-4a87-bdd2-8d2f239d1b1b")
+	)
+	(wire
+		(pts
+			(xy 243.84 36.83) (xy 243.84 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84825538-c978-4df7-95fc-699da9f90cbf")
+	)
+	(wire
+		(pts
+			(xy 109.22 88.9) (xy 109.22 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84bf2b28-cbf9-4ea9-8bef-c37f72ff297e")
+	)
+	(wire
+		(pts
+			(xy 243.84 88.9) (xy 243.84 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84f78af1-30dc-4e8e-b364-6df7fa0997e9")
+	)
+	(wire
+		(pts
+			(xy 189.23 93.98) (xy 186.69 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "871b0b45-8ced-4e81-ae6b-5b6a333e23cb")
+	)
+	(wire
+		(pts
+			(xy 107.95 99.06) (xy 110.49 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8784efd5-9c01-45fe-b2d9-2dacacfdc0d7")
+	)
+	(wire
+		(pts
+			(xy 261.62 88.9) (xy 262.89 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "882b0566-9036-447d-80cc-3814d73e7dec")
+	)
+	(wire
+		(pts
+			(xy 171.45 139.7) (xy 170.18 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88be9fad-72a8-47fc-a20a-71b41c6d06c5")
+	)
+	(wire
+		(pts
+			(xy 186.69 34.29) (xy 189.23 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8932e53b-03f1-473c-9e05-757f71d40342")
+	)
+	(wire
+		(pts
+			(xy 71.12 44.45) (xy 92.71 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cca19f9-c5a4-4d27-82ff-00fb07774745")
+	)
+	(wire
+		(pts
+			(xy 223.52 44.45) (xy 245.11 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90e5af7e-f833-4773-ab11-b0c36141adac")
+	)
+	(wire
+		(pts
+			(xy 107.95 137.16) (xy 109.22 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "919fa51a-a20b-478e-bd24-9874a6ae44d3")
+	)
+	(wire
+		(pts
+			(xy 187.96 39.37) (xy 187.96 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91c8965d-5158-4441-979f-37f87b77b01d")
+	)
+	(wire
+		(pts
+			(xy 187.96 134.62) (xy 187.96 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9339c6b9-1819-4c4f-9746-c08eb63837a6")
+	)
+	(wire
+		(pts
+			(xy 91.44 39.37) (xy 91.44 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "936f1b9f-043c-4880-a801-9f7de807e796")
+	)
+	(wire
+		(pts
+			(xy 149.86 44.45) (xy 171.45 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "954d0656-674c-41cc-814d-7e77e3348e19")
+	)
+	(wire
+		(pts
+			(xy 71.12 120.65) (xy 80.01 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97b9ae11-cb5a-4bb7-8aef-d6ce12d48d9c")
+	)
+	(wire
+		(pts
+			(xy 186.69 83.82) (xy 189.23 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97f55eb8-de35-4763-8a5c-97cc94211820")
+	)
+	(wire
+		(pts
+			(xy 168.91 99.06) (xy 171.45 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9929c822-18a3-4dca-b4a5-1c7e1b116d7b")
+	)
+	(wire
+		(pts
+			(xy 107.95 46.99) (xy 110.49 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c9448a1-b49c-4810-a948-40f6223534d4")
+	)
+	(wire
+		(pts
+			(xy 261.62 36.83) (xy 261.62 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cf15f29-5c79-4f7e-aa14-3378966ea3be")
+	)
+	(wire
+		(pts
+			(xy 91.44 134.62) (xy 91.44 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ef05406-3dda-4b03-8997-5a13c4382f36")
+	)
+	(wire
+		(pts
+			(xy 260.35 49.53) (xy 262.89 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f53b1a0-6fd4-4e0a-8a3b-431628f2c169")
+	)
+	(wire
+		(pts
+			(xy 92.71 134.62) (xy 91.44 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9fedc52b-abae-4c7a-b643-c0b994975c05")
+	)
+	(wire
+		(pts
+			(xy 223.52 34.29) (xy 245.11 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0cafec1-7e56-4de8-b4d9-cc273d03bb8f")
+	)
+	(wire
+		(pts
+			(xy 242.57 46.99) (xy 245.11 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1552a9e-be16-4b51-b2d9-c35bd48640be")
+	)
+	(wire
+		(pts
+			(xy 262.89 93.98) (xy 260.35 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a69ce851-672f-426e-bda1-95cd281b677a")
+	)
+	(wire
+		(pts
+			(xy 168.91 39.37) (xy 170.18 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6dff2ea-095d-44d7-9467-7b99744e01af")
+	)
+	(wire
+		(pts
+			(xy 144.78 83.82) (xy 149.86 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8b748ec-e2d2-4c13-8e69-947f43357f69")
+	)
+	(wire
+		(pts
+			(xy 149.86 72.39) (xy 158.75 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8f123a4-ab62-4c4e-affd-14fae05751a9")
+	)
+	(wire
+		(pts
+			(xy 149.86 142.24) (xy 171.45 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8f8ce63-6b9a-4a1e-a0fb-ab4e6285cc35")
+	)
+	(wire
+		(pts
+			(xy 186.69 132.08) (xy 189.23 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a915e9b4-1758-4e32-9ea5-61c23ab9617c")
+	)
+	(wire
+		(pts
+			(xy 158.75 120.65) (xy 158.75 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9f33519-0508-4734-8f74-11f83ad0e40e")
+	)
+	(wire
+		(pts
+			(xy 170.18 36.83) (xy 170.18 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa6d6146-0506-4255-aa09-91c6ead1cc97")
+	)
+	(wire
+		(pts
+			(xy 80.01 72.39) (xy 80.01 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "accc1ade-f194-4199-a3fe-7c91c5204e8f")
+	)
+	(wire
+		(pts
+			(xy 168.91 46.99) (xy 171.45 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad320e7a-3b70-43f1-9695-3d006ed85433")
+	)
+	(wire
+		(pts
+			(xy 149.86 55.88) (xy 149.86 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adde13f7-9469-48e7-9a83-eb94a4fb731c")
+	)
+	(wire
+		(pts
+			(xy 25.4 29.21) (xy 30.48 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af998773-1aba-4757-973b-d964e84f7d81")
+	)
+	(wire
+		(pts
+			(xy 187.96 137.16) (xy 189.23 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b04a05c7-0905-45c4-87d1-4301e946edd4")
+	)
+	(wire
+		(pts
+			(xy 91.44 88.9) (xy 92.71 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1b37e11-152a-4507-9315-eab8799b4cbe")
+	)
+	(wire
+		(pts
+			(xy 187.96 36.83) (xy 187.96 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b42a0b78-26e8-4a23-993c-c9ca1d08640a")
+	)
+	(wire
+		(pts
+			(xy 168.91 96.52) (xy 171.45 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5238a29-61d1-43ad-8061-e9c5147def51")
+	)
+	(wire
+		(pts
+			(xy 189.23 44.45) (xy 186.69 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5a056b2-3b2b-447e-ac3e-fa7b51f0afc0")
+	)
+	(wire
+		(pts
+			(xy 149.86 142.24) (xy 149.86 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b691c52f-2ccf-4ab1-8279-c6fdbe8c1bb7")
+	)
+	(wire
+		(pts
+			(xy 223.52 93.98) (xy 223.52 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7956df3-77b9-4e09-bc21-164a2422331c")
+	)
+	(wire
+		(pts
+			(xy 158.75 22.86) (xy 158.75 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b949c590-d5bd-4638-9bcd-a56c282cdfe9")
+	)
+	(wire
+		(pts
+			(xy 261.62 86.36) (xy 261.62 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b950f5e0-3a7a-48a6-9035-8ba43369103c")
+	)
+	(wire
+		(pts
+			(xy 187.96 88.9) (xy 187.96 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bae5c862-d2fb-4178-8f29-2238a5801830")
+	)
+	(wire
+		(pts
+			(xy 170.18 88.9) (xy 170.18 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbfdb130-df06-4100-957c-464d018b1d76")
+	)
+	(wire
+		(pts
+			(xy 80.01 22.86) (xy 80.01 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc0794f8-e00c-4db1-9aa7-eb94c8e1fb84")
+	)
+	(wire
+		(pts
+			(xy 260.35 39.37) (xy 261.62 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd9903e0-1659-4039-a1e7-c229ad003cd7")
+	)
+	(wire
+		(pts
+			(xy 261.62 39.37) (xy 261.62 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdd2b800-0610-4d30-b05d-d8e8b2631e69")
+	)
+	(wire
+		(pts
+			(xy 25.4 24.13) (xy 30.48 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bea312ae-57fd-41ed-b0cc-09121de130da")
+	)
+	(wire
+		(pts
+			(xy 187.96 88.9) (xy 189.23 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0412723-4541-493b-adec-5963353c7ebb")
+	)
+	(wire
+		(pts
+			(xy 66.04 44.45) (xy 71.12 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c061d926-12d3-441f-aff2-92f448821057")
+	)
+	(wire
+		(pts
+			(xy 107.95 88.9) (xy 109.22 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0899e93-b1b8-4ec2-bf92-4526993c6145")
+	)
+	(wire
+		(pts
+			(xy 149.86 120.65) (xy 158.75 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c16b0083-87a7-477d-9811-d29c4356af54")
+	)
+	(wire
+		(pts
+			(xy 186.69 86.36) (xy 187.96 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c29698f4-8e31-4ded-a9ba-424b4eb3957a")
+	)
+	(wire
+		(pts
+			(xy 25.4 19.05) (xy 30.48 19.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3625489-abcc-4783-9727-2cf95f2780ce")
+	)
+	(wire
+		(pts
+			(xy 107.95 49.53) (xy 110.49 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4e9c02e-e8ac-4825-afae-60440cf1187c")
+	)
+	(wire
+		(pts
+			(xy 107.95 96.52) (xy 110.49 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c50e58c3-7ee8-4b3f-b31e-d3c218852cf3")
+	)
+	(wire
+		(pts
+			(xy 186.69 137.16) (xy 187.96 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c65810ae-d25e-4af3-a2bb-d1887c592630")
+	)
+	(wire
+		(pts
+			(xy 223.52 93.98) (xy 245.11 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c783bcb0-313c-4214-9d8a-e577fa9dd6a9")
+	)
+	(wire
+		(pts
+			(xy 189.23 142.24) (xy 186.69 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c821fe3f-d9d4-4057-a123-9f7580c76b12")
+	)
+	(wire
+		(pts
+			(xy 168.91 49.53) (xy 171.45 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9810cb8-11a1-4b90-86a7-576783b05480")
+	)
+	(wire
+		(pts
+			(xy 71.12 34.29) (xy 92.71 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb001e2b-3e8b-48e2-965c-43c8a7e3b3ed")
+	)
+	(wire
+		(pts
+			(xy 170.18 88.9) (xy 171.45 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb743f28-bf85-4fc5-9541-1f8b7b261ff0")
+	)
+	(wire
+		(pts
+			(xy 91.44 137.16) (xy 92.71 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb8eb629-2524-410a-9944-827dc85900f0")
+	)
+	(wire
+		(pts
+			(xy 260.35 41.91) (xy 261.62 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfb2c96c-d1c3-473e-a53a-a11dac8f6bd1")
+	)
+	(wire
+		(pts
+			(xy 109.22 39.37) (xy 110.49 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f0ed12-86de-42d1-8b86-d5e512265247")
+	)
+	(wire
+		(pts
+			(xy 71.12 55.88) (xy 71.12 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d470f7ad-8001-4189-8c59-cf3e7914f2aa")
+	)
+	(wire
+		(pts
+			(xy 91.44 88.9) (xy 91.44 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4a9022e-f300-4c99-a89e-fd336b90f9d0")
+	)
+	(wire
+		(pts
+			(xy 149.86 83.82) (xy 171.45 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6aa5502-f57f-488d-9afc-5515ecc9eb45")
+	)
+	(wire
+		(pts
+			(xy 107.95 134.62) (xy 109.22 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7078a2b-f527-4470-ad6a-65711a1431c3")
+	)
+	(wire
+		(pts
+			(xy 232.41 72.39) (xy 232.41 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8bbe423-e165-4dc9-be89-c6efa091d223")
+	)
+	(wire
+		(pts
+			(xy 144.78 142.24) (xy 149.86 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da01f5f0-fac6-4130-816e-506e79d310a1")
+	)
+	(wire
+		(pts
+			(xy 107.95 83.82) (xy 110.49 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dea007c4-0b56-495c-958d-21c37c3473bc")
+	)
+	(wire
+		(pts
+			(xy 186.69 99.06) (xy 189.23 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "deecefa8-bf3a-4a8a-9e13-8390545b7b9c")
+	)
+	(wire
+		(pts
+			(xy 243.84 86.36) (xy 243.84 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df65b73c-e242-45e4-a061-417e830a05df")
+	)
+	(wire
+		(pts
+			(xy 242.57 49.53) (xy 245.11 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0c650f0-0a78-4cdb-a5fd-570bd97a7059")
+	)
+	(wire
+		(pts
+			(xy 92.71 41.91) (xy 91.44 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e17d9e1d-0ad4-4454-9236-14e337215413")
+	)
+	(wire
+		(pts
+			(xy 107.95 52.07) (xy 110.49 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e21643ef-5898-45eb-acd7-fe0a25a808e1")
+	)
+	(wire
+		(pts
+			(xy 107.95 101.6) (xy 110.49 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e33f0e29-84ec-4135-9f67-8661c30afcd6")
+	)
+	(wire
+		(pts
+			(xy 107.95 86.36) (xy 109.22 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3e1ad76-ed7c-47ad-80ea-a601b80b715c")
+	)
+	(wire
+		(pts
+			(xy 186.69 134.62) (xy 187.96 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5888e55-bc13-4b4f-8490-b61f92353db5")
+	)
+	(wire
+		(pts
+			(xy 71.12 130.81) (xy 71.12 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eddd5d50-ec1d-4e45-bea3-66155d99fc3c")
+	)
+	(wire
+		(pts
+			(xy 218.44 83.82) (xy 223.52 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee62b2ad-7fc1-43cb-b4f1-57479d3da857")
+	)
+	(wire
+		(pts
+			(xy 260.35 88.9) (xy 261.62 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eed9ee6e-5e2a-46de-9222-86b324f1e6d0")
+	)
+	(wire
+		(pts
+			(xy 168.91 88.9) (xy 170.18 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef7eaa7b-cff7-44de-a60d-942698902ca7")
+	)
+	(wire
+		(pts
+			(xy 168.91 144.78) (xy 171.45 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f0504f4e-1ec5-478e-b92d-cc1c973e1f41")
+	)
+	(wire
+		(pts
+			(xy 107.95 91.44) (xy 109.22 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1102f46-c82f-469f-a80a-1c158e10bdca")
+	)
+	(wire
+		(pts
+			(xy 71.12 105.41) (xy 71.12 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2311df1-f4bc-4dc4-a041-22dc6c285063")
+	)
+	(wire
+		(pts
+			(xy 232.41 22.86) (xy 232.41 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2ab2a51-1e2d-4520-a2fa-9499acbfea10")
+	)
+	(wire
+		(pts
+			(xy 109.22 86.36) (xy 109.22 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2e16e34-a4f9-4781-a4f4-7e2b0e35b985")
+	)
+	(wire
+		(pts
+			(xy 245.11 86.36) (xy 243.84 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4dc850f-3648-490a-9b60-bcc4bb15d462")
+	)
+	(wire
+		(pts
+			(xy 107.95 149.86) (xy 110.49 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f55824ac-afa0-44b3-a1a4-f9f995cec2ad")
+	)
+	(wire
+		(pts
+			(xy 242.57 39.37) (xy 243.84 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f613e739-da49-4de6-b1b8-bafe73a4e74a")
+	)
+	(wire
+		(pts
+			(xy 168.91 101.6) (xy 171.45 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6f0c94a-c78b-40eb-a164-1488704cf9f6")
+	)
+	(wire
+		(pts
+			(xy 149.86 153.67) (xy 149.86 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6f52b98-96e2-4c3b-808f-485afc0c5452")
+	)
+	(wire
+		(pts
+			(xy 242.57 52.07) (xy 245.11 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7416b0d-ca85-4819-aa63-2f169d1be7e9")
+	)
+	(wire
+		(pts
+			(xy 223.52 82.55) (xy 223.52 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7d07392-ecad-4fb5-bfe9-474e46e211a5")
+	)
+	(wire
+		(pts
+			(xy 187.96 86.36) (xy 187.96 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8e6b21e-d63c-4250-bc90-8f1a66d6ded3")
+	)
+	(wire
+		(pts
+			(xy 71.12 142.24) (xy 71.12 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f991f1f2-0c1b-4a1c-b19b-4c139c0ce5a9")
+	)
+	(wire
+		(pts
+			(xy 107.95 41.91) (xy 109.22 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f993b287-e09d-4c1e-8f57-409113ed8a4d")
+	)
+	(wire
+		(pts
+			(xy 149.86 105.41) (xy 149.86 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9fd1169-dfdd-4978-9a31-ff774b99adfe")
+	)
+	(wire
+		(pts
+			(xy 149.86 34.29) (xy 171.45 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faa2aa64-c4d1-4480-ad59-17197f9a625c")
+	)
+	(wire
+		(pts
+			(xy 144.78 44.45) (xy 149.86 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fef0a034-b11e-4208-ba54-229d92e3caa2")
+	)
+	(wire
+		(pts
+			(xy 186.69 144.78) (xy 189.23 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff2230cd-ed2b-4699-bdb2-3ef42e35b2ba")
+	)
+	(wire
+		(pts
+			(xy 171.45 41.91) (xy 170.18 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff53059c-2e5c-4671-9798-11286a98b4b3")
+	)
+	(wire
+		(pts
+			(xy 66.04 93.98) (xy 71.12 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff82d310-c8d1-4e1f-a8a7-302161c1446e")
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 189.23 147.32 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "00ea3c09-ca0a-450b-99cd-6c647194afb7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.7466 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 242.57 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "03ffa8a5-51f1-435a-85cc-523a3834a32e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 233.0534 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 242.57 52.07 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "06eddea8-6f0f-463c-98fa-1966dbdf24f9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 230.9368 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 110.49 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0ac37245-45b3-4c1d-b550-0a98066b7ca0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 117.3457 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 262.89 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0dfdd9d2-8608-4481-97f9-b32e89bf1033")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.7457 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 66.04 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "111c93ae-8f50-429e-add4-f626f8c6dd11")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 168.91 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "123e9d25-915f-4663-94c7-85df2edc90ce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 162.0543 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 90.17 147.32 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "145719e5-98b2-493a-8263-4439ec00d9b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 80.6534 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 189.23 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "184a7447-d235-4aad-addf-dcefee7cc172")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.8632 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 66.04 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1dcebda8-3263-49e5-b2ce-c9be141fad5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 144.78 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1e529fcd-19c6-4478-896e-dd83b8c9f704")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 262.89 44.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "205daf41-3506-4061-8df5-2e25d501fb5f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 275.128 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 144.78 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "20a6010e-bc95-45b2-bbbc-aa56cabcee16")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 110.49 142.24 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "215fff65-c0bb-4c17-a22c-958b742c1f5b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 30.48 24.13 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "225c44a0-471d-4b69-82ea-e56b22bf6100")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 37.3357 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 189.23 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "237d0003-5498-452c-99e7-ca89e00583a1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 66.04 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2395df83-beee-4779-90fc-0381a72d1843")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 242.57 96.52 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "24371a0a-2d3f-4aab-9162-5175ed0c9526")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 231.5415 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 110.49 44.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2aa169c2-3554-4a05-94eb-446c7c8d03d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 110.49 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2af90815-f99f-4dda-95f5-1986ef9d5ecd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.1232 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 218.44 44.45 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2b657b97-5d4d-4a90-936c-9b00edc20930")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 206.202 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 30.48 29.21 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2d09e0c1-7785-4a67-bc71-ab6b66a20c1e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 42.718 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 110.49 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "306c7baa-4ca6-4162-8ae8-8844b8aea8c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.5185 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 168.91 147.32 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "32ddc3c1-f5c1-41d2-857b-4afcc729b1d3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 159.3934 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 189.23 137.16 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "355100e1-7425-42a1-8e45-7eddb8d3564a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 196.0857 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 242.57 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "365bab99-7dd6-431c-b0d7-384f4975f3c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 235.7143 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 90.17 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3f9521c2-5bbd-40da-85a0-e47392fd2ae3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 79.1415 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 262.89 101.6 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "41728093-01b8-47cb-8408-edf46725df82")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 274.5232 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 110.49 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4409f3e7-41d1-4131-a872-36f735f5a546")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 242.57 101.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "47742291-7e3a-4f60-a9d1-476b20fb8e54")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 230.9368 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 90.17 149.86 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "47b65434-0090-4561-9b22-72363aae9c82")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.5368 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 242.57 39.37 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "49b9bb42-8dd2-495b-bb0c-64e4a1e00d45")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 235.7143 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 168.91 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4be266f6-67bb-4f33-a670-d62932575f1c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.8815 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 242.57 46.99 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4edf88a4-0f2c-437b-b7bd-105beb23702d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 231.5415 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 110.49 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4f9dba7a-4e70-4e9b-ae5b-a024bfc9d021")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.5185 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 168.91 144.78 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "50d1a1ff-4784-4ab8-8b62-65f4043c8682")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.8815 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 144.78 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "530689a7-6469-46d9-8598-ddd9a9024390")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 110.49 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "57b68760-9373-414c-84a9-7ee39eceeaae")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.1232 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 262.89 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "57b81dc0-bf3c-4d9c-95c3-e2b9eb5187a2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 272.4066 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 168.91 52.07 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5a3767ec-af91-45c3-bccc-93e27e0ecd61")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.2768 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 110.49 149.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5cff92b2-490d-4819-b24f-ed4fe933e262")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.1232 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 90.17 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5e4cf505-8bbb-435e-ba69-7cb419a1f415")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 80.6534 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 90.17 52.07 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6387710f-0234-4dbc-be68-2f2b53fbe4fd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.5368 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 168.91 101.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "65fc345e-c969-4cea-bb24-98c11bfd0873")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.2768 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 110.49 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6be76ed0-e16b-46f5-b8a8-a4d7dcd09b5e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 189.23 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6e646e1f-adc3-4ae9-9210-4ea1d686579e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.2585 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 90.17 39.37 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7067871b-b880-4b44-8726-83c270fb02ea")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.3143 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 262.89 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "712988ba-3b9f-4d53-ac00-7a7635a5ee8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 275.128 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 189.23 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "71ee55bb-50b9-4837-bff2-c402debd6c89")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 110.49 137.16 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "74af9c78-970f-4b47-bdd3-8cb2e25e755e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 117.3457 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 218.44 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7641cd6a-62aa-4838-a518-655aed6137b9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 206.202 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 30.48 19.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "796aa8fa-5ad5-4040-b51f-2069d02efebc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 42.718 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 262.89 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "79f32afd-01d1-4f02-8eb2-9cef35eaedc1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 274.5232 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 262.89 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7c99fe1b-3aea-4f82-9aa2-f8f12854d88d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 275.128 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 90.17 137.16 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7d62d789-5b1b-4fb7-a064-9cfa793eb602")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.3143 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 110.49 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7eec4cc4-d162-4f14-9d6f-282b55916796")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.0066 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 168.91 49.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "818ee97c-d1cc-4086-9aa1-de69521b0f2a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 159.3934 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 189.23 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "842a7049-311e-497f-bbb6-a369e5a4566e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.7466 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 90.17 96.52 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "856ff3d1-1626-4cbb-89ae-6eb6f5a905b9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 79.1415 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 262.89 96.52 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "85d0841a-21b7-4092-b28e-24888d0c2b71")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 273.9185 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 189.23 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "88fece40-8dc7-4e8f-8885-3db72ad4d30f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.8632 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 90.17 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8a914feb-e41e-4c88-b940-6a52f9a67dc6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 83.3143 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 66.04 44.45 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8abef616-57fa-4213-8430-a84b74f2a302")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 110.49 147.32 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8dd74c39-d677-4f01-bd5d-f02ebeeee2e5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.0066 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 110.49 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8ebd0b8a-4ae7-46ab-87e7-0cb8e4e17c54")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 117.3457 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 168.91 96.52 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8f6914a7-efed-4710-a009-7dba5c3b4f75")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.8815 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 144.78 142.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "981cdb66-62ba-456c-8686-c30eeb937048")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 218.44 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9c24eadc-a810-42a8-b18f-01db391a1657")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 206.202 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 144.78 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9c392d04-5c82-4369-9d3a-46b52555ec51")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 262.89 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9d6b19e8-5763-4868-8700-891c1df09f8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 275.128 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 168.91 149.86 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9efec2ed-ced6-4d81-8387-05072091d607")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 157.2768 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 90.17 144.78 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a352f76d-2627-4327-a755-9754fa37cff1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 79.1415 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 262.89 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a40dec85-0be2-4327-bd5c-f06d6c8e39d1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 273.9185 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 110.49 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a8346a35-3e9b-4a55-ae30-99ef842b0ab2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.0066 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 90.17 101.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "aa015368-2be0-4f79-82dd-479923004e52")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.5368 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 189.23 142.24 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ad548f82-1bde-449a-a203-88a73a0af578")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 189.23 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "afa7f666-e67c-4635-98df-f22ca50f00b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 196.0857 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 110.49 132.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b209598e-eb87-46af-a5ea-25aeb8997f43")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 262.89 99.06 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b39a8fd4-a7f5-4163-888d-282dd864e049")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 272.4066 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 90.17 49.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b7ce1707-f992-4db7-b434-4e9624a8592a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 80.6534 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 189.23 46.99 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b8441f9b-82db-43c7-8633-4446bd04fe06")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.2585 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 218.44 83.82 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bb7bf8a1-7d18-47d6-addb-96ef713597b4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 206.202 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GATE rail"
+		(shape input)
+		(at 189.23 149.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bd5061e4-2f7c-4a96-bada-6f2e35f523d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.8632 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 242.57 49.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "be9b1e15-7e01-4e25-b877-6fd73e3a084d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 233.0534 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 30.48 34.29 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c0e1c913-650a-4a44-83da-fc83aaab1129")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 41.5085 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 110.49 93.98 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c6d40887-0f69-4a51-bcf6-71b0819f9f98")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 122.728 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 66.04 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c88344e2-94b1-4af1-86d3-de988853eb09")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 110.49 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ccc308f0-3a8e-4494-9fe1-5c228994c7f3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.5185 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 262.89 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cfaf0ff1-f389-4bea-bfa3-e278e96119aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.7457 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 168.91 99.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d656a50b-649e-40b4-b64d-c16453d17d85")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 159.3934 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 144.78 44.45 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "dc58bf64-6ff5-4eda-94cc-f597931446da")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 132.542 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 189.23 83.82 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e5e9f23c-77c2-4af2-ba06-72e87476c4ca")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 66.04 142.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e749d48a-c535-4b0b-a5ea-402eae0ce3e7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.802 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 168.91 137.16 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e949c0eb-00f7-49d3-988d-4f116b1e413c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 162.0543 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 189.23 39.37 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e9b09cd7-5b71-4bae-98ff-c9b48e28eee6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 196.0857 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+12V rail"
+		(shape input)
+		(at 189.23 44.45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "eeee542f-ffca-4dfb-8afa-28e37c0ad13d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 168.91 39.37 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f4e3653f-8560-412d-9faa-a9fce8608ae5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 162.0543 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CV rail"
+		(shape input)
+		(at 189.23 49.53 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f55f200a-5aef-4171-a9da-3daaf0318a1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.7466 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "-12V rail"
+		(shape input)
+		(at 189.23 132.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f6a6c3e4-8f56-413b-abe1-3e2e91a8a4ab")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 201.468 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+5V rail"
+		(shape input)
+		(at 189.23 144.78 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ffcf0497-b923-415a-b650-4b214bf0a921")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 200.2585 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(hierarchical_label "+5V rail"
+		(shape input)
+		(at 25.4 34.29 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "017deba7-ba00-44af-9b9f-3f18361ef791")
+	)
+	(hierarchical_label "-12V rail"
+		(shape input)
+		(at 25.4 19.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0c3aae20-a5b3-47e4-8395-8d4854a7cf51")
+	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 25.4 24.13 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a55360c9-7754-403a-96e8-393ee1b46c1f")
+	)
+	(hierarchical_label "+12V rail"
+		(shape input)
+		(at 25.4 29.21 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "eae04b24-7189-4ecb-9576-8f1f3579c51b")
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 223.52 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0989dae9-36b9-485b-898f-e57313362c24")
+		(property "Reference" "C106"
+			(at 217.932 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 217.932 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 231.14 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 233.68 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 236.22 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19b00549-0f79-4d5f-92d6-9276d02f3e5a")
+		)
+		(pin "2"
+			(uuid "5f6767bd-1144-45f4-a121-7ca7c6df09ca")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 149.86 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2191f3f3-8fbd-4d34-ba3f-0f517b4878bf")
+		(property "Reference" "#PWR022"
+			(at 149.86 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.86 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 149.86 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c2cf3473-1d75-41c5-a36c-211cc07159a3")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 223.52 27.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "26753f0a-d367-41be-ba2e-ad21234ad25c")
+		(property "Reference" "C103"
+			(at 217.932 26.67 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 217.932 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 231.14 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 233.68 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 236.22 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "057f2312-bc6a-420e-b08a-bb1cdb1feb73")
+		)
+		(pin "2"
+			(uuid "88fa7b17-752c-4bfa-9ee8-586d4d86b582")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 80.01 123.19 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "27173795-da38-48ba-9e9a-345b386d3cd0")
+		(property "Reference" "#PWR021"
+			(at 80.01 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 80.01 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 80.01 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 80.01 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1c059a8a-ff4f-49aa-a7bf-fed6a1d42545")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 179.07 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "279c8da3-a580-49af-89b5-5094cc95fde0")
+		(property "Reference" "J105"
+			(at 179.07 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 179.07 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 179.07 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 179.07 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "22ccf1a6-bf5b-4384-b0b6-286459f1c8f8")
+		)
+		(pin "13"
+			(uuid "54e6ebc4-13bf-4d92-9ac3-1427e28cfc36")
+		)
+		(pin "11"
+			(uuid "c6b1a194-62e1-4f45-babd-42a46ff16cd5")
+		)
+		(pin "9"
+			(uuid "24335b5b-aefa-4641-b81d-71e89f011fab")
+		)
+		(pin "7"
+			(uuid "a6380f22-726f-4dba-9c8e-c4a928c83863")
+		)
+		(pin "5"
+			(uuid "7d47b3d0-b6ae-4eb1-888b-ca2ab12e35f2")
+		)
+		(pin "3"
+			(uuid "838b8df8-a42d-4df0-82e4-a2f9f8b1b785")
+		)
+		(pin "1"
+			(uuid "ef2eb3d1-2096-4ff9-824c-b2fa5867e7ec")
+		)
+		(pin "2"
+			(uuid "19b7dca4-a550-4c08-893e-ed079beddc20")
+		)
+		(pin "4"
+			(uuid "7289e2e3-9a89-4885-9e73-d46e36dedb5a")
+		)
+		(pin "6"
+			(uuid "436d311a-9750-46ed-8e8d-0e4840be1bfb")
+		)
+		(pin "8"
+			(uuid "6a56d546-aaa5-401d-a042-1bf652e8ac4e")
+		)
+		(pin "10"
+			(uuid "755a8e43-b131-4475-8c19-a6cdd46aa2fe")
+		)
+		(pin "12"
+			(uuid "183f4737-4c45-4d06-b8bb-2fe00c58d27c")
+		)
+		(pin "14"
+			(uuid "ff749847-c83f-4718-88ce-aff2915dad05")
+		)
+		(pin "16"
+			(uuid "be52c591-0743-4d56-96b8-6b5944184b92")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 71.12 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2f0f9dfe-f2a7-4872-a82a-2a2ff65a34bc")
+		(property "Reference" "#PWR014"
+			(at 71.12 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 71.12 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7226a905-c4a1-4cd7-876a-a6c0d8a74cf9")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "32af6e52-a835-4d5d-b50e-915e1e390373")
+		(property "Reference" "C201"
+			(at 64.77 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 64.77 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 63.5 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 60.96 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 58.42 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23b699cc-fece-4af7-9f93-e9cbee865cbd")
+		)
+		(pin "2"
+			(uuid "92fb1f3a-2895-4dbd-ac51-0f00a39249c2")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 158.75 123.19 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4229a884-9078-44ee-b829-43221b8837d8")
+		(property "Reference" "#PWR023"
+			(at 158.75 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 158.75 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 158.75 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1ef10bea-e9d9-4fc4-8c93-d81d7d849822")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 158.75 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5992d8ed-7a91-42c1-b6b1-4bd6a4b08ad2")
+		(property "Reference" "#PWR017"
+			(at 158.75 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 158.75 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 158.75 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be580654-f2a1-4564-8c1f-4cca93a256c1")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 100.33 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c5ae658-7348-4c2b-93ef-f47c258bfa2e")
+		(property "Reference" "J101"
+			(at 100.33 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 100.33 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 100.33 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 100.33 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 100.33 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "1240b8a2-b26e-448a-bfcf-841bb05bac57")
+		)
+		(pin "13"
+			(uuid "5112fdbf-0a4b-4f8d-8538-480068cbdfeb")
+		)
+		(pin "11"
+			(uuid "dd828c9b-1b5f-46e5-b110-41be2899a014")
+		)
+		(pin "9"
+			(uuid "26d1a434-4144-4abd-9e88-58cc8abdc8f2")
+		)
+		(pin "7"
+			(uuid "b301f405-e364-4eed-a934-37cbb0c30372")
+		)
+		(pin "5"
+			(uuid "6120ae3b-e74c-4e5c-8c60-e87aa2ba1679")
+		)
+		(pin "3"
+			(uuid "5aa51d93-626f-4391-a962-0d462823a5e0")
+		)
+		(pin "1"
+			(uuid "38b8429d-78c7-423b-9dfa-9e977606831d")
+		)
+		(pin "2"
+			(uuid "45f279e4-946a-4dab-ae9a-87334eb5083f")
+		)
+		(pin "4"
+			(uuid "077c0c43-0305-49b5-90c5-5e26b81a1c67")
+		)
+		(pin "6"
+			(uuid "4a13e547-776b-4b81-bea2-0030dcffbc3f")
+		)
+		(pin "8"
+			(uuid "82b40e5c-ada7-4bc6-9301-bd3bb8aa64a1")
+		)
+		(pin "10"
+			(uuid "d9c0c10b-78d1-428c-9ace-123d4a028dd6")
+		)
+		(pin "12"
+			(uuid "53070840-93be-4795-9c4d-2579c978f36d")
+		)
+		(pin "14"
+			(uuid "809919eb-616a-4877-9b70-9c6d8fac8fc9")
+		)
+		(pin "16"
+			(uuid "0f5562bb-bb21-4538-a8a6-7aec7aaf1baf")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 148.59 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "66ab0d29-5e0c-4d83-9d1e-f819f9fe3e25")
+		(property "Reference" "C207"
+			(at 64.77 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 64.77 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 63.5 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 60.96 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 58.42 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c69da8d8-f2dd-44e5-afbe-8acdae959dce")
+		)
+		(pin "2"
+			(uuid "61813636-34d0-406c-9238-c43161186e33")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C207")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 232.41 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6f50dd36-6f81-44a2-a35f-0d2ea14f6a4a")
+		(property "Reference" "#PWR013"
+			(at 232.41 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 232.41 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0eb8fb90-d448-41c3-bc13-d90ad0186265")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 100.33 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "75418d7b-0976-46f1-bba8-67370910d264")
+		(property "Reference" "J104"
+			(at 100.33 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 100.33 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 100.33 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 100.33 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 100.33 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "d4b465dc-df2b-4566-b1c2-64a63d8e9145")
+		)
+		(pin "13"
+			(uuid "9e576c4e-a6f5-48a2-9cae-b5e05962f11e")
+		)
+		(pin "11"
+			(uuid "6deea933-cf34-4235-bc08-4fc32f466914")
+		)
+		(pin "9"
+			(uuid "306912f5-981f-4460-9b53-0befb7aaafdb")
+		)
+		(pin "7"
+			(uuid "54500027-0b5b-407c-bbde-f058fd9e445a")
+		)
+		(pin "5"
+			(uuid "6738ec14-6b67-42b7-b8b1-7ad5b6d78e63")
+		)
+		(pin "3"
+			(uuid "64976b36-f4c2-405b-9e77-c5c8cdcc18b0")
+		)
+		(pin "1"
+			(uuid "819ab7ed-7745-4eed-8f77-f92c9c7d73dc")
+		)
+		(pin "2"
+			(uuid "e0a11914-1864-400b-ba9d-d3257e03d4a8")
+		)
+		(pin "4"
+			(uuid "eb3b3d5e-1e09-4f2b-b29d-85d5158b5433")
+		)
+		(pin "6"
+			(uuid "ca057ffd-3d06-4095-ad7a-701ad877ae2e")
+		)
+		(pin "8"
+			(uuid "802a4da4-400a-473f-b5b0-813d88385ffb")
+		)
+		(pin "10"
+			(uuid "e946a401-ef71-4c94-8239-42fe73784942")
+		)
+		(pin "12"
+			(uuid "20a6c498-bf05-4ba5-86b2-5b7591e32464")
+		)
+		(pin "14"
+			(uuid "9b259f7d-d292-421c-8bfd-2cdb4a745617")
+		)
+		(pin "16"
+			(uuid "91dd8fe1-714c-4464-b6a4-830fdc83a31a")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 27.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "78c0d3df-db1a-4dfc-9ada-1b83f6a3ac38")
+		(property "Reference" "C101"
+			(at 65.532 26.67 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 65.532 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 78.74 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 81.28 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 83.82 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "419809ec-517d-4ee9-8419-a5dfab4dde4d")
+		)
+		(pin "2"
+			(uuid "04a61d55-9295-43d7-99c2-f5507df117cd")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b0444ec-9ac6-4416-a7b6-e82151ddbbaa")
+		(property "Reference" "C205"
+			(at 143.51 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 143.51 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 142.24 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 139.7 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 137.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f5c1bbd-2c1b-423d-b1d2-bfa04caf9080")
+		)
+		(pin "2"
+			(uuid "35fdabfc-5176-411f-b2c0-f7353f543979")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C205")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 179.07 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "914088bf-6c07-4d70-9ba0-e49f425e68b5")
+		(property "Reference" "J108"
+			(at 179.07 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 179.07 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 179.07 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 179.07 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "887c396b-99ac-4ccc-99e9-eca26ef63e99")
+		)
+		(pin "13"
+			(uuid "d32986cc-e951-4511-bb16-606bd64effdc")
+		)
+		(pin "11"
+			(uuid "5580025d-e49d-4885-97a0-cd1390d7d65c")
+		)
+		(pin "9"
+			(uuid "86679554-349e-484f-b08a-a58e1c91463e")
+		)
+		(pin "7"
+			(uuid "808dd553-51fc-4cd2-af00-89b2a26ae359")
+		)
+		(pin "5"
+			(uuid "a6215066-f28c-4c09-9499-219b54d9c6ed")
+		)
+		(pin "3"
+			(uuid "54122c93-9c96-4137-bdfa-3dd59c6c644b")
+		)
+		(pin "1"
+			(uuid "ba8f63e2-b0ed-48e2-8930-080ab3f180fb")
+		)
+		(pin "2"
+			(uuid "cb19861d-e26a-4782-a5af-00276ff17e6b")
+		)
+		(pin "4"
+			(uuid "b8fd12eb-1cb5-4b94-955f-4eaca5e8d79c")
+		)
+		(pin "6"
+			(uuid "bd852c2a-ad47-4bea-b73a-a61c9289707f")
+		)
+		(pin "8"
+			(uuid "a28cd2d2-4cd0-4c46-b7c9-dbb210314a78")
+		)
+		(pin "10"
+			(uuid "ccad9da0-6595-43cc-8033-b6181783c3c7")
+		)
+		(pin "12"
+			(uuid "af1791fe-f49a-4551-8f87-f873ff9128f0")
+		)
+		(pin "14"
+			(uuid "7f405c86-d6cb-4543-92fc-3936d71b001a")
+		)
+		(pin "16"
+			(uuid "583ac683-bf66-4386-bb46-702261280b41")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 223.52 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "942de206-dd3a-43e8-9bf5-0517b64c2877")
+		(property "Reference" "C206"
+			(at 217.17 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 217.17 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 215.9 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 213.36 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 210.82 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "60ee26bc-81ab-4f16-814b-16fcb9782d61")
+		)
+		(pin "2"
+			(uuid "5fd63db1-4328-4067-828c-ec543b467362")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C206")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "94ad247a-7bdf-4392-8c32-41eb83755288")
+		(property "Reference" "C105"
+			(at 144.272 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 144.272 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 157.48 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 160.02 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 162.56 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "311c82d9-70fa-4aab-8488-7fa36f11c15c")
+		)
+		(pin "2"
+			(uuid "20072650-0816-45b4-ba11-efaea676dea3")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "976bf0c6-4c05-4cc8-964e-01760530b0ad")
+		(property "Reference" "C104"
+			(at 65.532 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 65.532 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 78.74 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 81.28 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 83.82 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dd9bca52-b4fa-484a-a745-09660a448490")
+		)
+		(pin "2"
+			(uuid "5d651d82-c1ab-4f9e-97cf-e54f15b2ea7e")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "97be0a6b-38c3-4705-841e-2f414114a610")
+		(property "Reference" "C204"
+			(at 64.77 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 64.77 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 63.5 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 60.96 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 58.42 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "993de34a-921b-4545-8cf6-6a4b8bc1bca2")
+		)
+		(pin "2"
+			(uuid "99abba26-03d2-4c3e-8127-ff2b046cdf29")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C204")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 252.73 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9b4ecda0-8b0d-4772-bcab-3895b1ff17e6")
+		(property "Reference" "J106"
+			(at 252.73 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 252.73 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 252.73 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 252.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 252.73 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "8a0de767-ac44-4ad1-981a-d3872087b712")
+		)
+		(pin "13"
+			(uuid "d8f35102-ee00-46ae-87df-4c379f2d5e7a")
+		)
+		(pin "11"
+			(uuid "93ae5471-b629-422e-a17c-118e382302b6")
+		)
+		(pin "9"
+			(uuid "d1b9fee2-b228-4422-ad85-b3b10dec421e")
+		)
+		(pin "7"
+			(uuid "a378e738-5ceb-4889-b490-1ceab9182eac")
+		)
+		(pin "5"
+			(uuid "89dc5df3-2f51-4572-bfb9-8b9b5498b987")
+		)
+		(pin "3"
+			(uuid "5cdc924c-9b00-4ecf-8098-51afb411d7ab")
+		)
+		(pin "1"
+			(uuid "cacd62a7-0b1e-4122-a453-a35b27bd6127")
+		)
+		(pin "2"
+			(uuid "e0946030-3d2a-4b1c-8dcc-5baa6cf56d79")
+		)
+		(pin "4"
+			(uuid "8e40ad0a-d59e-4f26-8179-c3457e0b668f")
+		)
+		(pin "6"
+			(uuid "90e72922-1799-4149-8268-cc678c0f79aa")
+		)
+		(pin "8"
+			(uuid "95b84b5b-b2d6-4f3b-9c01-ece975bd0b7b")
+		)
+		(pin "10"
+			(uuid "a6939d2d-bc02-4be0-b653-7877814c0ac6")
+		)
+		(pin "12"
+			(uuid "2f853a99-3f03-4784-9aa4-31f2703feba3")
+		)
+		(pin "14"
+			(uuid "507f5bf3-45c3-4384-9c1e-f183af561b5d")
+		)
+		(pin "16"
+			(uuid "0ba49ed9-fcce-4686-814c-d5bea41da215")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 71.12 125.73 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9e0bbc38-c7f4-45b4-af8f-3f75ff26390f")
+		(property "Reference" "C107"
+			(at 65.532 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 65.532 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 78.74 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 81.28 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 83.82 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df74313f-2dd3-487d-9143-2dfa24ae44a7")
+		)
+		(pin "2"
+			(uuid "f35b72ea-5b3a-4cc8-a453-d29bd80b6643")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 80.01 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a110bc1e-686b-4c32-a3e9-007234f6c5e6")
+		(property "Reference" "#PWR015"
+			(at 80.01 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 80.01 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 80.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 80.01 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab64ca78-e15d-4967-a248-19d3df01b82f")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 71.12 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a476c1d4-4beb-48c8-8b60-c037585ae83f")
+		(property "Reference" "#PWR08"
+			(at 71.12 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 71.12 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "17fce193-246d-4757-b549-4288190a7e4d")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 223.52 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7f174ba-ee16-47b5-94d3-943f338f4901")
+		(property "Reference" "#PWR018"
+			(at 223.52 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 223.52 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 223.52 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 223.52 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2890fadd-bff8-4708-acb3-3d5319cb3f04")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 252.73 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a98a35d8-3bc9-4f49-868d-81c92abd9575")
+		(property "Reference" "J103"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 252.73 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 252.73 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 252.73 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "a681c0d7-a554-434e-9e5a-f88102ed6265")
+		)
+		(pin "13"
+			(uuid "627a15ab-2cd0-40b4-96a0-45afb8b47169")
+		)
+		(pin "11"
+			(uuid "dfb65f60-86b4-44b5-b5e5-6c5d347d59cd")
+		)
+		(pin "9"
+			(uuid "9e04ff4a-cacf-47da-9c10-e2d028b9097f")
+		)
+		(pin "7"
+			(uuid "80f920ed-2ca4-442b-8565-f9726e5f2c6d")
+		)
+		(pin "5"
+			(uuid "35a68b4c-dece-41ac-8feb-6d02e29a46e0")
+		)
+		(pin "3"
+			(uuid "33355f2a-103c-419c-92f9-e05fc519c235")
+		)
+		(pin "1"
+			(uuid "e57fc93e-f7a4-4569-84e1-30abfd808c3e")
+		)
+		(pin "2"
+			(uuid "0c7dd64f-ca30-4908-b1b9-bfa3bb665cb0")
+		)
+		(pin "4"
+			(uuid "9a1da19c-874d-4ca5-aa7d-c1625d8a0152")
+		)
+		(pin "6"
+			(uuid "2a317627-47a7-4a18-b72e-16b3df0d0994")
+		)
+		(pin "8"
+			(uuid "b4ac9c3d-bc0b-4803-a8f5-d9737767bad2")
+		)
+		(pin "10"
+			(uuid "84752643-2e27-474f-aedf-3c23239a43ac")
+		)
+		(pin "12"
+			(uuid "0670285e-771b-4cd3-a446-f7c8b8135e95")
+		)
+		(pin "14"
+			(uuid "3aa5cbff-b011-4faa-9a24-f68a15d2d75f")
+		)
+		(pin "16"
+			(uuid "3961e553-2877-40c5-8f5e-6c207c704355")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b09e5d76-6f08-4b5b-a642-0c6c0829d6e5")
+		(property "Reference" "C202"
+			(at 143.51 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 143.51 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 142.24 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 139.7 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 137.16 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7ade022e-f0ff-43f3-8a88-22fe90a64f82")
+		)
+		(pin "2"
+			(uuid "18518209-37a2-4d51-b97a-ef06089ca5d6")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C202")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 27.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ceb147a2-e8b0-4813-bd1f-82ffc5245c00")
+		(property "Reference" "C102"
+			(at 144.272 26.67 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 144.272 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 157.48 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 160.02 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 162.56 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be172f6f-8453-4f4d-a99d-b41758b15eb6")
+		)
+		(pin "2"
+			(uuid "5c3255f6-8ac0-429e-9d29-8f0e98ccf251")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 223.52 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cec208f1-6c6a-4ee5-98ff-198109a58722")
+		(property "Reference" "C203"
+			(at 217.17 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 217.17 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 215.9 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 213.36 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 210.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "301b5ac2-327e-4f78-b184-82d5c9fc72ad")
+		)
+		(pin "2"
+			(uuid "05314a8a-da66-4e32-9e6c-f3a0afced6ff")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C203")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 71.12 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cee731da-57ea-47bf-9ac3-c62bfaa8f3aa")
+		(property "Reference" "#PWR020"
+			(at 71.12 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 71.12 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4422ed54-6385-49c5-9759-742314706f8a")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 125.73 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d4069c15-ecfe-467a-a956-d8238f74e9ce")
+		(property "Reference" "C108"
+			(at 144.272 124.46 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 144.272 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 157.48 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 160.02 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 162.56 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "baa89714-db1f-4477-af95-5e410bff7df2")
+		)
+		(pin "2"
+			(uuid "4f10db1f-0039-4cc4-89bd-2ce1cf3a3692")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 149.86 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d4773699-8d9c-4ea8-a2fb-33cb71b42d89")
+		(property "Reference" "#PWR016"
+			(at 149.86 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.86 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 149.86 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "232bdc42-ef73-4bb8-90bf-0a2d1f968fd0")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 158.75 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d93a2370-4119-480b-94f1-b43d712e4722")
+		(property "Reference" "#PWR011"
+			(at 158.75 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 158.75 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 158.75 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ffb162f3-456a-47e1-ad97-28a7e8374837")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 80.01 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd998360-7e60-4e7b-b21b-cb3f2d23e8d7")
+		(property "Reference" "#PWR09"
+			(at 80.01 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 80.01 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 80.01 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 80.01 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0229b934-92df-4259-8933-117fe469a9ce")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 100.33 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e5797992-afe4-4671-bd1a-e22c5e8fb453")
+		(property "Reference" "J107"
+			(at 100.33 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 100.33 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 100.33 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 100.33 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 100.33 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "09e689a6-bb3a-4543-92b7-4734497ecf94")
+		)
+		(pin "13"
+			(uuid "2749d17f-2654-41a9-a09e-8b22cc62d0f8")
+		)
+		(pin "11"
+			(uuid "a3edb200-9794-4e3d-b87e-c79b90b42a94")
+		)
+		(pin "9"
+			(uuid "1eb07be3-b083-4ecd-9002-43612562e569")
+		)
+		(pin "7"
+			(uuid "2c3103f9-3bed-4553-8e5e-9845ff28b8e4")
+		)
+		(pin "5"
+			(uuid "a1f3c8a3-3355-4ca8-a0bd-798b2a77afca")
+		)
+		(pin "3"
+			(uuid "9003aad6-ef82-481c-8d69-78fa58cf7a10")
+		)
+		(pin "1"
+			(uuid "c700d1db-af51-4c3e-b6eb-e347f249826e")
+		)
+		(pin "2"
+			(uuid "4cd0de11-b19a-434f-bf14-38fa926c3466")
+		)
+		(pin "4"
+			(uuid "1966c350-b812-45cd-95e2-8c4851a7a150")
+		)
+		(pin "6"
+			(uuid "a903d0dd-3534-493d-99e3-169f80445e89")
+		)
+		(pin "8"
+			(uuid "5237d34d-f964-4184-8c7c-211b3e85472b")
+		)
+		(pin "10"
+			(uuid "a0cffefb-f7d7-4629-936c-e90ae6b24cd9")
+		)
+		(pin "12"
+			(uuid "4591ac3b-9df1-4ba4-a93c-edd421ae8970")
+		)
+		(pin "14"
+			(uuid "30e2be3d-ccec-434e-8913-c282771b6fb6")
+		)
+		(pin "16"
+			(uuid "0b91be03-3d80-413c-868d-c1dea4282fb5")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:2541WR-2X08P")
+		(at 179.07 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eb4fceee-7c28-472f-ad30-51f6d762af25")
+		(property "Reference" "J102"
+			(at 179.07 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2541WR-2X08P"
+			(at 179.07 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
+			(at 179.07 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C5383092"
+			(at 179.07 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "15"
+			(uuid "bc8c35e8-5c29-4586-a6cb-e3d783551383")
+		)
+		(pin "13"
+			(uuid "d7e7f155-ca1e-4bd1-a6dc-3126be0d38fb")
+		)
+		(pin "11"
+			(uuid "c172070d-32dd-44e7-a189-2d4f85822485")
+		)
+		(pin "9"
+			(uuid "e0f40d39-35fc-4d27-b200-69ac96966d58")
+		)
+		(pin "7"
+			(uuid "e1f9b44d-dda9-4a98-a45b-994f14d75e72")
+		)
+		(pin "5"
+			(uuid "ee8ec939-c98b-4644-bce7-7ac1e250bf90")
+		)
+		(pin "3"
+			(uuid "62f4ea5e-e153-410d-9aa3-28ed1cd3afe1")
+		)
+		(pin "1"
+			(uuid "01c64e20-e5f1-4027-961a-edbc7ea2a281")
+		)
+		(pin "2"
+			(uuid "83e75cb0-d6ba-4023-bebf-99216bf06d9e")
+		)
+		(pin "4"
+			(uuid "5b5cc9e9-00ab-4801-b3cd-4c58f5806592")
+		)
+		(pin "6"
+			(uuid "b60eaf27-342b-4f7f-8f3a-afa67838390e")
+		)
+		(pin "8"
+			(uuid "e1a83ded-d5e9-4149-b1ea-70aef39c81c4")
+		)
+		(pin "10"
+			(uuid "de1e9ba0-2ddd-419f-9f54-aa69c73f06f0")
+		)
+		(pin "12"
+			(uuid "b405caf8-94ad-4c70-92dd-bba5ef49300b")
+		)
+		(pin "14"
+			(uuid "014ca34a-efeb-4be9-bad0-16653cbf4476")
+		)
+		(pin "16"
+			(uuid "c159eace-8525-4075-be4e-a972a2b52ce4")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "J102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "zudo-bus:CC0603KRX7R9BB104")
+		(at 149.86 148.59 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ed70018a-67b8-40ff-81f2-c3a14d5a5c55")
+		(property "Reference" "C208"
+			(at 143.51 148.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 143.51 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "easyeda2kicad:C0603"
+			(at 142.24 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_100nF-104-10-50V_C14663.html"
+			(at 139.7 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C14663"
+			(at 137.16 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d36522f6-07df-42d7-9d92-da65418e76a5")
+		)
+		(pin "2"
+			(uuid "addd77bc-01a5-4ebb-b738-ba2b6bfc03a9")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "C208")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 149.86 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2549df5-db2a-41df-abd0-e8ae58a93e1d")
+		(property "Reference" "#PWR010"
+			(at 149.86 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.86 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 149.86 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "724a67ae-28dd-43bc-bd2c-959c18ffb0ee")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 223.52 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f350d2b7-27d5-4194-a32d-aeb2746a6dbc")
+		(property "Reference" "#PWR012"
+			(at 223.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 223.52 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 223.52 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 223.52 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5cccc743-f6f0-48c6-a3e5-3c1198512483")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 232.41 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "faf2c2bb-ac25-471f-bf3d-eb20a7fa7161")
+		(property "Reference" "#PWR019"
+			(at 232.41 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 232.41 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9dfe6c7-a007-44b1-8224-5f064cb5daed")
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11/6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5"
+					(reference "#PWR019")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

@@ -123,5 +123,5 @@ V_drop = 2A × 0.021 Ω/m × 0.5m × 2 = 42 mV
 
 ## Related
 
-- [Technical Overview](/docs/overview/overview) - System architecture
+- [Technical Overview](/docs/overview/project-overview) - System architecture
 - [Bill of Materials](/docs/overview/bom) - Connector specifications

@@ -76,9 +76,9 @@ Complete list of components for the zudo-bus board.
 
 | Designator | Value        | Package    | LCSC                                               | Function      |
 | ---------- | ------------ | ---------- | -------------------------------------------------- | ------------- |
-| J1-J8      | 2541WR-2x08P | 2x8 2.54mm | [C5383092](https://jlcpcb.com/partdetail/C5383092) | Module output |
+| J101-J108  | 2541WR-2x08P | 2x8 2.54mm | [C5383092](https://jlcpcb.com/partdetail/C5383092) | Module output |
 
-**Notes:** Standard Eurorack 16-pin power connector. Through-hole, right-angle.
+**Notes:** Standard Eurorack 16-pin power connector. Through-hole, right-angle. Numbering scheme: J1XX where XX = unit number (01-08).
 
 **KiCad:**
 
@@ -146,16 +146,16 @@ Complete list of components for the zudo-bus board.
 | C5         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +12V input bulk cap           |
 | C6         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | -12V input bulk cap           |
 | C23        | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +5V rail bulk cap (after JP1) |
-| C7-C14     | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
-| C15-C22    | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
+| C101-C108  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
+| C201-C208  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
 
 **Notes:**
 
 - C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAYNNNE, 25V X5R, Basic Part)
 - C5, C6: 22µF bulk capacitors (Samsung CL21A226MAYNNNE, 25V X5R) for better transient response during module power-on
 - C23: 22µF bulk capacitor for +5V rail, placed after JP1 Pin 2 (provides filtering regardless of LDO or PSU direct mode)
-- C7-C14: +12V per-header decoupling capacitors near each IDC output
-- C15-C22: -12V per-header decoupling capacitors near each IDC output
+- C101-C108: -12V per-header decoupling capacitors (C1XX matches J1XX header number)
+- C201-C208: +12V per-header decoupling capacitors (C2XX matches J1XX header number)
 
 **DC Bias Derating Note:** X5R ceramic capacitors lose capacitance under DC bias. At 12V on a 25V-rated cap, expect ~65% of nominal capacitance (22µF → ~14µF effective). This is acceptable for bulk filtering purposes.
 
@@ -433,7 +433,7 @@ From zudo-bus v1/v2:
 | `F1812.kicad_mod`                            | 1812           | F1, F2, F3, F4 (PTC fuses)          |
 | `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223        | U1 (LDO regulator)                  |
 | `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm         | JP1 (jumper header)                 |
-| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J1-J8 (IDC headers)                 |
+| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J101-J108 (IDC headers)             |
 | `CONN-TH_1217754-1.kicad_mod`                | FASTON         | P3-P6 (FASTON chain output)         |
 | `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | P1, P2 (screw terminals)            |
 

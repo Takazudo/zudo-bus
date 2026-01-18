@@ -38,7 +38,7 @@ flowchart TD
 
     IDC["IDC Headers
     Diagram7
-    U2, U5-U11 + Caps"]
+    J101-J108 + Caps"]
 
     LED["Status LEDs
     Diagram8
@@ -74,6 +74,23 @@ flowchart TD
 - **+12V rail**: Input → PTC F1 → TVS D1 → Reverse D2 → Distribution → IDC Headers
 - **-12V rail**: Input → PTC F2 → TVS D3 → Reverse D4 → Distribution → IDC Headers
 - **+5V rail**: Input → PTC F3 → TVS D5 → Reverse D6 → `+5V PSU` → OR-ing → H1 jumper → `+5V rail`
+
+## Schematic File Structure
+
+The KiCad schematic is organized as a hierarchical design with separate sheets for clarity:
+
+| Sheet File           | Contents                                 | Diagrams         |
+| -------------------- | ---------------------------------------- | ---------------- |
+| `zudo-bus.kicad_sch` | Top-level sheet with hierarchical blocks | -                |
+| `in-out.kicad_sch`   | Input, protection, LDO, chaining         | 1, 2, 3, 4, 5, 6 |
+| `rail.kicad_sch`     | IDC headers and decoupling capacitors    | 7                |
+
+**Hierarchical Labels** connect the sheets via power rails:
+
+- `-12V rail` - Protected -12V distribution
+- `GND` - System ground
+- `+12V rail` - Protected +12V distribution
+- `+5V rail` - Selected +5V (after jumper)
 
 ## Diagram1: Power Input Section
 
@@ -357,16 +374,21 @@ FASTON 250 terminals (1217754-1):
 
 ## Diagram7: IDC Headers and Decoupling
 
-8 IDC headers (U2, U5-U11) provide power to Eurorack modules. Each header has dedicated decoupling capacitors.
+8 IDC headers (J101-J108) provide power to Eurorack modules. Each header has dedicated decoupling capacitors.
 
 ```
-IDC Header Layout (2x4 grid):
+Component Numbering Scheme:
 
-        Column 1        Column 2
-Row 1   U2              U5
-Row 2   U6              U7
-Row 3   U8              U9
-Row 4   U10             U11
+J1XX = IDC headers         (J101, J102, J103...)
+C1XX = -12V decoupling     (C101, C102, C103... matches header)
+C2XX = +12V decoupling     (C201, C202, C203... matches header)
+
+Example - IDC Unit 1:
+┌─────────────────────────────────────────────────────┐
+│  J101 (IDC header)                                  │
+│  C101 (0.1µF) - -12V decoupling                     │
+│  C201 (0.1µF) - +12V decoupling                     │
+└─────────────────────────────────────────────────────┘
 
 Each IDC Header (2541WR-2X08P, 16-pin):
 ┌─────────────────────────────────────┐
@@ -377,16 +399,13 @@ Each IDC Header (2541WR-2X08P, 16-pin):
 │  Pins 15-16: CV/GATE (optional)     │
 └─────────────────────────────────────┘
 
-Decoupling Capacitors (per header):
-Each header has 2-3 capacitors placed adjacent:
+Decoupling per header:
 
-+12V rail ──┬── Cx (0.1µF) ──┬── GND
-            │                │
-            └────────────────┴── To IDC +12V pins
+-12V rail ──┬── C1XX (0.1µF) ── GND
+            └── To IDC pins 1-2
 
--12V rail ──┬── Cy (0.1µF) ──┬── GND
-            │                │
-            └────────────────┴── To IDC -12V pins
++12V rail ──┬── C2XX (0.1µF) ── GND
+            └── To IDC pins 9-12
 ```
 
 <details>
@@ -394,36 +413,29 @@ Each header has 2-3 capacitors placed adjacent:
 
 **Components:**
 
-| Ref     | Part              | Description                 |
-| ------- | ----------------- | --------------------------- |
-| U2      | 2541WR-2X08P      | IDC header 16-pin           |
-| U5      | 2541WR-2X08P      | IDC header 16-pin           |
-| U6      | 2541WR-2X08P      | IDC header 16-pin           |
-| U7      | 2541WR-2X08P      | IDC header 16-pin           |
-| U8      | 2541WR-2X08P      | IDC header 16-pin           |
-| U9      | 2541WR-2X08P      | IDC header 16-pin           |
-| U10     | 2541WR-2X08P      | IDC header 16-pin           |
-| U11     | 2541WR-2X08P      | IDC header 16-pin           |
-| C1-C12  | CC0603KRX7R9BB104 | 0.1µF decoupling (Column 1) |
-| C13-C23 | CC0603KRX7R9BB104 | 0.1µF decoupling (Column 2) |
+| Ref      | Part              | Description           |
+| -------- | ----------------- | --------------------- |
+| J101-108 | 2541WR-2X08P      | IDC header 16-pin     |
+| C101-108 | CC0603KRX7R9BB104 | 0.1µF -12V decoupling |
+| C201-208 | CC0603KRX7R9BB104 | 0.1µF +12V decoupling |
 
-**Capacitor Assignment:**
+**Component Assignment (per unit):**
 
-| Header | +12V Cap | -12V Cap | +5V Cap |
-| ------ | -------- | -------- | ------- |
-| U2     | C1       | C2       | C3      |
-| U5     | C13      | C14      | -       |
-| U6     | C4       | C5       | -       |
-| U7     | C15      | C16      | -       |
-| U8     | C6       | C7       | -       |
-| U9     | C17      | C18      | C19     |
-| U10    | C8       | C9       | -       |
-| U11    | C20      | C21      | C22     |
+| Unit | Header | -12V Cap | +12V Cap |
+| ---- | ------ | -------- | -------- |
+| 1    | J101   | C101     | C201     |
+| 2    | J102   | C102     | C202     |
+| 3    | J103   | C103     | C203     |
+| 4    | J104   | C104     | C204     |
+| 5    | J105   | C105     | C205     |
+| 6    | J106   | C106     | C206     |
+| 7    | J107   | C107     | C207     |
+| 8    | J108   | C108     | C208     |
 
 **IDC Pin Connections (each header):**
 
 - `Pins 1, 2` → `-12V rail`
-- `Pins 3, 4, 5, 6, 7, 8` → `GND rail`
+- `Pins 3, 4, 5, 6, 7, 8` → `GND`
 - `Pins 9, 10, 11, 12` → `+12V rail`
 - `Pins 13, 14` → `+5V rail`
 - `Pins 15, 16` → `CV rail`, `GATE rail` (optional)
@@ -483,7 +495,7 @@ LED1 (Power Indicator):
 | Diagram4 | F3, D5 (TVS), D6         |
 | Diagram5 | LDO, Schottky OR-ing, H1 |
 | Diagram6 | P3, P4, P5, P6 (FASTON)  |
-| Diagram7 | IDC Headers + Caps       |
+| Diagram7 | J101-J108, C101-C208     |
 | Diagram8 | Status LEDs              |
 
 ### Net Names

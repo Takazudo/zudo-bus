@@ -30,6 +30,11 @@
         "docId": "inbox/current-status",
         "title": "Current Status",
         "position": 2
+      },
+      {
+        "docId": "inbox/power-cable-recommendations",
+        "title": "Power Cable Recommendations",
+        "position": 3
       }
     ],
     "subcategories": []

@@ -2,9 +2,213 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid 26efc87e-0264-438c-bf9f-152a5d6f0f11)
+	(uuid "26efc87e-0264-438c-bf9f-152a5d6f0f11")
 	(paper "A4")
 	(lib_symbols)
+	(wire
+		(pts
+			(xy 58.42 38.1) (xy 66.04 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c3a39c9-26b7-4422-8b06-7bf65bc7b5be")
+	)
+	(wire
+		(pts
+			(xy 58.42 43.18) (xy 66.04 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e91a449-08bc-4274-9dba-1ad9c4ef8c22")
+	)
+	(wire
+		(pts
+			(xy 58.42 48.26) (xy 66.04 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c10ce644-e0ce-468f-9722-328e6ef88617")
+	)
+	(wire
+		(pts
+			(xy 58.42 33.02) (xy 66.04 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d81c12d3-2261-4568-ac67-104cd981a671")
+	)
+	(sheet
+		(at 66.04 26.924)
+		(size 38.608 29.21)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "6ea1d81b-4f8e-4cdc-9aaf-168ae08aa9e5")
+		(property "Sheetname" "rail"
+			(at 66.04 26.2124 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rail.kicad_sch"
+			(at 66.04 56.7186 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "+5V rail" input
+			(at 66.04 48.26 180)
+			(uuid "5d325268-5b6c-4d39-b173-933367ff0abd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "+12V rail" input
+			(at 66.04 43.18 180)
+			(uuid "7e40ea8a-11e1-4934-b1e1-f5f0072ee754")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "-12V rail" input
+			(at 66.04 33.02 180)
+			(uuid "9284727e-929c-422d-b121-3623d64f6583")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GND" input
+			(at 66.04 38.1 180)
+			(uuid "ee4aa8b6-f3b1-47ed-9dcc-b23377f627f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.908 26.924)
+		(size 32.512 28.702)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "fe2b7cfb-b823-4b77-a106-9cc058484f8e")
+		(property "Sheetname" "in-out"
+			(at 25.908 26.2124 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "in-out.kicad_sch"
+			(at 25.908 56.2106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "+5V rail" input
+			(at 58.42 48.26 0)
+			(uuid "451a996f-9406-4bfa-bcae-9c08e0b9528f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "+12V rail" input
+			(at 58.42 43.18 0)
+			(uuid "257653e3-44f6-4341-b37c-e8f3a2e9277c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "-12V rail" input
+			(at 58.42 33.02 0)
+			(uuid "898d9b08-7c83-4048-9092-ad638c4a0899")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GND" input
+			(at 58.42 38.1 0)
+			(uuid "9f915464-4d90-41d0-8762-2457e80142d4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "zudo-bus"
+				(path "/26efc87e-0264-438c-bf9f-152a5d6f0f11"
+					(page "2")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

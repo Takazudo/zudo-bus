@@ -36,6 +36,18 @@ env/
 *.tmp
 *.orig
 
+# KiCad generated/temporary files
+*.kicad_prl
+*.net
+*-backups/
+*.backup
+~*.lck
+ERC.rpt
+DRC.rpt
+fp-info-cache
+sym-lib-table
+test-*.kicad_sch
+
 # Temporary working directory (gitignored, use for working files)
 __inbox/
 

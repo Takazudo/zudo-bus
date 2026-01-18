@@ -79,3 +79,79 @@ When the user provides URLs starting with `http://localhost:3333/pj/zudo-bus/` o
 
 - `.md` files contain technical specifications and circuit diagrams in text format
 - No code compilation or testing is required - this is a hardware design project
+
+## KiCad Schematic Workflow
+
+### Recommended Approach
+
+**DO NOT edit `.kicad_sch` files programmatically for complex changes.** Instead:
+
+1. Use KiCad GUI for placing and connecting components
+2. Update documentation to match schematic changes
+3. Commit both schematic and documentation together
+
+### Why GUI-First?
+
+- Wire connections require exact coordinate matching with symbol pin positions
+- Symbol rotation affects pin coordinate calculations (complex transformation)
+- KiCad automatically handles UUID generation and wire routing
+- Programmatic edits often break wire connections or create orphaned elements
+
+### KiCad Schematic File Structure Reference
+
+For simple reads/validation, the `.kicad_sch` file structure:
+
+```
+(kicad_sch
+  (version ...)
+  (generator "eeschema")
+  (uuid "...")
+  (paper "A4")
+  (lib_symbols ...)        # Symbol definitions from libraries
+  (wire ...)               # Wire connections (pts: start/end coordinates)
+  (global_label ...)       # Net labels (name, shape, position)
+  (symbol ...)             # Placed component instances
+  (sheet_instances ...)    # Sheet metadata
+)
+```
+
+**Symbol instance structure:**
+```
+(symbol
+  (lib_id "library:SymbolName")
+  (at X Y rotation)        # Position in mm, rotation in degrees
+  (property "Reference" "P1" ...)
+  (property "Value" "..." ...)
+  (pin "1" (uuid "..."))   # Pin assignments
+  (instances (project "..." ...))
+)
+```
+
+**Wire structure:**
+```
+(wire
+  (pts (xy X1 Y1) (xy X2 Y2))  # Start and end points
+  (stroke ...)
+  (uuid "...")
+)
+```
+
+### Schematic-Documentation Sync
+
+When updating schematic in KiCad:
+1. Update `doc/docs/overview/circuit-diagrams.mdx` with new connections
+2. Update `doc/docs/overview/bom.md` if components change
+3. Commit both files together with descriptive message
+
+### KiCad Schematic Tweak Skill
+
+**Location**: `~/.claude/skills/kicad-sch-tweak/`
+
+This skill provides detailed guidance for programmatic KiCad schematic editing. **Improve this skill with each schematic editing session:**
+
+1. After each diagram step, review what worked and what didn't
+2. Update the skill's `SKILL.md` or `references/` with new learnings
+3. Add examples of successful patterns (wire coordinates, label positioning, etc.)
+4. Document any edge cases or gotchas discovered
+
+The goal is to eventually enable reliable programmatic schematic generation for repetitive tasks (e.g., adding labels to 8 IDC headers).

@@ -30,7 +30,7 @@ flowchart TD
 
     SEL5["+5V Selection
     Diagram5
-    LDO, Schottky OR-ing, H1"]
+    U1, D7/D8, JP1, F4"]
 
     DIST["Chaining Output
     Diagram6
@@ -75,7 +75,8 @@ flowchart TD
 
 - **+12V rail**: Input → PTC F1 → TVS D1 → Reverse D2 → Distribution → IDC Headers
 - **-12V rail**: Input → PTC F2 → TVS D3 → Reverse D4 → Distribution → IDC Headers
-- **+5V rail**: Input → PTC F3 → TVS D5 → Reverse D6 → `+5V PSU` → OR-ing → H1 jumper → `+5V rail`
+- **+5V PSU path**: Input → PTC F3 → TVS D5 → Reverse D6 → `+5V PSU` → OR-ing D8 → JP1 → F4 → `+5V rail`
+- **+5V LDO path**: `+12V rail` → U1 LDO → OR-ing D7 → JP1 → F4 → `+5V rail`
 
 ## Schematic File Structure
 
@@ -265,41 +266,50 @@ Then to +5V selection (Diagram5):
 
 The +5V rail can be sourced from either:
 
-1. On-board LDO (from +12V)
-2. External PSU direct
+1. On-board LDO (from +12V via U1)
+2. External PSU direct (+5V PSU from Diagram4)
 
-Schottky diodes D4 and D5 form OR-ing protection.
+Schottky diodes D7 and D8 form OR-ing protection to prevent backfeed. F4 provides output protection for the +5V rail.
 
 ```
 +5V Source Selection:
 
-                           +5V Selection with OR-ing
+                        +5V Selection with OR-ing
 
-+12V rail ──► U3 ──► U4 ──► D4 (SS14) ──┐
-             LED    LDO     Schottky    │
-             drv    5V      cathode     │
-                                        ├──► H1 ──► +5V rail
-                                        │   Jumper
-+5V in ─────────────────► D5 (SS14) ────┘
-(from Diagram4)           Schottky
-                          cathode
++12V rail ──► U1 ──┬──► D7 (SS14) ──┐
+             LDO   │    Schottky    │
+             5V    │    cathode     │
+                   │                ├──► JP1 ──► F4 ──► +5V rail
+             C1    C2 (22µF)        │   Jumper   PTC
+             10µF  to GND           │            1.1A
+             to GND                 │
+                                    │
++5V PSU ───────────► D8 (SS14) ─────┘
+(from Diagram4)      Schottky
+                     cathode
 
-H1 Jumper (1x3 Header):
+U1 (AMS1117-5.0):
+- Pin 3 (VI): Input from +12V rail
+- Pin 2 (VO): +5V output to D7
+- Pin 1 (GND): Ground
+
+JP1 Jumper (1x3 Header):
 ┌─────┐
-│  1  │ LDO +5V output (via D4)
-│  2  │ +5V rail (to distribution)
-│  3  │ PSU +5V (via D5)
+│  1  │ LDO +5V output (via D7)
+│  2  │ To F4 (+5V rail output)
+│  3  │ PSU +5V (via D8)
 └─────┘
 
 Jumper positions:
 - 1-2: Use LDO (on-board 5V from 12V)
 - 2-3: Use PSU direct +5V
 
-LDO Section:
-U3 (LED driver) provides current reference
-U4 (78L05 or similar) regulates +12V down to +5V
+F4 (Output Protection):
+- Placed after JP1, before +5V rail
+- Protects +5V distribution from module shorts
+- Works for both LDO and PSU sources
 
-OR-ing Diodes (D4, D5):
+OR-ing Diodes (D7, D8):
 - Prevent backfeed between LDO and PSU
 - Allow safe operation with any jumper configuration
 - ~0.55V forward drop (Schottky)
@@ -310,25 +320,36 @@ OR-ing Diodes (D4, D5):
 
 **Components:**
 
-| Ref | Part               | Description                       |
-| --- | ------------------ | --------------------------------- |
-| U3  | YLED0603YG         | LED indicator/driver              |
-| U4  | NCD1608A1 or 78L05 | +5V LDO regulator                 |
-| D4  | SS14               | Schottky diode, LDO output OR-ing |
-| D5  | SS14               | Schottky diode, PSU +5V OR-ing    |
-| H1  | Header 1x3         | +5V source selection jumper       |
-| C21 | 22uF               | LDO output capacitor              |
+| Ref | Part             | Description                        |
+| --- | ---------------- | ---------------------------------- |
+| U1  | AMS1117-5.0      | +5V LDO regulator (1A max)         |
+| C1  | 10µF             | LDO input capacitor                |
+| C2  | 22µF             | LDO output capacitor (required)    |
+| D7  | SS14             | Schottky diode, LDO output OR-ing  |
+| D8  | SS14             | Schottky diode, PSU +5V OR-ing     |
+| JP1 | Header 1x3       | +5V source selection jumper        |
+| F4  | BSMD1812-110-33V | PTC fuse 1.1A, +5V rail protection |
 
 **Connections:**
 
-- `+12V rail` → `U3 input`
-- `U3 output` → `U4 input`
-- `U4 output` → `LDO out` net
-- `LDO out` → `D4 anode`
-- `D4 cathode` → `H1 Pin 1`
-- `+5V in` → `D5 anode`
-- `D5 cathode` → `H1 Pin 3`
-- `H1 Pin 2` → `+5V rail` net
+| Component | Pin | Net       | Description            |
+| --------- | --- | --------- | ---------------------- |
+| U1        | 3   | +12V rail | VI from protected rail |
+| U1        | 2   | (node)    | VO to D7               |
+| U1        | 1   | GND       | Ground                 |
+| C1        | 1   | +12V rail | At U1 VI               |
+| C1        | 2   | GND       | Decoupling             |
+| C2        | 1   | (node)    | At U1 VO               |
+| C2        | 2   | GND       | Stability (required)   |
+| D7        | 2   | (node)    | Anode from U1 VO       |
+| D7        | 1   | (node)    | Cathode to JP1 pin 1   |
+| D8        | 2   | +5V PSU   | Anode from Diagram4    |
+| D8        | 1   | (node)    | Cathode to JP1 pin 3   |
+| JP1       | 1   | (node)    | LDO output via D7      |
+| JP1       | 2   | (node)    | To F4 input            |
+| JP1       | 3   | (node)    | PSU +5V via D8         |
+| F4        | 1   | (node)    | From JP1 pin 2         |
+| F4        | 2   | +5V rail  | To distribution        |
 
 </details>
 
@@ -510,16 +531,16 @@ Current limiting:
 
 ### All Components by Diagram
 
-| Diagram  | Components               |
-| -------- | ------------------------ |
-| Diagram1 | P1, P2                   |
-| Diagram2 | F1, D1 (TVS), D2         |
-| Diagram3 | F2, D3 (TVS), D4         |
-| Diagram4 | F3, D5 (TVS), D6         |
-| Diagram5 | LDO, Schottky OR-ing, H1 |
-| Diagram6 | P3, P4, P5, P6 (FASTON)  |
-| Diagram7 | J101-J108, C101-C208     |
-| Diagram8 | LED1-3, R1-R3            |
+| Diagram  | Components                  |
+| -------- | --------------------------- |
+| Diagram1 | P1, P2                      |
+| Diagram2 | F1, D1 (TVS), D2            |
+| Diagram3 | F2, D3 (TVS), D4            |
+| Diagram4 | F3, D5 (TVS), D6            |
+| Diagram5 | U1, C1, C2, D7, D8, JP1, F4 |
+| Diagram6 | P3, P4, P5, P6 (FASTON)     |
+| Diagram7 | J101-J108, C101-C208        |
+| Diagram8 | LED1-3, R1-R3               |
 
 ### Net Names
 

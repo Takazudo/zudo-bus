@@ -273,18 +273,18 @@ Input → PTC Fuse → TVS Diode (to GND) → Reverse Diode → Rail
 
 ### Resettable Fuses (PTC)
 
-| Designator | Value            | Package | LCSC                                             | Function                     |
-| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------------- |
-| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)        |
-| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)        |
-| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V rail overcurrent (1.5A)  |
-| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | LDO input overcurrent (1.1A) |
+| Designator | Value            | Package | LCSC                                             | Function               |
+| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------- |
+| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)  |
+| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)  |
+| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V PSU input (1.5A)   |
+| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | +5V rail output (1.1A) |
 
 **Notes:** Self-resetting PTC fuses. Trip on overcurrent, auto-reset when cooled.
 
 - F1/F2 (Stock: 120K): Main ±12V rail protection
-- F3 (Stock: 69K): +5V distribution rail protection (after JP1 Pin 2, regardless of source)
-- F4 (Stock: 50K): LDO input path protection - provides symmetric protection for the LDO, limiting input current to prevent damage if LDO shorts internally
+- F3 (Stock: 69K): +5V PSU input protection - protects TVS D5 during transients
+- F4 (Stock: 50K): +5V rail output protection - placed after JP1 jumper, protects +5V distribution from module shorts regardless of LDO or PSU source
 
 **Specifications (BSMD1812-200-30V):**
 

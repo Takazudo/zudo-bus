@@ -177,28 +177,42 @@ Complete list of components for the zudo-bus board.
 
 **KiCad:**
 
-- Symbol: `0805WAF1001T5E` (1kΩ)
-- Footprint: `R0805.kicad_mod`
+- Symbol: `RC0603FR-071KL` (1kΩ)
+- Footprint: `R0603.kicad_mod`
 
 ---
 
 ## Protection Components
 
+### TVS Diodes (Transient Protection)
+
+| Designator | Value    | Package   | LCSC                                             | Function             |
+| ---------- | -------- | --------- | ------------------------------------------------ | -------------------- |
+| D1         | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | +12V transient clamp |
+| D3         | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | -12V transient clamp |
+| D5         | SMF5.0CA | SOD-123   | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
+
+**Notes:** Bidirectional TVS diodes for ESD and transient spike protection. Connected between rail junction and GND.
+
+**KiCad:**
+
+- Symbol: `SMF12CA_C353317`, `SMF5.0CA_C908214`
+- Footprint: `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod`
+
 ### Reverse Polarity Diodes
 
-| Designator | Value    | Package   | LCSC                                           | Function                  |
-| ---------- | -------- | --------- | ---------------------------------------------- | ------------------------- |
-| D1         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection   |
-| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection   |
-| D3         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V PSU path protection   |
-| D4         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V LDO output protection |
+| Designator | Value    | Package   | LCSC                                           | Function                |
+| ---------- | -------- | --------- | ---------------------------------------------- | ----------------------- |
+| D2         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +12V reverse protection |
+| D4         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | -12V reverse protection |
+| D6         | SM4007PL | SOD-123FL | [C64898](https://jlcpcb.com/partdetail/C64898) | +5V reverse protection  |
 
-**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. D3 protects the +5V PSU input path, D4 protects the LDO output path.
+**Notes:** SM4007PL is a 1N4007 equivalent in SOD-123FL package. In series with each rail after PTC fuse.
 
 **Protection Order (Input to Output):**
 
 ```
-Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distribution
+Input → PTC Fuse → TVS Diode (to GND) → Reverse Diode → Rail
 ```
 
 **KiCad:**
@@ -210,33 +224,28 @@ Input → PTC Fuse → TVS Diode → Reverse Diode → Bulk Caps → Distributio
 
 | Designator | Value | Package       | LCSC                                         | Function                    |
 | ---------- | ----- | ------------- | -------------------------------------------- | --------------------------- |
-| D5         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V PSU path OR-ing diode   |
-| D6         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V LDO output OR-ing diode |
+| D7         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V LDO output OR-ing diode |
+| D8         | SS14  | SMA(DO-214AC) | [C2480](https://jlcpcb.com/partdetail/C2480) | +5V PSU path OR-ing diode   |
 
-**Notes:** SS14 Schottky diodes (40V, 1A) create an OR-ing configuration to prevent backfeed between the LDO and PSU +5V sources. This allows safe operation even if both sources are inadvertently connected (e.g., jumper across all three JP1 pins).
-
-**Specifications (SS14):**
-
-- Reverse voltage: 40V
-- Forward current: 1A
-- Forward voltage drop: 550mV @ 1A
-- Peak surge current: 25A
-- Package: SMA (DO-214AC), Stock: 1.09M
-
-**Circuit Position:** D5 in series with PSU +5V path (before JP1 Pin 3), D6 in series with LDO output (before JP1 Pin 1).
+**Notes:** SS14 Schottky diodes (40V, 1A) create an OR-ing configuration to prevent backfeed between the LDO and PSU +5V sources.
 
 **KiCad:**
 
 - Symbol: `SS14` (in `zudo-bus-new-protection.kicad_sym`)
 - Footprint: `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`
 
-### TVS Diodes (Transient Protection)
+### Diode Summary by Diagram
 
-| Designator | Value    | Package   | LCSC                                             | Function             |
-| ---------- | -------- | --------- | ------------------------------------------------ | -------------------- |
-| TVS1       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | +12V transient clamp |
-| TVS2       | SMF12CA  | SOD-123FL | [C353317](https://jlcpcb.com/partdetail/C353317) | -12V transient clamp |
-| TVS3       | SMF5.0CA | SOD-123   | [C908214](https://jlcpcb.com/partdetail/C908214) | +5V transient clamp  |
+| Diagram  | Ref | Part     | Function                 |
+| -------- | --- | -------- | ------------------------ |
+| Diagram2 | D1  | SMF12CA  | +12V TVS (bidirectional) |
+| Diagram2 | D2  | SM4007PL | +12V reverse protection  |
+| Diagram3 | D3  | SMF12CA  | -12V TVS (bidirectional) |
+| Diagram3 | D4  | SM4007PL | -12V reverse protection  |
+| Diagram4 | D5  | SMF5.0CA | +5V TVS (bidirectional)  |
+| Diagram4 | D6  | SM4007PL | +5V reverse protection   |
+| Diagram5 | D7  | SS14     | +5V LDO OR-ing Schottky  |
+| Diagram5 | D8  | SS14     | +5V PSU OR-ing Schottky  |
 
 **Notes:** Bidirectional TVS diodes for ESD and transient spike protection. SMF12CA (Stock: 67K) has 12V standoff for ±12V rails - chosen over SMF15CA for lower clamping voltage that better protects Eurorack module components. SMF5.0CA (Stock: 66K) has 5V standoff for +5V rail.
 

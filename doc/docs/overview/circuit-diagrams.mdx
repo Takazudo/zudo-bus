@@ -42,7 +42,7 @@ flowchart TD
 
     LED["Status LEDs
     Diagram8
-    LED1 + R1"]
+    LED1-3 + R1-3"]
 
     OUT1["+12V to Modules"]
     OUT2["-12V to Modules"]
@@ -67,6 +67,8 @@ flowchart TD
     IDC --> OUT3
 
     PROT12 --> LED
+    PROTN12 --> LED
+    SEL5 --> LED
 ```
 
 **Power Distribution Strategy:**
@@ -444,24 +446,31 @@ Decoupling per header:
 
 ## Diagram8: Status LED Circuit
 
-LED1 indicates power status.
+Three LEDs indicate power rail status - one for each rail.
 
 ```
-Status LED:
+Status LEDs:
 
-+12V rail
-    │
-    ├── R1 (current sense)
-    │     │
-    │     └── To distribution
-    │
-    └── LED1 circuit (via U3)
-         │
-        GND
+-12V rail ──► R1 (1kΩ) ──► LED1 (Red) ──► GND
+              │
+              └── -12V indicator (~10mA)
 
-LED1 (Power Indicator):
-- Lights when +12V rail is active
-- Current limited by driver circuit
++12V rail ──► R2 (1kΩ) ──► LED2 (Green) ──► GND
+              │
+              └── +12V indicator (~10mA)
+
++5V rail  ──► R3 (1kΩ) ──► LED3 (Blue) ──► GND
+              │
+              └── +5V indicator (~2mA)
+
+LED Colors:
+- LED1 (Red):   -12V active
+- LED2 (Green): +12V active
+- LED3 (Blue):  +5V active
+
+Current limiting:
+- R1, R2: (12V - 2V) / 1kΩ ≈ 10mA
+- R3: (5V - 3V) / 1kΩ ≈ 2mA
 ```
 
 <details>
@@ -469,17 +478,31 @@ LED1 (Power Indicator):
 
 **Components:**
 
-| Ref  | Part           | Description              |
-| ---- | -------------- | ------------------------ |
-| LED1 | KT-0603R       | Red LED, power indicator |
-| R1   | 0805W8J0102T5E | Current sense resistor   |
-| U3   | YLED0603YG     | LED driver               |
+| Ref  | Part          | Description      |
+| ---- | ------------- | ---------------- |
+| LED1 | KT-0603R      | Red LED (-12V)   |
+| LED2 | YLED0603YG    | Green LED (+12V) |
+| LED3 | NCD1608A1     | Blue LED (+5V)   |
+| R1   | RC0603FR-071K | 1kΩ for LED1     |
+| R2   | RC0603FR-071K | 1kΩ for LED2     |
+| R3   | RC0603FR-071K | 1kΩ for LED3     |
 
 **Connections:**
 
-- `+12V rail` → `R1` → Current sense
-- `U3` drives `LED1`
-- `LED1 cathode` → `GND`
+| Component | Pin     | Net       | Description            |
+| --------- | ------- | --------- | ---------------------- |
+| R1        | 1       | -12V rail | Current limiting input |
+| R1        | 2       | (node)    | To LED1 anode          |
+| LED1      | Anode   | (node)    | From R1                |
+| LED1      | Cathode | GND       | To ground              |
+| R2        | 1       | +12V rail | Current limiting input |
+| R2        | 2       | (node)    | To LED2 anode          |
+| LED2      | Anode   | (node)    | From R2                |
+| LED2      | Cathode | GND       | To ground              |
+| R3        | 1       | +5V rail  | Current limiting input |
+| R3        | 2       | (node)    | To LED3 anode          |
+| LED3      | Anode   | (node)    | From R3                |
+| LED3      | Cathode | GND       | To ground              |
 
 </details>
 
@@ -496,7 +519,7 @@ LED1 (Power Indicator):
 | Diagram5 | LDO, Schottky OR-ing, H1 |
 | Diagram6 | P3, P4, P5, P6 (FASTON)  |
 | Diagram7 | J101-J108, C101-C208     |
-| Diagram8 | Status LEDs              |
+| Diagram8 | LED1-3, R1-R3            |
 
 ### Net Names
 

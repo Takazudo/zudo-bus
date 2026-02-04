@@ -47,6 +47,7 @@ DRC.rpt
 fp-info-cache
 sym-lib-table
 test-*.kicad_sch
+report.txt
 
 # Temporary working directory (gitignored, use for working files)
 __inbox/

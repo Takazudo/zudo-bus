@@ -1402,7 +1402,7 @@
 					)
 				)
 			)
-			(property "Footprint" ":F1812"
+			(property "Footprint" "zudo-bus:F1812"
 				(at 0 -7.62 0)
 				(effects
 					(font
@@ -1534,7 +1534,7 @@
 					)
 				)
 			)
-			(property "Footprint" ":F1812"
+			(property "Footprint" "zudo-bus:F1812"
 				(at 0 -7.62 0)
 				(effects
 					(font
@@ -1653,7 +1653,7 @@
 					)
 				)
 			)
-			(property "Footprint" ":SOD-123_L2.8-W1.8-LS3.7-BI"
+			(property "Footprint" "zudo-bus:SOD-123FL_L2.8-W1.8-LS3.7-BI"
 				(at 0 -7.62 0)
 				(effects
 					(font
@@ -4414,7 +4414,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 173.99 111.76 0)
 			(effects
 				(font
@@ -5141,7 +5141,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ":F1812"
+		(property "Footprint" "zudo-bus:F1812"
 			(at 77.47 162.56 0)
 			(effects
 				(font
@@ -5897,7 +5897,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 40.64 58.42 0)
 			(effects
 				(font
@@ -6185,7 +6185,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 96.52 119.38 0)
 			(effects
 				(font
@@ -6316,7 +6316,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 92.71 88.9 0)
 			(effects
 				(font
@@ -6591,7 +6591,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 168.91 83.82 0)
 			(effects
 				(font
@@ -6801,7 +6801,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ":F1812"
+		(property "Footprint" "zudo-bus:F1812"
 			(at 78.74 127 0)
 			(effects
 				(font
@@ -6879,7 +6879,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 95.25 154.94 0)
 			(effects
 				(font
@@ -7010,7 +7010,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ":SOD-123_L2.8-W1.8-LS3.7-BI"
+		(property "Footprint" "zudo-bus:SOD-123FL_L2.8-W1.8-LS3.7-BI"
 			(at 78.74 173.99 0)
 			(effects
 				(font
@@ -7244,7 +7244,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ":F1812"
+		(property "Footprint" "zudo-bus:F1812"
 			(at 78.74 96.52 0)
 			(effects
 				(font

@@ -23,7 +23,7 @@
 	(pad 1 smd rect (at -1.70 0.00 0.00) (size 1.20 1.40) (layers F.Cu F.Paste F.Mask))
 	(pad 2 smd rect (at 1.70 0.00 0.00) (size 1.20 1.40) (layers F.Cu F.Paste F.Mask))
 	(fp_circle (center -1.80 0.90) (end -1.77 0.90) (layer F.Fab) (width 0.06))
-	(model "/symbols.3dshapes/SOD-123FL_L2.8-W1.8-LS3.7-BI.wrl"
+	(model "${KIPRJMOD}/footprints/3dshapes/SOD-123FL_L2.8-W1.8-LS3.7-BI.wrl"
 		(offset (xyz 0.000 -0.000 -0.000))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

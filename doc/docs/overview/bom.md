@@ -334,20 +334,22 @@ Input → PTC Fuse → TVS Diode (to GND) → Reverse Diode → Rail
 
 ## Test Points
 
-| Designator | Location                    | Function         |
-| ---------- | --------------------------- | ---------------- |
-| TP1        | +12V rail (after PTC F1)    | +12V measurement |
-| TP2        | -12V rail (after PTC F2)    | -12V measurement |
-| TP3        | +5V rail (after jumper JP1) | +5V measurement  |
-| TP4        | Ground reference            | GND reference    |
-| TP5        | LDO input (+12V to U1)      | LDO input check  |
-| TP6        | LDO output (+5V from U1)    | LDO output check |
+| Designator | Location                      | Function              |
+| ---------- | ----------------------------- | --------------------- |
+| TP1        | +12V rail (after D2)          | +12V Rail measurement |
+| TP2        | -12V rail (after D4)          | -12V Rail measurement |
+| TP3        | +5V PSU (after D6, before D8) | +5V IN measurement    |
+| TP4        | U1 output (before D7)         | LDO +5V output        |
+| TP5        | JP1 pin 2 (before F4)         | +5V Rail measurement  |
+| TP6        | Ground reference              | GND reference         |
 
 **Notes:**
 
 - Test points enable easy debugging and measurement during development
 - Use standard through-hole test point pads or SMD test points
-- TP4 (GND) provides reference for all voltage measurements
+- TP6 (GND) provides reference for all voltage measurements
+- TP3 vs TP4: Compare PSU input vs LDO output to verify source selection
+- TP5: Measures +5V after source selection but before output protection F4
 
 ---
 

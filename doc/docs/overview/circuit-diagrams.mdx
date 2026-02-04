@@ -44,6 +44,10 @@ flowchart TD
     Diagram8
     LED1-3 + R1-3"]
 
+    TP["Test Points
+    Diagram9
+    TP1-TP6"]
+
     OUT1["+12V to Modules"]
     OUT2["-12V to Modules"]
     OUT3["+5V to Modules"]
@@ -69,6 +73,11 @@ flowchart TD
     PROT12 --> LED
     PROTN12 --> LED
     SEL5 --> LED
+
+    PROT12 --> TP
+    PROTN12 --> TP
+    PROT5 --> TP
+    SEL5 --> TP
 ```
 
 **Power Distribution Strategy:**
@@ -527,20 +536,73 @@ Current limiting:
 
 </details>
 
+## Diagram9: Test Points
+
+Test points are placed on key nodes for debugging and verification during board bring-up.
+
+```
+Test Point Locations:
+
++12V in ──► F1 ──► D1 ──► D2 ──●──► +12V rail
+                              │
+                             TP1 (TestPoint +12V Rail)
+
+-12V in ──► F2 ──► D3 ──► D4 ──●──► -12V rail
+                              │
+                             TP2 (TestPoint -12V Rail)
+
++5V in ──► F3 ──► D5 ──► D6 ──●──► +5V PSU
+                              │
+                             TP3 (TestPoint +5V IN)
+
++12V rail ──► U1 ──●──► D7 ──► JP1 ──●──► F4 ──► +5V rail
+             LDO  │           pin 1   │
+                  │                   │
+                 TP4                 TP5
+          (TestPoint LDO +5V)  (TestPoint +5V Rail)
+
+GND ──●──► GND distribution
+      │
+     TP6 (TestPoint GND)
+```
+
+<details>
+<summary>Test Point Details</summary>
+
+**Components:**
+
+| Ref | Location                      | Purpose                                      |
+| --- | ----------------------------- | -------------------------------------------- |
+| TP1 | +12V rail (after D2)          | Verify +12V protection output                |
+| TP2 | -12V rail (after D4)          | Verify -12V protection output                |
+| TP3 | +5V PSU (after D6, before D8) | Verify +5V PSU input before source selection |
+| TP4 | U1 output (before D7)         | Verify LDO +5V output directly               |
+| TP5 | JP1 pin 2 (before F4)         | Verify +5V after source selection            |
+| TP6 | GND                           | Ground reference for all measurements        |
+
+**Usage:**
+
+- Compare TP3 vs TP4 to verify which +5V source is active
+- TP5 shows +5V after jumper selection but before output fuse F4
+- Always use TP6 as ground reference for accurate measurements
+
+</details>
+
 ## Component Summary
 
 ### All Components by Diagram
 
-| Diagram  | Components                  |
-| -------- | --------------------------- |
-| Diagram1 | P1, P2                      |
-| Diagram2 | F1, D1 (TVS), D2            |
-| Diagram3 | F2, D3 (TVS), D4            |
-| Diagram4 | F3, D5 (TVS), D6            |
-| Diagram5 | U1, C1, C2, D7, D8, JP1, F4 |
-| Diagram6 | P3, P4, P5, P6 (FASTON)     |
-| Diagram7 | J101-J108, C101-C208        |
-| Diagram8 | LED1-3, R1-R3               |
+| Diagram  | Components                            |
+| -------- | ------------------------------------- |
+| Diagram1 | P1, P2                                |
+| Diagram2 | F1, D1 (TVS), D2, TP1                 |
+| Diagram3 | F2, D3 (TVS), D4, TP2                 |
+| Diagram4 | F3, D5 (TVS), D6, TP3                 |
+| Diagram5 | U1, C1, C2, D7, D8, JP1, F4, TP4, TP5 |
+| Diagram6 | P3, P4, P5, P6 (FASTON)               |
+| Diagram7 | J101-J108, C101-C208                  |
+| Diagram8 | LED1-3, R1-R3                         |
+| Diagram9 | TP1-TP6 (Test Points)                 |
 
 ### Net Names
 

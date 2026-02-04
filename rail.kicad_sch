@@ -5707,7 +5707,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 179.07 92.71 0)
+		(at 179.07 92.71 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5724,7 +5724,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 179.07 78.74 0)
+			(at 179.07 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5733,7 +5733,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 179.07 109.22 0)
+			(at 179.07 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5760,7 +5760,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 179.07 111.76 0)
+			(at 179.07 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6103,7 +6103,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 100.33 43.18 0)
+		(at 100.33 43.18 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6120,7 +6120,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 100.33 29.21 0)
+			(at 100.33 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6129,7 +6129,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 100.33 59.69 0)
+			(at 100.33 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6156,7 +6156,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 100.33 62.23 0)
+			(at 100.33 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6367,7 +6367,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 100.33 92.71 0)
+		(at 100.33 92.71 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6384,7 +6384,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 100.33 78.74 0)
+			(at 100.33 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6393,7 +6393,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 100.33 109.22 0)
+			(at 100.33 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6420,7 +6420,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 100.33 111.76 0)
+			(at 100.33 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6643,7 +6643,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 179.07 140.97 0)
+		(at 179.07 140.97 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6660,7 +6660,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 179.07 127 0)
+			(at 179.07 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6669,7 +6669,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 179.07 157.48 0)
+			(at 179.07 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6696,7 +6696,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 179.07 160.02 0)
+			(at 179.07 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7075,7 +7075,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 252.73 92.71 0)
+		(at 252.73 92.71 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7092,7 +7092,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 252.73 78.74 0)
+			(at 252.73 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7101,7 +7101,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 252.73 109.22 0)
+			(at 252.73 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7128,7 +7128,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 252.73 111.76 0)
+			(at 252.73 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7471,7 +7471,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 252.73 43.18 0)
+		(at 252.73 43.18 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7488,7 +7488,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 252.73 29.21 0)
+			(at 252.73 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7497,7 +7497,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 252.73 59.69 0)
+			(at 252.73 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7524,7 +7524,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 252.73 62.23 0)
+			(at 252.73 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8167,7 +8167,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 100.33 140.97 0)
+		(at 100.33 140.97 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8184,7 +8184,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 100.33 127 0)
+			(at 100.33 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8193,7 +8193,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 100.33 157.48 0)
+			(at 100.33 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8220,7 +8220,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 100.33 160.02 0)
+			(at 100.33 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8287,7 +8287,7 @@
 	)
 	(symbol
 		(lib_id "zudo-bus:2541WR-2X08P")
-		(at 179.07 43.18 0)
+		(at 179.07 43.18 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8304,7 +8304,7 @@
 			)
 		)
 		(property "Value" "2541WR-2X08P"
-			(at 179.07 29.21 0)
+			(at 179.07 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8313,7 +8313,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:HDR-TH_16P-P2.54-H-M-R2-C8-S2.54"
-			(at 179.07 59.69 0)
+			(at 179.07 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8340,7 +8340,7 @@
 			)
 		)
 		(property "LCSC Part" "C5383092"
-			(at 179.07 62.23 0)
+			(at 179.07 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)

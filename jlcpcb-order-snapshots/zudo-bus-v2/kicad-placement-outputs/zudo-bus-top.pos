@@ -1,0 +1,58 @@
+### Footprint positions - created on 2026-02-06T04:30:19+0900 ###
+### Printed by KiCad version 9.0.6
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref      Val                    Package                               PosX       PosY       Rot  Side
+C1         10uF                   C0805                              16.7500   -14.0000  180.0000  top
+C2         22uF                   C0805                              20.5000   -13.0000   90.0000  top
+C101       0.1uF                  C0603                              54.5500   -23.7500  180.0000  top
+C102       0.1uF                  C0603                              90.6500   -23.6000  180.0000  top
+C103       0.1uF                  C0603                             126.7000   -23.7000  180.0000  top
+C104       0.1uF                  C0603                             162.7000   -23.8000  180.0000  top
+C105       0.1uF                  C0603                              38.3000   -15.2500    0.0000  top
+C106       0.1uF                  C0603                              74.3000   -15.2000    0.0000  top
+C107       0.1uF                  C0603                             110.2900   -15.2000    0.0000  top
+C108       0.1uF                  C0603                             146.2900   -15.1500    0.0000  top
+C201       0.1uF                  C0603                              46.0000   -23.8000    0.0000  top
+C202       0.1uF                  C0603                              81.9000   -23.7000    0.0000  top
+C203       0.1uF                  C0603                             117.9500   -23.8000    0.0000  top
+C204       0.1uF                  C0603                             153.9000   -23.9000    0.0000  top
+C205       0.1uF                  C0603                              47.1000   -15.1500  180.0000  top
+C206       0.1uF                  C0603                              83.0500   -15.1500  180.0000  top
+C207       0.1uF                  C0603                             119.0500   -15.0500  180.0000  top
+C208       0.1uF                  C0603                             155.0500   -15.2000  180.0000  top
+D1         SMF12CA_C353317        SOD-123FL_L2.8-W1.8-LS3.7-BI       12.6400   -18.9600   90.0000  top
+D2         SM4007PL               SOD-123F_L2.8-W1.8-LS3.7-RD        12.7500   -12.2500  -90.0000  top
+D3         SMF12CA_C353317        SOD-123FL_L2.8-W1.8-LS3.7-BI        8.6800    -4.1400   90.0000  top
+D4         SM4007PL               SOD-123F_L2.8-W1.8-LS3.7-RD        14.3200    -2.0500    0.0000  top
+D5         SMF5.0CA_C908214       SOD-123FL_L2.8-W1.8-LS3.7-BI        8.7500   -35.2500  -90.0000  top
+D6         SM4007PL               SOD-123F_L2.8-W1.8-LS3.7-RD        14.9500   -36.8700  180.0000  top
+D7         SS14                   SMA_L4.2-W2.6-LS5.0-RD_1           19.2500   -26.9300  180.0000  top
+D8         SS14                   SMA_L4.2-W2.6-LS5.0-RD_1           20.1800   -30.3100  180.0000  top
+F1         BSMD1812-200-30V       F1812                              13.9300   -25.0100   90.0000  top
+F2         BSMD1812-150-33V       F1812                               4.1600    -4.1700    0.0000  top
+F3         BSMD1812-150-33V       F1812                               4.1500   -35.2500    0.0000  top
+F4         BSMD1812-110-33V       F1812                              27.5000   -26.6500   90.0000  top
+J101       2541WR-2X08P           eurorack-power-16pin               46.5100   -27.2100    0.0000  top
+J102       2541WR-2X08P           eurorack-power-16pin               82.4825   -27.2100    0.0000  top
+J103       2541WR-2X08P           eurorack-power-16pin              118.4825   -27.2100    0.0000  top
+J104       2541WR-2X08P           eurorack-power-16pin              154.4700   -27.2100    0.0000  top
+J105       2541WR-2X08P           eurorack-power-16pin               46.5100   -11.7900  180.0000  top
+J106       2541WR-2X08P           eurorack-power-16pin               82.4825   -11.7900  180.0000  top
+J107       2541WR-2X08P           eurorack-power-16pin              118.4825   -11.7900  180.0000  top
+J108       2541WR-2X08P           eurorack-power-16pin              154.4700   -11.7900  180.0000  top
+JP1        3pin_jumper            HDR-TH_3P-P2.54-V-M-1              24.5000   -34.2500  -90.0000  top
+LED1/-12V  Red                    LED0603-RD                         26.2500   -10.7500    0.0000  top
+LED2/+12V  Green                  LED0603-FD                         26.1000   -12.7500    0.0000  top
+LED3/+5V   Blue                   LED0603-RD                         26.2500   -14.7500    0.0000  top
+P1         WJ500V-5.08-2P-14-00A  CONN-TH_2P-P5.00_WJ500V-5.08-2P     6.0000   -13.0400   90.0000  top
+P2         WJ500V-5.08-2P-14-00A  CONN-TH_2P-P5.00_WJ500V-5.08-2P     6.0000   -26.0400   90.0000  top
+P3         Faston_-12V            power-faston-pin                  182.0925   -31.5000   90.0000  top
+P4         Faston_GND             power-faston-pin                  182.0925   -23.5000   90.0000  top
+P5         Faston_+12V            power-faston-pin                  182.0925   -15.5000   90.0000  top
+P6         Faston_+5V             power-faston-pin                  182.0925    -7.7200   90.0000  top
+R1         1k                     R0805                              27.5000    -8.2500  180.0000  top
+R2         1k                     R0805                              27.5000   -19.0000  -90.0000  top
+R3         1k                     R0805                              25.2500   -17.7500  -90.0000  top
+U1         AMS1117-5.0            SOT-223-3_TabPin2                  20.0500   -19.6700  -90.0000  top
+## End

@@ -8,11 +8,11 @@ Complete list of components for the zudo-bus board.
 | ------------------ | ----- | -------------------------------------------- |
 | Connectors         | 15    | Input (2) + Chain (4) + IDC (8) + Jumper (1) |
 | Active Components  | 1     | +5V LDO regulator                            |
-| Passive Components | 25    | Capacitors (22), resistors (3)               |
-| Protection         | 14    | Diodes (6), TVS (3), PTC (4), Schottky (2)   |
+| Passive Components | 21    | Capacitors (18), resistors (3)               |
+| Protection         | 12    | Diodes (3), TVS (3), PTC (4), Schottky (2)   |
 | Indicators         | 3     | Power rail LEDs                              |
 | Test Points        | 6     | TP1-TP6 for debugging                        |
-| **Total**          | ~60   | Full protection configuration                |
+| **Total**          | ~58   | Full protection configuration                |
 
 ## PCB Design
 
@@ -139,21 +139,15 @@ Complete list of components for the zudo-bus board.
 
 | Designator | Value | Package | LCSC                                           | Function                      |
 | ---------- | ----- | ------- | ---------------------------------------------- | ----------------------------- |
-| C1         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | U1 input HF decoupling        |
+| C1         | 10µF  | 0805    | [C15850](https://jlcpcb.com/partdetail/C15850) | U1 input bulk capacitor       |
 | C2         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | U1 output capacitor           |
-| C3         | 10µF  | 0805    | [C15850](https://jlcpcb.com/partdetail/C15850) | U1 input bulk                 |
-| C4         | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | U1 output HF decoupling       |
-| C5         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +12V input bulk cap           |
-| C6         | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | -12V input bulk cap           |
-| C23        | 22µF  | 0805    | [C45783](https://jlcpcb.com/partdetail/C45783) | +5V rail bulk cap (after JP1) |
 | C101-C108  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | -12V per-header decoupling x8 |
 | C201-C208  | 0.1µF | 0603    | [C14663](https://jlcpcb.com/partdetail/C14663) | +12V per-header decoupling x8 |
 
 **Notes:**
 
+- C1: 10µF input capacitor for AMS1117 LDO
 - C2: 22µF low-ESR output capacitor **required for AMS1117 stability** (Samsung CL21A226MAYNNNE, 25V X5R, Basic Part)
-- C5, C6: 22µF bulk capacitors (Samsung CL21A226MAYNNNE, 25V X5R) for better transient response during module power-on
-- C23: 22µF bulk capacitor for +5V rail, placed after JP1 Pin 2 (provides filtering regardless of LDO or PSU direct mode)
 - C101-C108: -12V per-header decoupling capacitors (C1XX matches J1XX header number)
 - C201-C208: +12V per-header decoupling capacitors (C2XX matches J1XX header number)
 
@@ -161,8 +155,8 @@ Complete list of components for the zudo-bus board.
 
 **KiCad:**
 
-- Symbol: `CC0603KRX7R9BB104` (0.1µF), `CL21A106KAYNNNE` (10µF), `CL21A226MAYNNNE` (22µF)
-- Footprint: `C0603.kicad_mod`, `C0805.kicad_mod`
+- Symbol: `CL21A106KAYNNNE` (10µF), `CL21A226MAYNNNE` (22µF), `CC0603KRX7R9BB104` (0.1µF)
+- Footprint: `C0805.kicad_mod`, `C0603.kicad_mod`
 
 ### Resistors
 
@@ -273,18 +267,18 @@ Input → PTC Fuse → TVS Diode (to GND) → Reverse Diode → Rail
 
 ### Resettable Fuses (PTC)
 
-| Designator | Value            | Package | LCSC                                             | Function               |
-| ---------- | ---------------- | ------- | ------------------------------------------------ | ---------------------- |
-| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)  |
-| F2         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | -12V overcurrent (2A)  |
-| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V PSU input (1.5A)   |
-| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | +5V rail output (1.1A) |
+| Designator | Value            | Package | LCSC                                             | Function                |
+| ---------- | ---------------- | ------- | ------------------------------------------------ | ----------------------- |
+| F1         | BSMD1812-200-30V | 1812    | [C960026](https://jlcpcb.com/partdetail/C960026) | +12V overcurrent (2A)   |
+| F2         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | -12V overcurrent (1.5A) |
+| F3         | BSMD1812-150-33V | 1812    | [C883154](https://jlcpcb.com/partdetail/C883154) | +5V PSU input (1.5A)    |
+| F4         | BSMD1812-110-33V | 1812    | [C883150](https://jlcpcb.com/partdetail/C883150) | +5V rail output (1.1A)  |
 
 **Notes:** Self-resetting PTC fuses. Trip on overcurrent, auto-reset when cooled.
 
-- F1/F2 (Stock: 120K): Main ±12V rail protection
-- F3 (Stock: 69K): +5V PSU input protection - protects TVS D5 during transients
-- F4 (Stock: 50K): +5V rail output protection - placed after JP1 jumper, protects +5V distribution from module shorts regardless of LDO or PSU source
+- F1: +12V rail protection (2A hold)
+- F2, F3: -12V and +5V PSU input protection (1.5A hold)
+- F4: +5V rail output protection - placed after JP1 jumper, protects +5V distribution from module shorts regardless of LDO or PSU source
 
 **Specifications (BSMD1812-200-30V):**
 
@@ -431,21 +425,21 @@ From zudo-bus v1/v2:
 
 | Footprint                                    | Package        | Used By                             |
 | -------------------------------------------- | -------------- | ----------------------------------- |
-| `C0603.kicad_mod`                            | 0603           | C1, C4, C7-C22 (0.1µF caps)         |
-| `C0805.kicad_mod`                            | 0805           | C2, C3, C5, C6, C23 (10µF, 22µF)    |
+| `C0603.kicad_mod`                            | 0603           | C101-C208 (0.1µF caps)              |
+| `C0805.kicad_mod`                            | 0805           | C1, C2 (10µF, 22µF)                 |
 | `R0603.kicad_mod`                            | 0603           | (available if needed)               |
 | `R0805.kicad_mod`                            | 0805           | R1, R2, R3 (1kΩ resistors)          |
 | `LED0603-RD.kicad_mod`                       | 0603           | LED1 (Red), LED3 (Blue)             |
 | `LED0603-FD.kicad_mod`                       | 0603           | LED2 (Green)                        |
-| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`      | SOD-123F       | D1, D2, D3, D4 (reverse protection) |
-| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`       | SOD-123        | TVS3 (SMF5.0CA)                     |
-| `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod`     | SOD-123FL      | TVS1, TVS2 (SMF12CA)                |
-| `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`         | SMA (DO-214AC) | D5, D6 (SS14 Schottky)              |
+| `SOD-123F_L2.8-W1.8-LS3.7-RD.kicad_mod`      | SOD-123F       | D2, D4, D6 (reverse protection)     |
+| `SOD-123_L2.8-W1.8-LS3.7-BI.kicad_mod`       | SOD-123        | D5 (SMF5.0CA TVS)                   |
+| `SOD-123FL_L2.8-W1.8-LS3.7-BI.kicad_mod`     | SOD-123FL      | D1, D3 (SMF12CA TVS)                |
+| `SMA_L4.2-W2.6-LS5.0-RD_1.kicad_mod`         | SMA (DO-214AC) | D7, D8 (SS14 Schottky)              |
 | `F1812.kicad_mod`                            | 1812           | F1, F2, F3, F4 (PTC fuses)          |
 | `SOT-223_L6.5-W3.5-P2.30-LS7.0-BR.kicad_mod` | SOT-223        | U1 (LDO regulator)                  |
 | `HDR-TH_3P-P2.54-V-M-1.kicad_mod`            | 2.54mm         | JP1 (jumper header)                 |
-| `HDR-TH_16P-P2.54-H-M-R2-C8-S2.54.kicad_mod` | 2x8 2.54mm     | J101-J108 (IDC headers)             |
-| `CONN-TH_1217754-1.kicad_mod`                | FASTON         | P3-P6 (FASTON chain output)         |
+| `eurorack-power-16pin.kicad_mod`             | 2x8 2.54mm     | J101-J108 (IDC headers, custom)     |
+| `power-faston-pin.kicad_mod`                 | FASTON         | P3-P6 (FASTON chain output, custom) |
 | `CONN-TH_2P-P5.00_WJ500V-5.08-2P.kicad_mod`  | 5.08mm         | P1, P2 (screw terminals)            |
 
-**Total footprints:** 16 files
+**Total footprints:** 18 files (includes 2 custom footprints)
